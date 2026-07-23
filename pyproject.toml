@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "standpoint"
+description = "Know where each option stands: a labelled 2D positioning map from any comparison table."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Warith Harchaoui" }]
+keywords = ["pca", "positioning map", "perceptual map", "quadrant", "vega-lite"]
+dynamic = ["version"]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.3",
+    "vl-convert-python>=1.0",
+    "PyYAML>=6.0",
+    "langdetect>=1.0.9",
+    "ollama>=0.3",
+    "click>=8.1",
+]
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.5"]
+
+[project.urls]
+Homepage = "https://github.com/warith-harchaoui/standpoint"
+Author = "https://www.linkedin.com/in/warith-harchaoui"
+
+[project.scripts]
+standpoint = "standpoint:main"
+standpoint-click = "standpoint.click_cli:main_click"
+
+[tool.setuptools]
+packages = ["standpoint"]
+
+[tool.setuptools.dynamic]
+version = { attr = "standpoint.__version__" }
+
+[tool.setuptools.package-data]
+standpoint = ["i18n.yaml"]

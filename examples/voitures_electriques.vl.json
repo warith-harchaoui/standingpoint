@@ -1,0 +1,768 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Voitures in the Quadrant",
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "fontSize": 18
+  },
+  "width": 1000,
+  "height": 720,
+  "autosize": {
+    "type": "pad",
+    "resize": true
+  },
+  "config": {
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "padding": 12,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "labelFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+      "titleFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    "text": {
+      "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": -5.257599514510107,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 5.257599514510107
+        },
+        "y": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 0
+        },
+        "y": {
+          "datum": -0.6661536669584731,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0.6661536669584731
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 5.257599514510107,
+            "y": 0.01754190038073662,
+            "t": "Durabilité"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "right",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": -5.257599514510107,
+            "y": 0.01754190038073662,
+            "t": "Accessibilité"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.1384489668073761,
+            "y": 0.6661536669584731,
+            "t": "Connectivité"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.1384489668073761,
+            "y": -0.6661536669584731,
+            "t": "Simplicité"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Tesla Model 3",
+            "axis1": 3.461224170184402,
+            "axis2": 0.4385475095184155,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Tesla Model 3",
+            "labelx": 3.461224170184402,
+            "labely": 0.5173608194261623
+          },
+          {
+            "name": "Renault Mégane E-Tech",
+            "axis1": 0.9328357930991205,
+            "axis2": 0.4385475095184155,
+            "role": "competitor",
+            "color": "#A5C0FF",
+            "label": "Renault Mégane E-Tech",
+            "labelx": 0.9328357930991205,
+            "labely": 0.5173608194261623
+          },
+          {
+            "name": "Peugeot e-208",
+            "axis1": -0.49422208695571523,
+            "axis2": -0.26539208639079026,
+            "role": "competitor",
+            "color": "#F3976D",
+            "label": "Peugeot e-208",
+            "labelx": 0.35605455108251793,
+            "labely": -0.26539208639079026
+          },
+          {
+            "name": "Hyundai Ioniq 5",
+            "axis1": 2.8515208240588272,
+            "axis2": -0.196771467415404,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Hyundai Ioniq 5",
+            "labelx": 2.8515208240588272,
+            "labely": -0.1179581575076572
+          },
+          {
+            "name": "Kia EV6",
+            "axis1": 2.8515208240588272,
+            "axis2": -0.196771467415404,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Kia EV6",
+            "labelx": 2.8515208240588272,
+            "labely": -0.2755847773231508
+          },
+          {
+            "name": "Volkswagen ID.3",
+            "axis1": 0.9159858944749972,
+            "axis2": -0.39176838333864283,
+            "role": "competitor",
+            "color": "#98CD7A",
+            "label": "Volkswagen ID.3",
+            "labelx": 0.9159858944749972,
+            "labely": -0.312955073430896
+          },
+          {
+            "name": "BMW i4",
+            "axis1": 3.461224170184402,
+            "axis2": -0.4385475095184155,
+            "role": "competitor",
+            "color": "#00A792",
+            "label": "BMW i4",
+            "labelx": 3.461224170184402,
+            "labely": -0.35973419961066866
+          },
+          {
+            "name": "Polestar 2",
+            "axis1": 2.472779996272972,
+            "axis2": -0.19451495155663515,
+            "role": "competitor",
+            "color": "#28B0DA",
+            "label": "Polestar 2",
+            "labelx": 1.7884575197811805,
+            "labely": -0.19451495155663515
+          },
+          {
+            "name": "Nissan Leaf",
+            "axis1": -0.8729629147415707,
+            "axis2": -0.26313557053202263,
+            "role": "competitor",
+            "color": "#E886A6",
+            "label": "Nissan Leaf",
+            "labelx": -0.8729629147415707,
+            "labely": -0.18432226062427584
+          },
+          {
+            "name": "MG4",
+            "axis1": -1.6554254623437126,
+            "axis2": 0.3654138588254914,
+            "role": "competitor",
+            "color": "#A26DBA",
+            "label": "MG4",
+            "labelx": -1.6554254623437126,
+            "labely": 0.4442271687332382
+          },
+          {
+            "name": "Dacia Spring",
+            "axis1": -3.461224170184402,
+            "axis2": -0.3362692212249465,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Dacia Spring",
+            "labelx": -3.461224170184402,
+            "labely": -0.41508253113269333
+          },
+          {
+            "name": "Fiat 500e",
+            "axis1": -0.4942220869557157,
+            "axis2": -0.2653920863907908,
+            "role": "competitor",
+            "color": "#B59329",
+            "label": "Fiat 500e",
+            "labelx": -0.4942220869557157,
+            "labely": -0.34420539629853764
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.95,
+        "stroke": "white",
+        "strokeWidth": 1,
+        "size": 221
+      },
+      "encoding": {
+        "x": {
+          "field": "axis1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -5.364897463785824,
+              5.364897463785824
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "axis2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.679748639753544,
+              0.679748639753544
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Tesla Model 3",
+              "Polestar 2",
+              "Renault Mégane E-Tech",
+              "MG4",
+              "Hyundai Ioniq 5",
+              "Kia EV6",
+              "Peugeot e-208",
+              "Nissan Leaf",
+              "BMW i4",
+              "Volkswagen ID.3",
+              "Fiat 500e",
+              "Dacia Spring"
+            ],
+            "range": [
+              "#FF3B30",
+              "#28B0DA",
+              "#A5C0FF",
+              "#A26DBA",
+              "#AF52DE",
+              "#007AFF",
+              "#F3976D",
+              "#E886A6",
+              "#00A792",
+              "#98CD7A",
+              "#B59329",
+              "#A52A2A"
+            ]
+          },
+          "legend": {
+            "title": "Voitures",
+            "symbolLimit": 0,
+            "labelFontSize": 12,
+            "symbolOpacity": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "role",
+            "type": "nominal"
+          },
+          {
+            "field": "axis1",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          {
+            "field": "axis2",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Tesla Model 3",
+            "axis1": 3.461224170184402,
+            "axis2": 0.4385475095184155,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Tesla Model 3",
+            "labelx": 3.461224170184402,
+            "labely": 0.5173608194261623
+          },
+          {
+            "name": "Renault Mégane E-Tech",
+            "axis1": 0.9328357930991205,
+            "axis2": 0.4385475095184155,
+            "role": "competitor",
+            "color": "#A5C0FF",
+            "label": "Renault Mégane E-Tech",
+            "labelx": 0.9328357930991205,
+            "labely": 0.5173608194261623
+          },
+          {
+            "name": "Peugeot e-208",
+            "axis1": -0.49422208695571523,
+            "axis2": -0.26539208639079026,
+            "role": "competitor",
+            "color": "#F3976D",
+            "label": "Peugeot e-208",
+            "labelx": 0.35605455108251793,
+            "labely": -0.26539208639079026
+          },
+          {
+            "name": "Hyundai Ioniq 5",
+            "axis1": 2.8515208240588272,
+            "axis2": -0.196771467415404,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Hyundai Ioniq 5",
+            "labelx": 2.8515208240588272,
+            "labely": -0.1179581575076572
+          },
+          {
+            "name": "Kia EV6",
+            "axis1": 2.8515208240588272,
+            "axis2": -0.196771467415404,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Kia EV6",
+            "labelx": 2.8515208240588272,
+            "labely": -0.2755847773231508
+          },
+          {
+            "name": "Volkswagen ID.3",
+            "axis1": 0.9159858944749972,
+            "axis2": -0.39176838333864283,
+            "role": "competitor",
+            "color": "#98CD7A",
+            "label": "Volkswagen ID.3",
+            "labelx": 0.9159858944749972,
+            "labely": -0.312955073430896
+          },
+          {
+            "name": "BMW i4",
+            "axis1": 3.461224170184402,
+            "axis2": -0.4385475095184155,
+            "role": "competitor",
+            "color": "#00A792",
+            "label": "BMW i4",
+            "labelx": 3.461224170184402,
+            "labely": -0.35973419961066866
+          },
+          {
+            "name": "Polestar 2",
+            "axis1": 2.472779996272972,
+            "axis2": -0.19451495155663515,
+            "role": "competitor",
+            "color": "#28B0DA",
+            "label": "Polestar 2",
+            "labelx": 1.7884575197811805,
+            "labely": -0.19451495155663515
+          },
+          {
+            "name": "Nissan Leaf",
+            "axis1": -0.8729629147415707,
+            "axis2": -0.26313557053202263,
+            "role": "competitor",
+            "color": "#E886A6",
+            "label": "Nissan Leaf",
+            "labelx": -0.8729629147415707,
+            "labely": -0.18432226062427584
+          },
+          {
+            "name": "MG4",
+            "axis1": -1.6554254623437126,
+            "axis2": 0.3654138588254914,
+            "role": "competitor",
+            "color": "#A26DBA",
+            "label": "MG4",
+            "labelx": -1.6554254623437126,
+            "labely": 0.4442271687332382
+          },
+          {
+            "name": "Dacia Spring",
+            "axis1": -3.461224170184402,
+            "axis2": -0.3362692212249465,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Dacia Spring",
+            "labelx": -3.461224170184402,
+            "labely": -0.41508253113269333
+          },
+          {
+            "name": "Fiat 500e",
+            "axis1": -0.4942220869557157,
+            "axis2": -0.2653920863907908,
+            "role": "competitor",
+            "color": "#B59329",
+            "label": "Fiat 500e",
+            "labelx": -0.4942220869557157,
+            "labely": -0.34420539629853764
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.label != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16,
+        "color": "#1C1C1E"
+      },
+      "encoding": {
+        "x": {
+          "field": "labelx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "labely",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

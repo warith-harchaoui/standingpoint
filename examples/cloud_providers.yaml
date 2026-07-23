@@ -1,0 +1,224 @@
+meta:
+  reference: AWS
+  rotation_deg: 51.107
+  explained_variance_ratio:
+  - 0.5525
+  - 0.2834
+  cumulative_variance: 0.8359
+  n_approaches: 13
+  attributes:
+  - Compute Breadth
+  - Managed AI/ML
+  - Global Reach
+  - Pricing Value
+  - Developer Experience
+  - Enterprise Trust
+  - Serverless
+axes:
+  axis_1:
+    name: Ease of Use ↔ Scalability
+    pole_left: Ease of Use
+    pole_right: Scalability
+    loadings:
+      Compute Breadth: 0.5426
+      Managed AI/ML: 0.35
+      Global Reach: 0.0548
+      Pricing Value: -0.1471
+      Developer Experience: -0.5721
+      Enterprise Trust: 0.4354
+      Serverless: -0.2038
+  axis_2:
+    name: Affordability ↔ Flexibility
+    pole_bottom: Affordability
+    pole_top: Flexibility
+    loadings:
+      Compute Breadth: 0.0298
+      Managed AI/ML: 0.2645
+      Global Reach: 0.5231
+      Pricing Value: -0.409
+      Developer Experience: 0.3029
+      Enterprise Trust: 0.2204
+      Serverless: 0.5899
+approaches:
+- name: AWS
+  coordinates:
+    axis_1: 2.2037
+    axis_2: 2.5502
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Compute Breadth: 5.0
+    Managed AI/ML: 4.0
+    Global Reach: 5.0
+    Pricing Value: 3.0
+    Developer Experience: 3.0
+    Enterprise Trust: 5.0
+    Serverless: 5.0
+- name: Google Cloud
+  coordinates:
+    axis_1: 1.3773
+    axis_2: 1.843
+  role: innovative
+  color: '#AF52DE'
+  attributes:
+    Compute Breadth: 4.0
+    Managed AI/ML: 5.0
+    Global Reach: 4.0
+    Pricing Value: 4.0
+    Developer Experience: 4.0
+    Enterprise Trust: 4.0
+    Serverless: 4.0
+- name: Microsoft Azure
+  coordinates:
+    axis_1: 2.2037
+    axis_2: 2.5502
+  role: trustworthy
+  color: '#007AFF'
+  attributes:
+    Compute Breadth: 4.0
+    Managed AI/ML: 4.0
+    Global Reach: 5.0
+    Pricing Value: 3.0
+    Developer Experience: 3.0
+    Enterprise Trust: 5.0
+    Serverless: 4.0
+- name: Oracle Cloud
+  coordinates:
+    axis_1: 1.2574
+    axis_2: -0.7578
+  role: competitor
+  color: '#E6B356'
+  attributes:
+    Compute Breadth: 3.0
+    Managed AI/ML: 2.0
+    Global Reach: 3.0
+    Pricing Value: 4.0
+    Developer Experience: 2.0
+    Enterprise Trust: 4.0
+    Serverless: 2.0
+- name: IBM Cloud
+  coordinates:
+    axis_1: 1.7671
+    axis_2: 0.0355
+  role: competitor
+  color: '#A2B858'
+  attributes:
+    Compute Breadth: 3.0
+    Managed AI/ML: 3.0
+    Global Reach: 3.0
+    Pricing Value: 3.0
+    Developer Experience: 2.0
+    Enterprise Trust: 4.0
+    Serverless: 2.0
+- name: Alibaba Cloud
+  coordinates:
+    axis_1: 1.0845
+    axis_2: 0.5036
+  role: competitor
+  color: '#74DDA8'
+  attributes:
+    Compute Breadth: 4.0
+    Managed AI/ML: 3.0
+    Global Reach: 4.0
+    Pricing Value: 4.0
+    Developer Experience: 3.0
+    Enterprise Trust: 3.0
+    Serverless: 3.0
+- name: DigitalOcean
+  coordinates:
+    axis_1: -2.0927
+    axis_2: -1.573
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Compute Breadth: 2.0
+    Managed AI/ML: 1.0
+    Global Reach: 2.0
+    Pricing Value: 5.0
+    Developer Experience: 5.0
+    Enterprise Trust: 2.0
+    Serverless: 2.0
+- name: Cloudflare
+  coordinates:
+    axis_1: -1.2016
+    axis_2: 2.3246
+  role: competitor
+  color: '#26CCD3'
+  attributes:
+    Compute Breadth: 2.0
+    Managed AI/ML: 3.0
+    Global Reach: 5.0
+    Pricing Value: 4.0
+    Developer Experience: 5.0
+    Enterprise Trust: 3.0
+    Serverless: 5.0
+- name: Vercel
+  coordinates:
+    axis_1: -2.2037
+    axis_2: 1.9642
+  role: competitor
+  color: '#3F9EDA'
+  attributes:
+    Compute Breadth: 1.0
+    Managed AI/ML: 2.0
+    Global Reach: 4.0
+    Pricing Value: 3.0
+    Developer Experience: 5.0
+    Enterprise Trust: 2.0
+    Serverless: 5.0
+- name: Hetzner
+  coordinates:
+    axis_1: -0.8869
+    axis_2: -2.5502
+  role: competitor
+  color: '#E482A1'
+  attributes:
+    Compute Breadth: 2.0
+    Managed AI/ML: 1.0
+    Global Reach: 2.0
+    Pricing Value: 5.0
+    Developer Experience: 3.0
+    Enterprise Trust: 2.0
+    Serverless: 1.0
+- name: Fly.io
+  coordinates:
+    axis_1: -1.2369
+    axis_2: 0.7348
+  role: competitor
+  color: '#787CD0'
+  attributes:
+    Compute Breadth: 2.0
+    Managed AI/ML: 2.0
+    Global Reach: 4.0
+    Pricing Value: 4.0
+    Developer Experience: 4.0
+    Enterprise Trust: 2.0
+    Serverless: 4.0
+- name: Render
+  coordinates:
+    axis_1: -1.8188
+    axis_2: 0.5329
+  role: competitor
+  color: '#AF73BD'
+  attributes:
+    Compute Breadth: 2.0
+    Managed AI/ML: 2.0
+    Global Reach: 3.0
+    Pricing Value: 4.0
+    Developer Experience: 5.0
+    Enterprise Trust: 2.0
+    Serverless: 4.0
+- name: Vast.ai
+  coordinates:
+    axis_1: -0.1278
+    axis_2: -2.2351
+  role: competitor
+  color: '#DE805F'
+  attributes:
+    Compute Breadth: 3.0
+    Managed AI/ML: 3.0
+    Global Reach: 2.0
+    Pricing Value: 5.0
+    Developer Experience: 3.0
+    Enterprise Trust: 1.0
+    Serverless: 1.0

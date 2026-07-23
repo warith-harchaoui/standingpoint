@@ -1,0 +1,790 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Providers in the Quadrant",
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "fontSize": 18
+  },
+  "width": 1000,
+  "height": 720,
+  "autosize": {
+    "type": "pad",
+    "resize": true
+  },
+  "config": {
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "padding": 12,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "labelFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+      "titleFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    "text": {
+      "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": -3.3474786306037925,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 3.3474786306037925
+        },
+        "y": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 0
+        },
+        "y": {
+          "datum": -3.873810040885125,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 3.873810040885125
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 3.3474786306037925,
+            "y": 0.10200948099763331,
+            "t": "Scalability"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "right",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": -3.3474786306037925,
+            "y": 0.10200948099763331,
+            "t": "Ease of Use"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.08814953602643298,
+            "y": 3.873810040885125,
+            "t": "Flexibility"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.08814953602643298,
+            "y": -3.873810040885125,
+            "t": "Affordability"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "AWS",
+            "axis1": 2.2037384006608245,
+            "axis2": 2.5502370249408326,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "AWS",
+            "labelx": 2.392897510580658,
+            "labely": 2.5502370249408326
+          },
+          {
+            "name": "Google Cloud",
+            "axis1": 1.3773422825749981,
+            "axis2": 1.84297765368394,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Google Cloud",
+            "labelx": 1.3773422825749981,
+            "labely": 2.054339988918743
+          },
+          {
+            "name": "Microsoft Azure",
+            "axis1": 2.2037384006608245,
+            "axis2": 2.5502370249408326,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Microsoft Azure",
+            "labelx": 1.5919316486729205,
+            "labely": 2.5502370249408326
+          },
+          {
+            "name": "Oracle Cloud",
+            "axis1": 1.2573976246318768,
+            "axis2": -0.7578322414367411,
+            "role": "competitor",
+            "color": "#E6B356",
+            "label": "Oracle Cloud",
+            "labelx": 1.2573976246318768,
+            "labely": -0.546469906201938
+          },
+          {
+            "name": "IBM Cloud",
+            "axis1": 1.7671260155625519,
+            "axis2": 0.035530472254414136,
+            "role": "competitor",
+            "color": "#A2B858",
+            "label": "IBM Cloud",
+            "labelx": 1.7671260155625519,
+            "labely": 0.24689280748921721
+          },
+          {
+            "name": "Alibaba Cloud",
+            "axis1": 1.084536477237651,
+            "axis2": 0.5036398150592967,
+            "role": "competitor",
+            "color": "#74DDA8",
+            "label": "Alibaba Cloud",
+            "labelx": 1.084536477237651,
+            "labely": 0.7150021502940997
+          },
+          {
+            "name": "DigitalOcean",
+            "axis1": -2.09267454863393,
+            "axis2": -1.5730143106567847,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "DigitalOcean",
+            "labelx": -2.09267454863393,
+            "labely": -1.3616519754219816
+          },
+          {
+            "name": "Cloudflare",
+            "axis1": -1.2016180724500234,
+            "axis2": 2.324566983563891,
+            "role": "competitor",
+            "color": "#26CCD3",
+            "label": "Cloudflare",
+            "labelx": -1.2016180724500234,
+            "labely": 2.5359293187986944
+          },
+          {
+            "name": "Vercel",
+            "axis1": -2.2037384006608245,
+            "axis2": 1.964186621829216,
+            "role": "competitor",
+            "color": "#3F9EDA",
+            "label": "Vercel",
+            "labelx": -2.2037384006608245,
+            "labely": 2.175548957064019
+          },
+          {
+            "name": "Hetzner",
+            "axis1": -0.8869450921913303,
+            "axis2": -2.5502370249408326,
+            "role": "competitor",
+            "color": "#E482A1",
+            "label": "Hetzner",
+            "labelx": -0.8869450921913303,
+            "labely": -2.3388746897060297
+          },
+          {
+            "name": "Fly.io",
+            "axis1": -1.2369398136113179,
+            "axis2": 0.7348493511062204,
+            "role": "competitor",
+            "color": "#787CD0",
+            "label": "Fly.io",
+            "labelx": -1.2369398136113179,
+            "labely": 0.9462116863410235
+          },
+          {
+            "name": "Render",
+            "axis1": -1.818819120590862,
+            "axis2": 0.5328907187840757,
+            "role": "competitor",
+            "color": "#AF73BD",
+            "label": "Render",
+            "labelx": -1.818819120590862,
+            "labely": 0.7442530540188788
+          },
+          {
+            "name": "Vast.ai",
+            "axis1": -0.12782826663958624,
+            "axis2": -2.235080228181692,
+            "role": "competitor",
+            "color": "#DE805F",
+            "label": "Vast.ai",
+            "labelx": -0.12782826663958624,
+            "labely": -2.0237178929468893
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.95,
+        "stroke": "white",
+        "strokeWidth": 1,
+        "size": 217
+      },
+      "encoding": {
+        "x": {
+          "field": "axis1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.415794521024278,
+              3.415794521024278
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "axis2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.952867388658291,
+              3.952867388658291
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "AWS",
+              "Microsoft Azure",
+              "Cloudflare",
+              "Vercel",
+              "Google Cloud",
+              "Alibaba Cloud",
+              "Fly.io",
+              "Render",
+              "IBM Cloud",
+              "Oracle Cloud",
+              "Vast.ai",
+              "DigitalOcean",
+              "Hetzner"
+            ],
+            "range": [
+              "#FF3B30",
+              "#007AFF",
+              "#26CCD3",
+              "#3F9EDA",
+              "#AF52DE",
+              "#74DDA8",
+              "#787CD0",
+              "#AF73BD",
+              "#A2B858",
+              "#E6B356",
+              "#DE805F",
+              "#A52A2A",
+              "#E482A1"
+            ]
+          },
+          "legend": {
+            "title": "Providers",
+            "symbolLimit": 0,
+            "labelFontSize": 12,
+            "symbolOpacity": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "role",
+            "type": "nominal"
+          },
+          {
+            "field": "axis1",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          {
+            "field": "axis2",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "AWS",
+            "axis1": 2.2037384006608245,
+            "axis2": 2.5502370249408326,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "AWS",
+            "labelx": 2.392897510580658,
+            "labely": 2.5502370249408326
+          },
+          {
+            "name": "Google Cloud",
+            "axis1": 1.3773422825749981,
+            "axis2": 1.84297765368394,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Google Cloud",
+            "labelx": 1.3773422825749981,
+            "labely": 2.054339988918743
+          },
+          {
+            "name": "Microsoft Azure",
+            "axis1": 2.2037384006608245,
+            "axis2": 2.5502370249408326,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Microsoft Azure",
+            "labelx": 1.5919316486729205,
+            "labely": 2.5502370249408326
+          },
+          {
+            "name": "Oracle Cloud",
+            "axis1": 1.2573976246318768,
+            "axis2": -0.7578322414367411,
+            "role": "competitor",
+            "color": "#E6B356",
+            "label": "Oracle Cloud",
+            "labelx": 1.2573976246318768,
+            "labely": -0.546469906201938
+          },
+          {
+            "name": "IBM Cloud",
+            "axis1": 1.7671260155625519,
+            "axis2": 0.035530472254414136,
+            "role": "competitor",
+            "color": "#A2B858",
+            "label": "IBM Cloud",
+            "labelx": 1.7671260155625519,
+            "labely": 0.24689280748921721
+          },
+          {
+            "name": "Alibaba Cloud",
+            "axis1": 1.084536477237651,
+            "axis2": 0.5036398150592967,
+            "role": "competitor",
+            "color": "#74DDA8",
+            "label": "Alibaba Cloud",
+            "labelx": 1.084536477237651,
+            "labely": 0.7150021502940997
+          },
+          {
+            "name": "DigitalOcean",
+            "axis1": -2.09267454863393,
+            "axis2": -1.5730143106567847,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "DigitalOcean",
+            "labelx": -2.09267454863393,
+            "labely": -1.3616519754219816
+          },
+          {
+            "name": "Cloudflare",
+            "axis1": -1.2016180724500234,
+            "axis2": 2.324566983563891,
+            "role": "competitor",
+            "color": "#26CCD3",
+            "label": "Cloudflare",
+            "labelx": -1.2016180724500234,
+            "labely": 2.5359293187986944
+          },
+          {
+            "name": "Vercel",
+            "axis1": -2.2037384006608245,
+            "axis2": 1.964186621829216,
+            "role": "competitor",
+            "color": "#3F9EDA",
+            "label": "Vercel",
+            "labelx": -2.2037384006608245,
+            "labely": 2.175548957064019
+          },
+          {
+            "name": "Hetzner",
+            "axis1": -0.8869450921913303,
+            "axis2": -2.5502370249408326,
+            "role": "competitor",
+            "color": "#E482A1",
+            "label": "Hetzner",
+            "labelx": -0.8869450921913303,
+            "labely": -2.3388746897060297
+          },
+          {
+            "name": "Fly.io",
+            "axis1": -1.2369398136113179,
+            "axis2": 0.7348493511062204,
+            "role": "competitor",
+            "color": "#787CD0",
+            "label": "Fly.io",
+            "labelx": -1.2369398136113179,
+            "labely": 0.9462116863410235
+          },
+          {
+            "name": "Render",
+            "axis1": -1.818819120590862,
+            "axis2": 0.5328907187840757,
+            "role": "competitor",
+            "color": "#AF73BD",
+            "label": "Render",
+            "labelx": -1.818819120590862,
+            "labely": 0.7442530540188788
+          },
+          {
+            "name": "Vast.ai",
+            "axis1": -0.12782826663958624,
+            "axis2": -2.235080228181692,
+            "role": "competitor",
+            "color": "#DE805F",
+            "label": "Vast.ai",
+            "labelx": -0.12782826663958624,
+            "labely": -2.0237178929468893
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.label != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16,
+        "color": "#1C1C1E"
+      },
+      "encoding": {
+        "x": {
+          "field": "labelx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "labely",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

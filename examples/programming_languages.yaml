@@ -1,0 +1,210 @@
+meta:
+  reference: Python
+  rotation_deg: -127.903
+  explained_variance_ratio:
+  - 0.4936
+  - 0.3042
+  cumulative_variance: 0.7979
+  n_approaches: 12
+  attributes:
+  - Performance
+  - Ease of Learning
+  - Ecosystem
+  - Concurrency
+  - Type Safety
+  - Job Market
+  - Tooling
+axes:
+  axis_1:
+    name: Scalability ↔ Versatility
+    pole_left: Scalability
+    pole_right: Versatility
+    loadings:
+      Performance: -0.109
+      Ease of Learning: 0.2384
+      Ecosystem: 0.6023
+      Concurrency: -0.2839
+      Type Safety: -0.0259
+      Job Market: 0.5953
+      Tooling: 0.3645
+  axis_2:
+    name: Flexibility ↔ Accessibility
+    pole_bottom: Flexibility
+    pole_top: Accessibility
+    loadings:
+      Performance: -0.505
+      Ease of Learning: 0.3451
+      Ecosystem: -0.1016
+      Concurrency: -0.3884
+      Type Safety: -0.532
+      Job Market: -0.0798
+      Tooling: -0.4188
+approaches:
+- name: Python
+  coordinates:
+    axis_1: 2.453
+    axis_2: 2.8621
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Performance: 2.0
+    Ease of Learning: 5.0
+    Ecosystem: 5.0
+    Concurrency: 2.0
+    Type Safety: 2.0
+    Job Market: 5.0
+    Tooling: 4.0
+- name: Rust
+  coordinates:
+    axis_1: -1.2121
+    axis_2: -2.8621
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Performance: 5.0
+    Ease of Learning: 2.0
+    Ecosystem: 3.0
+    Concurrency: 5.0
+    Type Safety: 5.0
+    Job Market: 3.0
+    Tooling: 4.0
+- name: Go
+  coordinates:
+    axis_1: 0.6482
+    axis_2: -1.2624
+  role: trustworthy
+  color: '#007AFF'
+  attributes:
+    Performance: 4.0
+    Ease of Learning: 4.0
+    Ecosystem: 4.0
+    Concurrency: 5.0
+    Type Safety: 4.0
+    Job Market: 4.0
+    Tooling: 4.0
+- name: JavaScript
+  coordinates:
+    axis_1: 2.0837
+    axis_2: 1.5732
+  role: competitor
+  color: '#4ECBF7'
+  attributes:
+    Performance: 3.0
+    Ease of Learning: 4.0
+    Ecosystem: 5.0
+    Concurrency: 3.0
+    Type Safety: 2.0
+    Job Market: 5.0
+    Tooling: 3.0
+- name: TypeScript
+  coordinates:
+    axis_1: 2.3179
+    axis_2: -0.5016
+  role: competitor
+  color: '#52DEC7'
+  attributes:
+    Performance: 3.0
+    Ease of Learning: 3.0
+    Ecosystem: 5.0
+    Concurrency: 3.0
+    Type Safety: 4.0
+    Job Market: 5.0
+    Tooling: 4.0
+- name: Java
+  coordinates:
+    axis_1: 2.453
+    axis_2: -2.0249
+  role: innovative
+  color: '#AF52DE'
+  attributes:
+    Performance: 4.0
+    Ease of Learning: 3.0
+    Ecosystem: 5.0
+    Concurrency: 4.0
+    Type Safety: 4.0
+    Job Market: 5.0
+    Tooling: 5.0
+- name: C++
+  coordinates:
+    axis_1: -0.4136
+    axis_2: -1.2902
+  role: competitor
+  color: '#CC744A'
+  attributes:
+    Performance: 5.0
+    Ease of Learning: 1.0
+    Ecosystem: 4.0
+    Concurrency: 4.0
+    Type Safety: 3.0
+    Job Market: 4.0
+    Tooling: 3.0
+- name: C#
+  coordinates:
+    axis_1: 1.2177
+    axis_2: -1.8374
+  role: competitor
+  color: '#649745'
+  attributes:
+    Performance: 4.0
+    Ease of Learning: 3.0
+    Ecosystem: 4.0
+    Concurrency: 4.0
+    Type Safety: 4.0
+    Job Market: 4.0
+    Tooling: 5.0
+- name: Ruby
+  coordinates:
+    axis_1: 0.0084
+    axis_2: 2.8621
+  role: competitor
+  color: '#7992E4'
+  attributes:
+    Performance: 2.0
+    Ease of Learning: 4.0
+    Ecosystem: 3.0
+    Concurrency: 2.0
+    Type Safety: 2.0
+    Job Market: 3.0
+    Tooling: 3.0
+- name: Kotlin
+  coordinates:
+    axis_1: 0.0836
+    axis_2: -1.1471
+  role: competitor
+  color: '#D1AE49'
+  attributes:
+    Performance: 4.0
+    Ease of Learning: 3.0
+    Ecosystem: 4.0
+    Concurrency: 4.0
+    Type Safety: 4.0
+    Job Market: 3.0
+    Tooling: 4.0
+- name: Swift
+  coordinates:
+    axis_1: -0.5479
+    axis_2: -1.0405
+  role: competitor
+  color: '#DF7D9D'
+  attributes:
+    Performance: 4.0
+    Ease of Learning: 3.0
+    Ecosystem: 3.0
+    Concurrency: 4.0
+    Type Safety: 4.0
+    Job Market: 3.0
+    Tooling: 4.0
+- name: Elixir
+  coordinates:
+    axis_1: -2.453
+    axis_2: 0.4592
+  role: competitor
+  color: '#C790DF'
+  attributes:
+    Performance: 3.0
+    Ease of Learning: 3.0
+    Ecosystem: 2.0
+    Concurrency: 5.0
+    Type Safety: 3.0
+    Job Market: 2.0
+    Tooling: 3.0

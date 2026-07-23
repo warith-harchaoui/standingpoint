@@ -1,0 +1,33 @@
+Approach,Real-time streaming,Operator UX,Speaker diarization / roles,On-prem privacy,Anonymization (PII+GDPR),"Domain fit (FR, EV, closed routing)",TCO
+Sidekick,5,4,5,5,5,5,5
+Salesforce Voice,3,5,3,1,2,2,1
+Zendesk AI Voice,3,5,2,1,2,2,2
+Cresta Assist,5,5,4,2,2,3,2
+Level (QA + real-time),4,4,3,2,2,2,2
+Observe.AI,4,4,4,2,3,2,2
+Cogito Coach,4,5,3,2,2,2,1
+ASAPP GenAgent,4,5,3,2,2,2,1
+Google Assist,4,5,4,2,4,3,3
+Amazon Connect,4,4,4,2,4,2,3
+Azure Com + OpenAI,4,3,3,2,3,3,3
+NICE Enlighten AI,3,4,3,2,3,2,2
+Genesys AI,4,5,3,2,3,3,2
+Talkdesk Copilot,4,4,3,2,3,3,2
+Five9 AI,3,4,3,2,2,2,2
+Dialpad AI Contact,4,4,3,2,2,3,3
+Aircall AI,3,4,2,2,2,3,3
+Diabolocom / Zaion,4,4,3,3,4,4,3
+Kwak.ai,4,4,3,3,3,4,3
+Allo-Media,3,4,3,3,4,4,3
+Gladia,5,2,3,2,2,3,3
+pyannoteAI,5,1,5,2,2,2,3
+OpenAI Realtime,5,2,2,1,2,3,3
+Anthropic Claude,5,2,2,1,2,3,3
+Whisper / LangChain,4,2,2,5,3,3,4
+pyannote OSS + Ollama,4,1,5,5,3,3,4
+LiveKit Agents,5,2,3,4,3,3,4
+pipecat,5,2,3,4,3,3,4
+Vocode,4,2,2,3,2,3,4
+Rasa Pro CALM,4,3,2,4,3,3,4
+OpenOats,3,2,2,5,2,2,4
+Open Granola,3,3,3,5,2,2,4

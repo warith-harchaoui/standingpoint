@@ -1,0 +1,490 @@
+meta:
+  reference: Sidekick
+  rotation_deg: 15.272
+  explained_variance_ratio:
+  - 0.4118
+  - 0.2214
+  cumulative_variance: 0.6332
+  n_approaches: 32
+  attributes:
+  - Real-time streaming
+  - Operator UX
+  - Speaker diarization / roles
+  - On-prem privacy
+  - Anonymization (PII+GDPR)
+  - Domain fit (FR, EV, closed routing)
+  - TCO
+axes:
+  axis_1:
+    name: User Friendly ↔ Cost Efficient
+    pole_left: User Friendly
+    pole_right: Cost Efficient
+    loadings:
+      Real-time streaming: 0.2592
+      Operator UX: -0.4686
+      Speaker diarization / roles: 0.0655
+      On-prem privacy: 0.4773
+      Anonymization (PII+GDPR): 0.2101
+      Domain fit (FR, EV, closed routing): 0.3243
+      TCO: 0.5761
+  axis_2:
+    name: High Cost ↔ Privacy Compliant
+    pole_bottom: High Cost
+    pole_top: Privacy Compliant
+    loadings:
+      Real-time streaming: 0.0945
+      Operator UX: 0.4609
+      Speaker diarization / roles: 0.4922
+      On-prem privacy: -0.0656
+      Anonymization (PII+GDPR): 0.6069
+      Domain fit (FR, EV, closed routing): 0.3895
+      TCO: -0.1098
+approaches:
+- name: Sidekick
+  coordinates:
+    axis_1: 2.7764
+    axis_2: 2.2328
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 5.0
+    On-prem privacy: 5.0
+    Anonymization (PII+GDPR): 5.0
+    Domain fit (FR, EV, closed routing): 5.0
+    TCO: 5.0
+- name: Salesforce Voice
+  coordinates:
+    axis_1: -3.193
+    axis_2: -0.2274
+  role: competitor
+  color: '#FC9B7C'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 1.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 1.0
+- name: Zendesk AI Voice
+  coordinates:
+    axis_1: -2.6882
+    axis_2: -0.9079
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 1.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 2.0
+- name: Cresta Assist
+  coordinates:
+    axis_1: -0.9873
+    axis_2: 0.9743
+  role: innovative
+  color: '#AF52DE'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 4.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 2.0
+- name: Level (QA + real-time)
+  coordinates:
+    axis_1: -1.4933
+    axis_2: -0.6255
+  role: competitor
+  color: '#FAB066'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 2.0
+- name: Observe.AI
+  coordinates:
+    axis_1: -1.1574
+    axis_2: 0.6958
+  role: competitor
+  color: '#CF76A7'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 4.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 2.0
+- name: Cogito Coach
+  coordinates:
+    axis_1: -2.4492
+    axis_2: -0.1456
+  role: competitor
+  color: '#E47E8B'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 1.0
+- name: ASAPP GenAgent
+  coordinates:
+    axis_1: -2.4492
+    axis_2: -0.1456
+  role: competitor
+  color: '#EA857C'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 1.0
+- name: Google Assist
+  coordinates:
+    axis_1: -0.2529
+    axis_2: 2.2328
+  role: competitor
+  color: '#AF97EE'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 4.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 4.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: Amazon Connect
+  coordinates:
+    axis_1: -0.3166
+    axis_2: 1.3365
+  role: competitor
+  color: '#C396E9'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 4.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 4.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 3.0
+- name: Azure Com + OpenAI
+  coordinates:
+    axis_1: 0.1618
+    axis_2: 0.1732
+  role: competitor
+  color: '#68BCFD'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 3.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: NICE Enlighten AI
+  coordinates:
+    axis_1: -1.5997
+    axis_2: -0.0077
+  role: competitor
+  color: '#F28EAE'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 2.0
+- name: Genesys AI
+  coordinates:
+    axis_1: -1.1695
+    axis_2: 1.0223
+  role: competitor
+  color: '#B97BC4'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 5.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 2.0
+- name: Talkdesk Copilot
+  coordinates:
+    axis_1: -0.7942
+    axis_2: 0.6531
+  role: competitor
+  color: '#EC9BDB'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 2.0
+- name: Five9 AI
+  coordinates:
+    axis_1: -1.8598
+    axis_2: -0.7591
+  role: competitor
+  color: '#C5723D'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 2.0
+- name: Dialpad AI Contact
+  coordinates:
+    axis_1: -0.4736
+    axis_2: -0.209
+  role: competitor
+  color: '#EAB258'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: Aircall AI
+  coordinates:
+    axis_1: -0.916
+    axis_2: -0.9125
+  role: competitor
+  color: '#B18F23'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: Diabolocom / Zaion
+  coordinates:
+    axis_1: 0.8628
+    axis_2: 1.769
+  role: competitor
+  color: '#A0BBFF'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 3.0
+    Anonymization (PII+GDPR): 4.0
+    Domain fit (FR, EV, closed routing): 4.0
+    TCO: 3.0
+- name: Kwak.ai
+  coordinates:
+    axis_1: 0.6027
+    axis_2: 1.0177
+  role: competitor
+  color: '#598ED8'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 3.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 4.0
+    TCO: 3.0
+- name: Allo-Media
+  coordinates:
+    axis_1: 0.4963
+    axis_2: 1.6354
+  role: competitor
+  color: '#908FE5'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 4.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 3.0
+    Anonymization (PII+GDPR): 4.0
+    Domain fit (FR, EV, closed routing): 4.0
+    TCO: 3.0
+- name: Gladia
+  coordinates:
+    axis_1: 0.6436
+    axis_2: -0.8138
+  role: competitor
+  color: '#0B9D76'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: pyannoteAI
+  coordinates:
+    axis_1: 0.7315
+    axis_2: -0.5705
+  role: competitor
+  color: '#08B59F'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 1.0
+    Speaker diarization / roles: 5.0
+    On-prem privacy: 2.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 3.0
+- name: OpenAI Realtime
+  coordinates:
+    axis_1: 0.1905
+    axis_2: -1.3318
+  role: competitor
+  color: '#BEB24A'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 1.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: Anthropic Claude
+  coordinates:
+    axis_1: 0.1905
+    axis_2: -1.3318
+  role: competitor
+  color: '#B2C05D'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 1.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 3.0
+- name: Whisper / LangChain
+  coordinates:
+    axis_1: 2.1737
+    axis_2: -1.0321
+  role: trustworthy
+  color: '#007AFF'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 5.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: pyannote OSS + Ollama
+  coordinates:
+    axis_1: 2.7764
+    axis_2: 0.3082
+  role: competitor
+  color: '#63D2FF'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 1.0
+    Speaker diarization / roles: 5.0
+    On-prem privacy: 5.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: LiveKit Agents
+  coordinates:
+    axis_1: 2.2388
+    axis_2: -0.2768
+  role: competitor
+  color: '#0CC0D0'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 4.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: pipecat
+  coordinates:
+    axis_1: 2.2388
+    axis_2: -0.2768
+  role: competitor
+  color: '#00A0C2'
+  attributes:
+    Real-time streaming: 5.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 4.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: Vocode
+  coordinates:
+    axis_1: 1.1591
+    axis_2: -1.6798
+  role: competitor
+  color: '#3E9E65'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 3.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: Rasa Pro CALM
+  coordinates:
+    axis_1: 1.4211
+    axis_2: -0.611
+  role: competitor
+  color: '#00B7B4'
+  attributes:
+    Real-time streaming: 4.0
+    Operator UX: 3.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 4.0
+    Anonymization (PII+GDPR): 3.0
+    Domain fit (FR, EV, closed routing): 3.0
+    TCO: 4.0
+- name: OpenOats
+  coordinates:
+    axis_1: 1.108
+    axis_2: -2.4443
+  role: competitor
+  color: '#7AA047'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 2.0
+    Speaker diarization / roles: 2.0
+    On-prem privacy: 5.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 4.0
+- name: Open Granola
+  coordinates:
+    axis_1: 0.8085
+    axis_2: -1.5052
+  role: competitor
+  color: '#75B76C'
+  attributes:
+    Real-time streaming: 3.0
+    Operator UX: 3.0
+    Speaker diarization / roles: 3.0
+    On-prem privacy: 5.0
+    Anonymization (PII+GDPR): 2.0
+    Domain fit (FR, EV, closed routing): 2.0
+    TCO: 4.0

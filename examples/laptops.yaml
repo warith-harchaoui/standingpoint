@@ -1,0 +1,172 @@
+meta:
+  reference: MacBook Air
+  rotation_deg: -67.979
+  explained_variance_ratio:
+  - 0.5268
+  - 0.3522
+  cumulative_variance: 0.879
+  n_approaches: 10
+  attributes:
+  - Price
+  - Performance
+  - Battery Life
+  - Build Quality
+  - Weight
+  - Screen
+  lower_is_better:
+  - Price
+  - Weight
+axes:
+  axis_1:
+    name: Affordable ↔ Durable
+    pole_left: Affordable
+    pole_right: Durable
+    loadings:
+      Price: -0.3459
+      Performance: 0.1943
+      Battery Life: 0.5171
+      Build Quality: 0.6472
+      Weight: 0.2949
+      Screen: 0.2633
+  axis_2:
+    name: Powerful ↔ Portable
+    pole_bottom: Powerful
+    pole_top: Portable
+    loadings:
+      Price: 0.4357
+      Performance: -0.5147
+      Battery Life: 0.391
+      Build Quality: -0.0201
+      Weight: 0.52
+      Screen: -0.3488
+approaches:
+- name: MacBook Air
+  coordinates:
+    axis_1: 2.3614
+    axis_2: 2.6563
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Price: 3.0
+    Performance: 3.0
+    Battery Life: 5.0
+    Build Quality: 5.0
+    Weight: 1.0
+    Screen: 4.0
+- name: MacBook Pro
+  coordinates:
+    axis_1: 2.3614
+    axis_2: -1.3129
+  role: innovative
+  color: '#AF52DE'
+  attributes:
+    Price: 5.0
+    Performance: 5.0
+    Battery Life: 4.0
+    Build Quality: 5.0
+    Weight: 3.0
+    Screen: 5.0
+- name: Dell XPS
+  coordinates:
+    axis_1: 0.891
+    axis_2: -0.3987
+  role: trustworthy
+  color: '#007AFF'
+  attributes:
+    Price: 4.0
+    Performance: 4.0
+    Battery Life: 3.0
+    Build Quality: 4.0
+    Weight: 2.0
+    Screen: 5.0
+- name: ThinkPad X1
+  coordinates:
+    axis_1: 1.4648
+    axis_2: 0.9298
+  role: competitor
+  color: '#E49753'
+  attributes:
+    Price: 4.0
+    Performance: 4.0
+    Battery Life: 4.0
+    Build Quality: 5.0
+    Weight: 2.0
+    Screen: 3.0
+- name: Framework
+  coordinates:
+    axis_1: -1.1959
+    axis_2: 0.9306
+  role: competitor
+  color: '#AB8CE0'
+  attributes:
+    Price: 3.0
+    Performance: 3.0
+    Battery Life: 3.0
+    Build Quality: 3.0
+    Weight: 3.0
+    Screen: 3.0
+- name: Asus Zenbook
+  coordinates:
+    axis_1: -0.8793
+    axis_2: 1.3103
+  role: competitor
+  color: '#52DEC7'
+  attributes:
+    Price: 2.0
+    Performance: 3.0
+    Battery Life: 3.0
+    Build Quality: 3.0
+    Weight: 2.0
+    Screen: 4.0
+- name: HP Spectre
+  coordinates:
+    axis_1: 0.0695
+    axis_2: 0.9268
+  role: competitor
+  color: '#7D912E'
+  attributes:
+    Price: 3.0
+    Performance: 3.0
+    Battery Life: 3.0
+    Build Quality: 4.0
+    Weight: 2.0
+    Screen: 4.0
+- name: Lenovo Legion
+  coordinates:
+    axis_1: -1.3039
+    axis_2: -2.2894
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Price: 4.0
+    Performance: 5.0
+    Battery Life: 2.0
+    Build Quality: 3.0
+    Weight: 5.0
+    Screen: 4.0
+- name: Acer Swift
+  coordinates:
+    axis_1: -2.3614
+    axis_2: 2.6563
+  role: competitor
+  color: '#3B9BD7'
+  attributes:
+    Price: 1.0
+    Performance: 2.0
+    Battery Life: 3.0
+    Build Quality: 2.0
+    Weight: 2.0
+    Screen: 3.0
+- name: Razer Blade
+  coordinates:
+    axis_1: 0.2497
+    axis_2: -2.6563
+  role: competitor
+  color: '#F894B4'
+  attributes:
+    Price: 5.0
+    Performance: 5.0
+    Battery Life: 2.0
+    Build Quality: 4.0
+    Weight: 4.0
+    Screen: 5.0

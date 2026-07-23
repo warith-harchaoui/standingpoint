@@ -1,0 +1,724 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Laptops in the Quadrant",
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "fontSize": 18
+  },
+  "width": 1000,
+  "height": 720,
+  "autosize": {
+    "type": "pad",
+    "resize": true
+  },
+  "config": {
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "padding": 12,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "labelFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+      "titleFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    "text": {
+      "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": -3.58699341631888,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 3.58699341631888
+        },
+        "y": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 0
+        },
+        "y": {
+          "datum": -4.034889100958085,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 4.034889100958085
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 3.58699341631888,
+            "y": 0.1062511942319443,
+            "t": "Durable"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "right",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": -3.58699341631888,
+            "y": 0.1062511942319443,
+            "t": "Affordable"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.09445670615717919,
+            "y": 4.034889100958085,
+            "t": "Portable"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.09445670615717919,
+            "y": -4.034889100958085,
+            "t": "Powerful"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "MacBook Air",
+            "axis1": 2.3614176539294798,
+            "axis2": 2.6562798557986076,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "MacBook Air",
+            "labelx": 2.3614176539294798,
+            "labely": 2.8843835478581417
+          },
+          {
+            "name": "MacBook Pro",
+            "axis1": 2.3614176539294798,
+            "axis2": -1.3128590522998154,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "MacBook Pro",
+            "labelx": 2.3614176539294798,
+            "labely": -1.084755360240281
+          },
+          {
+            "name": "Dell XPS",
+            "axis1": 0.8910170758152786,
+            "axis2": -0.3986867858940918,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Dell XPS",
+            "labelx": 0.8910170758152786,
+            "labely": -0.626790477953626
+          },
+          {
+            "name": "ThinkPad X1",
+            "axis1": 1.464765139653159,
+            "axis2": 0.9298179549757113,
+            "role": "competitor",
+            "color": "#E49753",
+            "label": "ThinkPad X1",
+            "labelx": 1.464765139653159,
+            "labely": 1.1579216470352456
+          },
+          {
+            "name": "Framework",
+            "axis1": -1.1959366512540603,
+            "axis2": 0.9305781398079973,
+            "role": "competitor",
+            "color": "#AB8CE0",
+            "label": "Framework",
+            "labelx": -1.1959366512540603,
+            "labely": 0.702474447748463
+          },
+          {
+            "name": "Asus Zenbook",
+            "axis1": -0.879314930374814,
+            "axis2": 1.3103174296997016,
+            "role": "competitor",
+            "color": "#52DEC7",
+            "label": "Asus Zenbook",
+            "labelx": -0.879314930374814,
+            "labely": 1.5384211217592358
+          },
+          {
+            "name": "HP Spectre",
+            "axis1": 0.06947362733546453,
+            "axis2": 0.926754525268963,
+            "role": "competitor",
+            "color": "#7D912E",
+            "label": "HP Spectre",
+            "labelx": 0.06947362733546453,
+            "labely": 1.1548582173284971
+          },
+          {
+            "name": "Lenovo Legion",
+            "axis1": -1.3039498673778236,
+            "axis2": -2.289414451764687,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Lenovo Legion",
+            "labelx": -1.3039498673778236,
+            "labely": -2.0613107597051528
+          },
+          {
+            "name": "Acer Swift",
+            "axis1": -2.3614176539294798,
+            "axis2": 2.6562798557986076,
+            "role": "competitor",
+            "color": "#3B9BD7",
+            "label": "Acer Swift",
+            "labelx": -2.3614176539294798,
+            "labely": 2.8843835478581417
+          },
+          {
+            "name": "Razer Blade",
+            "axis1": 0.24968969384712805,
+            "axis2": -2.6562798557986076,
+            "role": "competitor",
+            "color": "#F894B4",
+            "label": "Razer Blade",
+            "labelx": 0.24968969384712805,
+            "labely": -2.4281761637390735
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.95,
+        "stroke": "white",
+        "strokeWidth": 1,
+        "size": 231
+      },
+      "encoding": {
+        "x": {
+          "field": "axis1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6601973635906937,
+              3.6601973635906937
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "axis2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.117233776487842,
+              4.117233776487842
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "MacBook Air",
+              "Asus Zenbook",
+              "Framework",
+              "Acer Swift",
+              "MacBook Pro",
+              "ThinkPad X1",
+              "Dell XPS",
+              "HP Spectre",
+              "Razer Blade",
+              "Lenovo Legion"
+            ],
+            "range": [
+              "#FF3B30",
+              "#52DEC7",
+              "#AB8CE0",
+              "#3B9BD7",
+              "#AF52DE",
+              "#E49753",
+              "#007AFF",
+              "#7D912E",
+              "#F894B4",
+              "#A52A2A"
+            ]
+          },
+          "legend": {
+            "title": "Laptops",
+            "symbolLimit": 0,
+            "labelFontSize": 13,
+            "symbolOpacity": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "role",
+            "type": "nominal"
+          },
+          {
+            "field": "axis1",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          {
+            "field": "axis2",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "MacBook Air",
+            "axis1": 2.3614176539294798,
+            "axis2": 2.6562798557986076,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "MacBook Air",
+            "labelx": 2.3614176539294798,
+            "labely": 2.8843835478581417
+          },
+          {
+            "name": "MacBook Pro",
+            "axis1": 2.3614176539294798,
+            "axis2": -1.3128590522998154,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "MacBook Pro",
+            "labelx": 2.3614176539294798,
+            "labely": -1.084755360240281
+          },
+          {
+            "name": "Dell XPS",
+            "axis1": 0.8910170758152786,
+            "axis2": -0.3986867858940918,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Dell XPS",
+            "labelx": 0.8910170758152786,
+            "labely": -0.626790477953626
+          },
+          {
+            "name": "ThinkPad X1",
+            "axis1": 1.464765139653159,
+            "axis2": 0.9298179549757113,
+            "role": "competitor",
+            "color": "#E49753",
+            "label": "ThinkPad X1",
+            "labelx": 1.464765139653159,
+            "labely": 1.1579216470352456
+          },
+          {
+            "name": "Framework",
+            "axis1": -1.1959366512540603,
+            "axis2": 0.9305781398079973,
+            "role": "competitor",
+            "color": "#AB8CE0",
+            "label": "Framework",
+            "labelx": -1.1959366512540603,
+            "labely": 0.702474447748463
+          },
+          {
+            "name": "Asus Zenbook",
+            "axis1": -0.879314930374814,
+            "axis2": 1.3103174296997016,
+            "role": "competitor",
+            "color": "#52DEC7",
+            "label": "Asus Zenbook",
+            "labelx": -0.879314930374814,
+            "labely": 1.5384211217592358
+          },
+          {
+            "name": "HP Spectre",
+            "axis1": 0.06947362733546453,
+            "axis2": 0.926754525268963,
+            "role": "competitor",
+            "color": "#7D912E",
+            "label": "HP Spectre",
+            "labelx": 0.06947362733546453,
+            "labely": 1.1548582173284971
+          },
+          {
+            "name": "Lenovo Legion",
+            "axis1": -1.3039498673778236,
+            "axis2": -2.289414451764687,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Lenovo Legion",
+            "labelx": -1.3039498673778236,
+            "labely": -2.0613107597051528
+          },
+          {
+            "name": "Acer Swift",
+            "axis1": -2.3614176539294798,
+            "axis2": 2.6562798557986076,
+            "role": "competitor",
+            "color": "#3B9BD7",
+            "label": "Acer Swift",
+            "labelx": -2.3614176539294798,
+            "labely": 2.8843835478581417
+          },
+          {
+            "name": "Razer Blade",
+            "axis1": 0.24968969384712805,
+            "axis2": -2.6562798557986076,
+            "role": "competitor",
+            "color": "#F894B4",
+            "label": "Razer Blade",
+            "labelx": 0.24968969384712805,
+            "labely": -2.4281761637390735
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.label != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 17,
+        "color": "#1C1C1E"
+      },
+      "encoding": {
+        "x": {
+          "field": "labelx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "labely",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

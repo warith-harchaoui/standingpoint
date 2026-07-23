@@ -1,0 +1,768 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Languages in the Quadrant",
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "fontSize": 18
+  },
+  "width": 1000,
+  "height": 720,
+  "autosize": {
+    "type": "pad",
+    "resize": true
+  },
+  "config": {
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "padding": 12,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "labelFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+      "titleFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    "text": {
+      "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": -3.7261420710624233,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 3.7261420710624233
+        },
+        "y": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 0
+        },
+        "y": {
+          "datum": -4.34748047624193,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 4.34748047624193
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 3.7261420710624233,
+            "y": 0.11448269851854985,
+            "t": "Versatility"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "right",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": -3.7261420710624233,
+            "y": 0.11448269851854985,
+            "t": "Scalability"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.09812092353028107,
+            "y": 4.34748047624193,
+            "t": "Accessibility"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.09812092353028107,
+            "y": -4.34748047624193,
+            "t": "Flexibility"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 21,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Python",
+            "axis1": 2.4530230882570265,
+            "axis2": 2.862067462963746,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Python",
+            "labelx": 2.4530230882570265,
+            "labely": 3.098996142263121
+          },
+          {
+            "name": "Rust",
+            "axis1": -1.2120785950922737,
+            "axis2": -2.862067462963746,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Rust",
+            "labelx": -1.2120785950922737,
+            "labely": -2.6251387836643714
+          },
+          {
+            "name": "Go",
+            "axis1": 0.6481990985638397,
+            "axis2": -1.262448314651634,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Go",
+            "labelx": 0.8195509380222206,
+            "labely": -1.262448314651634
+          },
+          {
+            "name": "JavaScript",
+            "axis1": 2.0837170619103262,
+            "axis2": 1.5732333986784677,
+            "role": "competitor",
+            "color": "#4ECBF7",
+            "label": "JavaScript",
+            "labelx": 2.0837170619103262,
+            "labely": 1.8101620779778422
+          },
+          {
+            "name": "TypeScript",
+            "axis1": 2.3178900904340023,
+            "axis2": -0.5016293694010787,
+            "role": "competitor",
+            "color": "#52DEC7",
+            "label": "TypeScript",
+            "labelx": 2.3178900904340023,
+            "labely": -0.7385580487004533
+          },
+          {
+            "name": "Java",
+            "axis1": 2.4530230882570265,
+            "axis2": -2.024928481318392,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Java",
+            "labelx": 2.4530230882570265,
+            "labely": -1.7879998020190173
+          },
+          {
+            "name": "C++",
+            "axis1": -0.413554306426718,
+            "axis2": -1.2902140379717828,
+            "role": "competitor",
+            "color": "#CC744A",
+            "label": "C++",
+            "labelx": -0.2029977068555715,
+            "labely": -1.2902140379717828
+          },
+          {
+            "name": "C#",
+            "axis1": 1.2177475438275662,
+            "axis2": -1.8374408134420461,
+            "role": "competitor",
+            "color": "#649745",
+            "label": "C#",
+            "labelx": 1.389099383285947,
+            "labely": -1.8374408134420461
+          },
+          {
+            "name": "Ruby",
+            "axis1": 0.008386360390015168,
+            "axis2": 2.862067462963746,
+            "role": "competitor",
+            "color": "#7992E4",
+            "label": "Ruby",
+            "labelx": 0.008386360390015168,
+            "labely": 3.098996142263121
+          },
+          {
+            "name": "Kotlin",
+            "axis1": 0.08360924300626704,
+            "axis2": -1.1470610494517581,
+            "role": "competitor",
+            "color": "#D1AE49",
+            "label": "Kotlin",
+            "labelx": 0.08360924300626704,
+            "labely": -0.9101323701523836
+          },
+          {
+            "name": "Swift",
+            "axis1": -0.5478813857635256,
+            "axis2": -1.0405127621809729,
+            "role": "competitor",
+            "color": "#DF7D9D",
+            "label": "Swift",
+            "labelx": -0.5478813857635256,
+            "labely": -0.8035840828815983
+          },
+          {
+            "name": "Elixir",
+            "axis1": -2.4530230882570265,
+            "axis2": 0.45916554125758546,
+            "role": "competitor",
+            "color": "#C790DF",
+            "label": "Elixir",
+            "labelx": -2.4530230882570265,
+            "labely": 0.69609422055696
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.95,
+        "stroke": "white",
+        "strokeWidth": 1,
+        "size": 221
+      },
+      "encoding": {
+        "x": {
+          "field": "axis1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.802185786798391,
+              3.802185786798391
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "axis2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.436204567593807,
+              4.436204567593807
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Python",
+              "JavaScript",
+              "Ruby",
+              "Elixir",
+              "TypeScript",
+              "Go",
+              "Kotlin",
+              "Swift",
+              "Java",
+              "C#",
+              "C++",
+              "Rust"
+            ],
+            "range": [
+              "#FF3B30",
+              "#4ECBF7",
+              "#7992E4",
+              "#C790DF",
+              "#52DEC7",
+              "#007AFF",
+              "#D1AE49",
+              "#DF7D9D",
+              "#AF52DE",
+              "#649745",
+              "#CC744A",
+              "#A52A2A"
+            ]
+          },
+          "legend": {
+            "title": "Languages",
+            "symbolLimit": 0,
+            "labelFontSize": 12,
+            "symbolOpacity": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "role",
+            "type": "nominal"
+          },
+          {
+            "field": "axis1",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          {
+            "field": "axis2",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Python",
+            "axis1": 2.4530230882570265,
+            "axis2": 2.862067462963746,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Python",
+            "labelx": 2.4530230882570265,
+            "labely": 3.098996142263121
+          },
+          {
+            "name": "Rust",
+            "axis1": -1.2120785950922737,
+            "axis2": -2.862067462963746,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Rust",
+            "labelx": -1.2120785950922737,
+            "labely": -2.6251387836643714
+          },
+          {
+            "name": "Go",
+            "axis1": 0.6481990985638397,
+            "axis2": -1.262448314651634,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Go",
+            "labelx": 0.8195509380222206,
+            "labely": -1.262448314651634
+          },
+          {
+            "name": "JavaScript",
+            "axis1": 2.0837170619103262,
+            "axis2": 1.5732333986784677,
+            "role": "competitor",
+            "color": "#4ECBF7",
+            "label": "JavaScript",
+            "labelx": 2.0837170619103262,
+            "labely": 1.8101620779778422
+          },
+          {
+            "name": "TypeScript",
+            "axis1": 2.3178900904340023,
+            "axis2": -0.5016293694010787,
+            "role": "competitor",
+            "color": "#52DEC7",
+            "label": "TypeScript",
+            "labelx": 2.3178900904340023,
+            "labely": -0.7385580487004533
+          },
+          {
+            "name": "Java",
+            "axis1": 2.4530230882570265,
+            "axis2": -2.024928481318392,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Java",
+            "labelx": 2.4530230882570265,
+            "labely": -1.7879998020190173
+          },
+          {
+            "name": "C++",
+            "axis1": -0.413554306426718,
+            "axis2": -1.2902140379717828,
+            "role": "competitor",
+            "color": "#CC744A",
+            "label": "C++",
+            "labelx": -0.2029977068555715,
+            "labely": -1.2902140379717828
+          },
+          {
+            "name": "C#",
+            "axis1": 1.2177475438275662,
+            "axis2": -1.8374408134420461,
+            "role": "competitor",
+            "color": "#649745",
+            "label": "C#",
+            "labelx": 1.389099383285947,
+            "labely": -1.8374408134420461
+          },
+          {
+            "name": "Ruby",
+            "axis1": 0.008386360390015168,
+            "axis2": 2.862067462963746,
+            "role": "competitor",
+            "color": "#7992E4",
+            "label": "Ruby",
+            "labelx": 0.008386360390015168,
+            "labely": 3.098996142263121
+          },
+          {
+            "name": "Kotlin",
+            "axis1": 0.08360924300626704,
+            "axis2": -1.1470610494517581,
+            "role": "competitor",
+            "color": "#D1AE49",
+            "label": "Kotlin",
+            "labelx": 0.08360924300626704,
+            "labely": -0.9101323701523836
+          },
+          {
+            "name": "Swift",
+            "axis1": -0.5478813857635256,
+            "axis2": -1.0405127621809729,
+            "role": "competitor",
+            "color": "#DF7D9D",
+            "label": "Swift",
+            "labelx": -0.5478813857635256,
+            "labely": -0.8035840828815983
+          },
+          {
+            "name": "Elixir",
+            "axis1": -2.4530230882570265,
+            "axis2": 0.45916554125758546,
+            "role": "competitor",
+            "color": "#C790DF",
+            "label": "Elixir",
+            "labelx": -2.4530230882570265,
+            "labely": 0.69609422055696
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.label != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16,
+        "color": "#1C1C1E"
+      },
+      "encoding": {
+        "x": {
+          "field": "labelx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "labely",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

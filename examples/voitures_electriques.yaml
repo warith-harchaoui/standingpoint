@@ -1,0 +1,210 @@
+meta:
+  reference: Tesla Model 3
+  rotation_deg: 13.698
+  explained_variance_ratio:
+  - 0.7671
+  - 0.1322
+  cumulative_variance: 0.8993
+  n_approaches: 12
+  attributes:
+  - Autonomie
+  - Performances
+  - Recharge rapide
+  - Rapport qualité-prix
+  - Technologie embarquée
+  - Sécurité
+  - Réseau de recharge
+axes:
+  axis_1:
+    name: Accessibilité ↔ Durabilité
+    pole_left: Accessibilité
+    pole_right: Durabilité
+    loadings:
+      Autonomie: 0.3777
+      Performances: 0.3917
+      Recharge rapide: 0.3929
+      Rapport qualité-prix: -0.4603
+      Technologie embarquée: 0.3629
+      Sécurité: 0.4527
+      Réseau de recharge: 0.0321
+  axis_2:
+    name: Simplicité ↔ Connectivité
+    pole_bottom: Simplicité
+    pole_top: Connectivité
+    loadings:
+      Autonomie: 0.1887
+      Performances: 0.1109
+      Recharge rapide: -0.0023
+      Rapport qualité-prix: 0.3212
+      Technologie embarquée: 0.2496
+      Sécurité: -0.1863
+      Réseau de recharge: 0.8671
+approaches:
+- name: Tesla Model 3
+  coordinates:
+    axis_1: 3.4612
+    axis_2: 0.4385
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Autonomie: 5.0
+    Performances: 5.0
+    Recharge rapide: 5.0
+    Rapport qualité-prix: 3.0
+    Technologie embarquée: 5.0
+    Sécurité: 5.0
+    Réseau de recharge: 5.0
+- name: Renault Mégane E-Tech
+  coordinates:
+    axis_1: 0.9328
+    axis_2: 0.4385
+  role: competitor
+  color: '#A5C0FF'
+  attributes:
+    Autonomie: 4.0
+    Performances: 4.0
+    Recharge rapide: 3.0
+    Rapport qualité-prix: 4.0
+    Technologie embarquée: 4.0
+    Sécurité: 4.0
+    Réseau de recharge: 3.0
+- name: Peugeot e-208
+  coordinates:
+    axis_1: -0.4942
+    axis_2: -0.2654
+  role: competitor
+  color: '#F3976D'
+  attributes:
+    Autonomie: 3.0
+    Performances: 3.0
+    Recharge rapide: 3.0
+    Rapport qualité-prix: 4.0
+    Technologie embarquée: 3.0
+    Sécurité: 4.0
+    Réseau de recharge: 3.0
+- name: Hyundai Ioniq 5
+  coordinates:
+    axis_1: 2.8515
+    axis_2: -0.1968
+  role: innovative
+  color: '#AF52DE'
+  attributes:
+    Autonomie: 4.0
+    Performances: 4.0
+    Recharge rapide: 5.0
+    Rapport qualité-prix: 3.0
+    Technologie embarquée: 4.0
+    Sécurité: 5.0
+    Réseau de recharge: 3.0
+- name: Kia EV6
+  coordinates:
+    axis_1: 2.8515
+    axis_2: -0.1968
+  role: trustworthy
+  color: '#007AFF'
+  attributes:
+    Autonomie: 4.0
+    Performances: 4.0
+    Recharge rapide: 5.0
+    Rapport qualité-prix: 3.0
+    Technologie embarquée: 4.0
+    Sécurité: 5.0
+    Réseau de recharge: 3.0
+- name: Volkswagen ID.3
+  coordinates:
+    axis_1: 0.916
+    axis_2: -0.3918
+  role: competitor
+  color: '#98CD7A'
+  attributes:
+    Autonomie: 4.0
+    Performances: 3.0
+    Recharge rapide: 4.0
+    Rapport qualité-prix: 3.0
+    Technologie embarquée: 3.0
+    Sécurité: 4.0
+    Réseau de recharge: 3.0
+- name: BMW i4
+  coordinates:
+    axis_1: 3.4612
+    axis_2: -0.4385
+  role: competitor
+  color: '#00A792'
+  attributes:
+    Autonomie: 4.0
+    Performances: 5.0
+    Recharge rapide: 4.0
+    Rapport qualité-prix: 2.0
+    Technologie embarquée: 4.0
+    Sécurité: 5.0
+    Réseau de recharge: 3.0
+- name: Polestar 2
+  coordinates:
+    axis_1: 2.4728
+    axis_2: -0.1945
+  role: competitor
+  color: '#28B0DA'
+  attributes:
+    Autonomie: 4.0
+    Performances: 4.0
+    Recharge rapide: 4.0
+    Rapport qualité-prix: 3.0
+    Technologie embarquée: 4.0
+    Sécurité: 5.0
+    Réseau de recharge: 3.0
+- name: Nissan Leaf
+  coordinates:
+    axis_1: -0.873
+    axis_2: -0.2631
+  role: competitor
+  color: '#E886A6'
+  attributes:
+    Autonomie: 3.0
+    Performances: 3.0
+    Recharge rapide: 2.0
+    Rapport qualité-prix: 4.0
+    Technologie embarquée: 3.0
+    Sécurité: 4.0
+    Réseau de recharge: 3.0
+- name: MG4
+  coordinates:
+    axis_1: -1.6554
+    axis_2: 0.3654
+  role: competitor
+  color: '#A26DBA'
+  attributes:
+    Autonomie: 3.0
+    Performances: 3.0
+    Recharge rapide: 3.0
+    Rapport qualité-prix: 5.0
+    Technologie embarquée: 3.0
+    Sécurité: 3.0
+    Réseau de recharge: 3.0
+- name: Dacia Spring
+  coordinates:
+    axis_1: -3.4612
+    axis_2: -0.3363
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Autonomie: 2.0
+    Performances: 2.0
+    Recharge rapide: 2.0
+    Rapport qualité-prix: 5.0
+    Technologie embarquée: 2.0
+    Sécurité: 3.0
+    Réseau de recharge: 3.0
+- name: Fiat 500e
+  coordinates:
+    axis_1: -0.4942
+    axis_2: -0.2654
+  role: competitor
+  color: '#B59329'
+  attributes:
+    Autonomie: 3.0
+    Performances: 3.0
+    Recharge rapide: 3.0
+    Rapport qualité-prix: 4.0
+    Technologie embarquée: 3.0
+    Sécurité: 4.0
+    Réseau de recharge: 3.0
