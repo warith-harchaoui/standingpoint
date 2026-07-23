@@ -1229,7 +1229,7 @@ def positioning(data, reference: int | str = 0, innovative: str | None = None,
     with `.coords`, `.loadings`, `.axes`, `.to_vega()`, `.to_markdown()`,
     `.to_yaml()`, and `.export(outdir)`.
 
-    >>> pos = positioning("examples/sidekick_landscape.csv")
+    >>> pos = positioning("examples/programming_languages.csv")
     >>> pos.export("out")
     """
     df = data if isinstance(data, pd.DataFrame) else parse_table(data)

@@ -35,7 +35,6 @@ sp.positioning(df, use_llm=False).export("out")
 ## From the command line
 
 ```bash
-standpoint examples/sidekick_landscape.csv --outdir out
 standpoint examples/cloud_providers.csv --reference AWS --outdir out
 standpoint examples/programming_languages.csv --no-llm --outdir out
 standpoint examples/voitures_electriques.csv --model qwen2.5vl:7b --check --outdir out

@@ -35,8 +35,8 @@ coordinates, role, colour, and original values.
 
 ```bash
 pip install -e .          # or: pip install -r requirements.txt
-standpoint examples/sidekick_landscape.csv --outdir out
-# without installing: python3 -m standpoint examples/sidekick_landscape.csv --outdir out
+standpoint examples/programming_languages.csv --outdir out
+# without installing: python3 -m standpoint examples/programming_languages.csv --outdir out
 ```
 
 Two equivalent CLIs are installed: `standpoint` (argparse) and `standpoint-click`.
@@ -45,7 +45,7 @@ As a library:
 
 ```python
 import standpoint as sp
-sp.positioning("examples/sidekick_landscape.csv").export("out")
+sp.positioning("examples/programming_languages.csv").export("out")
 ```
 
 More in [EXAMPLES.md](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md).
@@ -113,7 +113,6 @@ Tracked in `examples/`, input CSV and generated figures:
 
 | Table | Language | Leader |
 |---|---|---|
-| `sidekick_landscape.csv` | en | Sidekick (contact-centre voice AI) |
 | `programming_languages.csv` | en | Python |
 | `cloud_providers.csv` | en | AWS |
 | `laptops.csv` | en | MacBook Air (uses `Price (↓)` / `Weight (↓)`) |

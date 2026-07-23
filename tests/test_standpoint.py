@@ -16,7 +16,7 @@ import yaml
 
 import standpoint as p4m
 
-EXAMPLE = Path(__file__).resolve().parents[1] / "examples" / "sidekick_landscape.csv"
+EXAMPLE = Path(__file__).resolve().parents[1] / "examples" / "programming_languages.csv"
 HEX = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 
@@ -53,8 +53,8 @@ def _model_available(prefix: str) -> bool:
 # parsing
 # --------------------------------------------------------------------------- #
 def test_parse_csv_shape(df):
-    assert df.shape == (32, 7)
-    assert df.index[0] == "Sidekick"
+    assert df.shape == (12, 7)
+    assert df.index[0] == "Python"
     assert df.notna().all().all()          # the example has no blanks
 
 
@@ -83,9 +83,9 @@ def test_impute_uses_column_minimum():
 # analyze / orientation
 # --------------------------------------------------------------------------- #
 def test_analyze_shapes(result):
-    assert result.scores.shape == (32, 2)
+    assert result.scores.shape == (12, 2)
     assert result.components.shape == (2, 7)
-    assert result.reference == "Sidekick"
+    assert result.reference == "Python"
     assert result.explained_variance_ratio.shape == (2,)
 
 
@@ -239,8 +239,8 @@ def test_export_all_writes_three_fold(tmp_path, df, result, roles):
     assert Path(f"{stem}.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
     assert "<svg" in Path(f"{stem}.svg").read_text()
     doc = yaml.safe_load(Path(f"{stem}.yaml").read_text())
-    assert doc["meta"]["reference"] == "Sidekick"
-    assert len(doc["approaches"]) == 32
+    assert doc["meta"]["reference"] == "Python"
+    assert len(doc["approaches"]) == 12
     assert f"# {result.reference}" in Path(f"{stem}.md").read_text()
 
 
@@ -304,7 +304,7 @@ def test_positioning_api(df):
     assert set(pos.axes) == {"x", "y"}
     assert list(pos.coords.index) == list(df.index)
     assert pos.to_vega()["layer"]
-    assert yaml.safe_load(pos.to_yaml())["meta"]["reference"] == "Sidekick"
+    assert yaml.safe_load(pos.to_yaml())["meta"]["reference"] == "Python"
 
 
 def test_positioning_export(tmp_path, df):
