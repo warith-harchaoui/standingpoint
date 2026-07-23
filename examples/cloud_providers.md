@@ -2,9 +2,11 @@
 
 ## Interpretation
 
-The positioning map illustrates a comparative analysis of cloud service providers based on four key dimensions: Ease of Use (horizontal axis) versus Scalability (right), affordability (bottom) against flexibility (top). AWS leads at the top-right corner in terms of both scalability and flexibility, indicating its strong performance across these two axes. Microsoft Azure follows closely behind, suggesting it is a reliable choice for those prioritizing both affordability and innovation. Google Cloud stands out as the most innovative provider on this map, with a focus on cutting-edge technology that may appeal to developers seeking advanced features but potentially at a higher cost.
+The positioning map uses two axes to compare cloud service providers based on their ease of use, scalability, affordability, and flexibility. On the horizontal axis, from left to right, "Ease of Use" is prioritized over "Scalability," suggesting that simplicity in operation takes precedence for many users. The vertical axis, from bottom to top, emphasizes "Affordability" at the lower end and moves towards "Flexibility" as it ascends.
 
-The reference 'AWS' wins in terms of combined score due to its leadership position in scalability and flexibility, which are crucial for large-scale enterprises and complex applications. IBM Cloud, Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel cluster towards the bottom-right quadrant, indicating they offer lower costs but may lag behind in terms of both ease of use and innovation. This positioning suggests these providers might be more suitable for smaller businesses or those with simpler needs who are willing to compromise on advanced features and scalability.
+AWS leads at the top-right corner on both axes, indicating its dominance in terms of ease of use and scalability. Microsoft Azure follows closely behind AWS, showcasing strong performance across all dimensions. Google Cloud is noted for its innovation, particularly in flexibility, while maintaining a high score in other areas. Microsoft Azure also stands out as one of the most trustworthy providers according to user perception.
+
+The leaderboard reflects these scores: AWS maintains its top position with a comprehensive lead over competitors like Microsoft Azure and Google Cloud. IBM Cloud, Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel round out the list, each excelling in specific areas that cater to diverse customer needs. This analysis highlights how different providers can be best suited for various business requirements based on their positioning within this map.
 
 ## Axes
 

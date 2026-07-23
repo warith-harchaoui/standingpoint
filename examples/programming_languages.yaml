@@ -14,6 +14,7 @@ meta:
   - Type Safety
   - Job Market
   - Tooling
+  lower_is_better: []
 axes:
   axis_1:
     name: Scalability ↔ Versatility

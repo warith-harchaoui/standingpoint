@@ -25,7 +25,7 @@ Input: a table of options and their ratings.
 
 Output: a positioning map,
 
-![Programming languages positioning map](https://raw.githubusercontent.com/warith-harchaoui/standpoint/main/examples/programming_languages.png)
+![Programming languages positioning map](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/examples/programming_languages.png)
 
 plus a Markdown analysis (what the axes mean, where the reference wins, which groups
 stand out, with the loadings and a ranking) and a YAML file with every option's
@@ -48,7 +48,7 @@ import standpoint as sp
 sp.positioning("examples/sidekick_landscape.csv").export("out")
 ```
 
-More in [EXAMPLES.md](https://github.com/warith-harchaoui/standpoint/blob/main/EXAMPLES.md).
+More in [EXAMPLES.md](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md).
 
 Axis names and the written analysis need a local [Ollama](https://ollama.com)
 model (default `qwen2.5vl:7b`, which also checks the figure when you pass
@@ -93,7 +93,7 @@ The first row is the reference and goes to the top right. Change it with
 The figure keeps to a dotted cross for the axes, the pole words at the ends, labels
 only where they fit, and a legend for the rest.
 
-![Electric cars, French input gives French axis names](https://raw.githubusercontent.com/warith-harchaoui/standpoint/main/examples/voitures_electriques.png)
+![Electric cars, French input gives French axis names](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/examples/voitures_electriques.png)
 
 ## Notes
 
@@ -142,4 +142,4 @@ Figures are rendered by [`vl-convert`](https://github.com/vega/vl-convert) over
 ## License
 
 BSD 3-Clause, the same license as scikit-learn. See
-[`LICENSE`](https://github.com/warith-harchaoui/standpoint/blob/main/LICENSE).
+[`LICENSE`](https://github.com/warith-harchaoui/standingpoint/blob/main/LICENSE).

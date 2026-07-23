@@ -2,11 +2,13 @@
 
 ## Interpretation
 
-The positioning map illustrates a landscape of laptop characteristics with two key dimensions: affordability on the horizontal axis (from left to right) and durability on the vertical axis (from bottom to top). The MacBook Air leads at the top-right corner, signifying it as the best combination of powerful performance and portability. This placement reflects its reputation for being both highly durable and incredibly portable.
+The positioning map illustrates a landscape of laptop characteristics with two key dimensions: affordability on the horizontal axis and durability on the vertical axis. The MacBook Air, positioned at the top-right corner, represents the ideal balance between power and portability, making it the best option according to this model. Conversely, the Lenovo Legion is placed in the bottom-left quadrant, indicating that it excels more in affordability but falls short when it comes to durability or powerful performance.
 
-The most innovative laptop is identified by the MacBook Pro, which stands out in the upper middle section due to its strong emphasis on power while maintaining a relatively high level of affordability. The most trustworthy laptop, according to this map, is the Dell XPS, located at the bottom-right corner, indicating it excels in durability and affordability.
+In terms of innovation, the MacBook Pro stands out as the most innovative laptop on the map due to its top-center placement, suggesting a strong emphasis on both power and portability. The Dell XPS is positioned just below the MacBook Air at the top-right corner, indicating that while it is not quite as portable or powerful as the MacBook Air, it still offers a robust combination of these qualities.
 
-The leaderboard for combined scores includes the MacBook Air as the top performer, followed by ThinkPad X1, which emphasizes portability with a strong presence on the vertical axis. The MacBook Pro maintains its innovative status but falls slightly behind due to its higher cost. HP Spectre, Dell XPS, Asus Zenbook, Acer Swift, and Framework all cluster towards the bottom-right quadrant, suggesting they are highly durable and affordable options that cater more to users who prioritize these factors over power or portability.
+The leaderboard by combined score shows a clear hierarchy: the MacBook Air leads with its balanced approach to power and portability. Following closely are the ThinkPad X1 and MacBook Pro, both known for their high performance and sleek designs. The HP Spectre, Dell XPS, Asus Zenbook, Acer Swift, and Framework all cluster around these top performers but vary in their specific strengths—ranging from enhanced durability to superior portability.
+
+This analysis reveals that while the MacBook Air is the ultimate choice according to this map, there are various other laptops that excel in different aspects of laptop design and functionality. The positioning of each laptop reflects its unique selling points within the context of affordability and durability.
 
 ## Axes
 

@@ -1,7 +1,8 @@
-# --- pca4marketing specifics ---
+# --- standpoint specifics ---
 .private/        # private notes, todo, scratch (never committed)
 data/            # private / working input tables
 out/             # generated deliverables (the tracked showcase lives in examples/)
+.deepeval/       # deepeval telemetry / cache
 
 # --- Python bytecode & caches ---
 __pycache__/

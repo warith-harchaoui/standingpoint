@@ -1,0 +1,1208 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Approaches in the Quadrant",
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "fontSize": 18
+  },
+  "width": 1000,
+  "height": 908,
+  "autosize": {
+    "type": "pad",
+    "resize": true
+  },
+  "config": {
+    "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+    "padding": 12,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "labelFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
+      "titleFont": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    },
+    "text": {
+      "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": -4.533735906916432,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 4.533735906916432
+        },
+        "y": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 0
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C7C7CC",
+        "size": 1.2,
+        "strokeDash": [
+          2,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "x2": {
+          "datum": 0
+        },
+        "y": {
+          "datum": -3.552225281666531,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y2": {
+          "datum": 3.552225281666531
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 4.533735906916432,
+            "y": 0.09354115290761109,
+            "t": "Secure"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 15,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "right",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": -4.533735906916432,
+            "y": 0.09354115290761109,
+            "t": "User-Friendly"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 15,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.11938738398726616,
+            "y": 3.552225281666531,
+            "t": "Privacy-Centric"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 15,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0.11938738398726616,
+            "y": -3.552225281666531,
+            "t": "Cost-Effective"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 15,
+        "fontStyle": "italic",
+        "color": "#6E6E73",
+        "align": "left",
+        "baseline": "bottom"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "text": {
+          "field": "t",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Sidekick",
+            "axis1": 2.984684599681654,
+            "axis2": 2.338528822690277,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Sidekick",
+            "labelx": 2.984684599681654,
+            "labely": 2.520824436453328
+          },
+          {
+            "name": "Salesforce Voice",
+            "axis1": -2.984684599681654,
+            "axis2": -0.12165034389520277,
+            "role": "competitor",
+            "color": "#FE988E",
+            "label": "Salesforce Voice",
+            "labelx": -2.984684599681654,
+            "labely": 0.060645269867848156
+          },
+          {
+            "name": "Zendesk AI Voice",
+            "axis1": -2.479833197553423,
+            "axis2": -0.8021606768433815,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Zendesk AI Voice",
+            "labelx": -2.479833197553423,
+            "labely": -0.6198650630803306
+          },
+          {
+            "name": "Cresta Assist",
+            "axis1": -0.778929486222394,
+            "axis2": 1.0800662775570116,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Cresta Assist",
+            "labelx": -0.20074965083695162,
+            "labely": 1.0800662775570116
+          },
+          {
+            "name": "Level (QA + real-time)",
+            "axis1": -1.2849416792001351,
+            "axis2": -0.5197384909702465,
+            "role": "competitor",
+            "color": "#FAB066",
+            "label": "Level (QA + real-time)",
+            "labelx": -0.38477406920103596,
+            "labely": -0.5197384909702465
+          },
+          {
+            "name": "Observe.AI",
+            "axis1": -0.9490302568132827,
+            "axis2": 0.8014851492179685,
+            "role": "competitor",
+            "color": "#C679B7",
+            "label": "Observe.AI",
+            "labelx": -1.4198808339941729,
+            "labely": 0.8014851492179685
+          },
+          {
+            "name": "Cogito Coach",
+            "axis1": -2.2409052501520295,
+            "axis2": -0.03985534381973688,
+            "role": "competitor",
+            "color": "#E07E9E",
+            "label": "Cogito Coach",
+            "labelx": -2.2409052501520295,
+            "labely": -0.2221509575827878
+          },
+          {
+            "name": "ASAPP GenAgent",
+            "axis1": -2.2409052501520295,
+            "axis2": -0.03985534381973688,
+            "role": "competitor",
+            "color": "#E98390",
+            "label": "",
+            "labelx": -2.2409052501520295,
+            "labely": -0.03985534381973688
+          },
+          {
+            "name": "Google Assist",
+            "axis1": -0.04459965712773517,
+            "axis2": 2.338528822690277,
+            "role": "competitor",
+            "color": "#9D9DF4",
+            "label": "Google Assist",
+            "labelx": -0.04459965712773517,
+            "labely": 2.520824436453328
+          },
+          {
+            "name": "Amazon Connect",
+            "axis1": -0.10826743229820035,
+            "axis2": 1.4421984564580044,
+            "role": "competitor",
+            "color": "#B39CF3",
+            "label": "Amazon Connect",
+            "labelx": -0.7222236870851602,
+            "labely": 1.6244940702210553
+          },
+          {
+            "name": "Azure Com + OpenAI",
+            "axis1": 0.37012245152643786,
+            "axis2": 0.2789005064077188,
+            "role": "competitor",
+            "color": "#50C1F5",
+            "label": "Azure Com + OpenAI",
+            "labelx": 0.37012245152643786,
+            "labely": 0.09660489264466787
+          },
+          {
+            "name": "NICE Enlighten AI",
+            "axis1": -1.3913746746205577,
+            "axis2": 0.09801074692298486,
+            "role": "competitor",
+            "color": "#EB90C0",
+            "label": "NICE Enlighten AI",
+            "labelx": -1.3913746746205577,
+            "labely": 0.28030636068603576
+          },
+          {
+            "name": "Genesys AI",
+            "axis1": -0.9611578849459699,
+            "axis2": 1.1279859916053996,
+            "role": "competitor",
+            "color": "#B97BC4",
+            "label": "Genesys AI",
+            "labelx": -0.9611578849459699,
+            "labely": 1.3102816053684505
+          },
+          {
+            "name": "Talkdesk Copilot",
+            "axis1": -0.5858411194254576,
+            "axis2": 0.758783653558228,
+            "role": "competitor",
+            "color": "#D2A4F8",
+            "label": "Talkdesk Copilot",
+            "labelx": -0.5858411194254576,
+            "labely": 0.576488039795177
+          },
+          {
+            "name": "Five9 AI",
+            "axis1": -1.6514906937042575,
+            "axis2": -0.6533833694203882,
+            "role": "competitor",
+            "color": "#C5723D",
+            "label": "Five9 AI",
+            "labelx": -1.6514906937042575,
+            "labely": -0.8356789831834391
+          },
+          {
+            "name": "Dialpad AI Contact",
+            "axis1": -0.26531033307777435,
+            "axis2": -0.10329127188848258,
+            "role": "competitor",
+            "color": "#FFA080",
+            "label": "Dialpad AI Contact",
+            "labelx": -1.0223722654708038,
+            "labely": -0.10329127188848258
+          },
+          {
+            "name": "Aircall AI",
+            "axis1": -0.7076547508850497,
+            "axis2": -0.8067656741834666,
+            "role": "competitor",
+            "color": "#BE8828",
+            "label": "Aircall AI",
+            "labelx": -0.7076547508850497,
+            "labely": -0.9890612879465175
+          },
+          {
+            "name": "Diabolocom / Zaion",
+            "axis1": 1.0711365808061037,
+            "axis2": 1.8747751106086885,
+            "role": "competitor",
+            "color": "#8BC2FF",
+            "label": "Diabolocom / Zaion",
+            "labelx": 1.0711365808061037,
+            "labely": 2.0570707243717394
+          },
+          {
+            "name": "Kwak.ai",
+            "axis1": 0.811020561722404,
+            "axis2": 1.1233809942653157,
+            "role": "competitor",
+            "color": "#3F94D3",
+            "label": "Kwak.ai",
+            "labelx": 0.811020561722404,
+            "labely": 1.3056766080283666
+          },
+          {
+            "name": "Allo-Media",
+            "axis1": 0.7045875663019807,
+            "axis2": 1.7411302321585462,
+            "role": "competitor",
+            "color": "#7C95E8",
+            "label": "Allo-Media",
+            "labelx": 0.7045875663019807,
+            "labely": 1.5588346183954953
+          },
+          {
+            "name": "Gladia",
+            "axis1": 0.8518722124673738,
+            "axis2": -0.7080510695326838,
+            "role": "competitor",
+            "color": "#3C9C63",
+            "label": "Gladia",
+            "labelx": 0.8518722124673738,
+            "labely": -0.8903466832957347
+          },
+          {
+            "name": "pyannoteAI",
+            "axis1": 0.939795243903213,
+            "axis2": -0.46472238807527244,
+            "role": "competitor",
+            "color": "#37B58C",
+            "label": "pyannoteAI",
+            "labelx": 0.4689446667223228,
+            "labely": -0.2824267743122215
+          },
+          {
+            "name": "OpenAI Realtime",
+            "axis1": 0.3988464741387202,
+            "axis2": -1.2260307150028493,
+            "role": "competitor",
+            "color": "#CEAB46",
+            "label": "OpenAI Realtime",
+            "labelx": 0.3988464741387202,
+            "labely": -1.0437351012397984
+          },
+          {
+            "name": "Anthropic Claude",
+            "axis1": 0.3988464741387202,
+            "axis2": -1.2260307150028493,
+            "role": "competitor",
+            "color": "#C5B952",
+            "label": "Anthropic Claude",
+            "labelx": -0.28666261945127436,
+            "labely": -1.2260307150028493
+          },
+          {
+            "name": "Whisper / LangChain",
+            "axis1": 2.381981624251684,
+            "axis2": -0.9263617997116609,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Whisper / LangChain",
+            "labelx": 2.381981624251684,
+            "labely": -0.74406618594861
+          },
+          {
+            "name": "pyannote OSS + Ollama",
+            "axis1": 2.984684599681654,
+            "axis2": 0.4139244337756936,
+            "role": "competitor",
+            "color": "#4FD7FA",
+            "label": "pyannote OSS + Ollama",
+            "labelx": 2.984684599681654,
+            "labely": 0.5962200475387445
+          },
+          {
+            "name": "LiveKit Agents",
+            "axis1": 2.447095707033459,
+            "axis2": -0.17103751904200026,
+            "role": "competitor",
+            "color": "#0EC3C0",
+            "label": "LiveKit Agents",
+            "labelx": 2.447095707033459,
+            "labely": 0.01125809472105066
+          },
+          {
+            "name": "pipecat",
+            "axis1": 2.447095707033459,
+            "axis2": -0.17103751904200026,
+            "role": "competitor",
+            "color": "#00A4B4",
+            "label": "pipecat",
+            "labelx": 2.447095707033459,
+            "labely": -0.3533331328050512
+          },
+          {
+            "name": "Vocode",
+            "axis1": 1.3674049351169821,
+            "axis2": -1.5740561593056812,
+            "role": "competitor",
+            "color": "#5A9B51",
+            "label": "Vocode",
+            "labelx": 1.3674049351169821,
+            "labely": -1.3917605455426303
+          },
+          {
+            "name": "Rasa Pro CALM",
+            "axis1": 1.6294345237056702,
+            "axis2": -0.5053095832898127,
+            "role": "competitor",
+            "color": "#11B8A2",
+            "label": "Rasa Pro CALM",
+            "labelx": 1.6294345237056702,
+            "labely": -0.32301396952676176
+          },
+          {
+            "name": "OpenOats",
+            "axis1": 1.3163320499728832,
+            "axis2": -2.338528822690277,
+            "role": "competitor",
+            "color": "#8E9A35",
+            "label": "OpenOats",
+            "labelx": 1.3163320499728832,
+            "labely": -2.156233208927226
+          },
+          {
+            "name": "Open Granola",
+            "axis1": 1.0168106877555236,
+            "axis2": -1.3994969607982632,
+            "role": "competitor",
+            "color": "#8CB25A",
+            "label": "Open Granola",
+            "labelx": 1.0168106877555236,
+            "labely": -1.2172013470352123
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 0.95,
+        "stroke": "white",
+        "strokeWidth": 1,
+        "size": 128
+      },
+      "encoding": {
+        "x": {
+          "field": "axis1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4.626261129506563,
+              4.626261129506563
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "axis2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -3.6247196751699295,
+              3.6247196751699295
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labels": false,
+            "grid": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Sidekick",
+              "Diabolocom / Zaion",
+              "Allo-Media",
+              "Google Assist",
+              "Amazon Connect",
+              "Genesys AI",
+              "pyannote OSS + Ollama",
+              "Kwak.ai",
+              "Azure Com + OpenAI",
+              "Talkdesk Copilot",
+              "Cresta Assist",
+              "Observe.AI",
+              "LiveKit Agents",
+              "Dialpad AI Contact",
+              "NICE Enlighten AI",
+              "Cogito Coach",
+              "ASAPP GenAgent",
+              "Salesforce Voice",
+              "pipecat",
+              "Rasa Pro CALM",
+              "pyannoteAI",
+              "Gladia",
+              "Level (QA + real-time)",
+              "Five9 AI",
+              "Whisper / LangChain",
+              "Open Granola",
+              "OpenAI Realtime",
+              "Anthropic Claude",
+              "Aircall AI",
+              "Zendesk AI Voice",
+              "Vocode",
+              "OpenOats"
+            ],
+            "range": [
+              "#FF3B30",
+              "#8BC2FF",
+              "#7C95E8",
+              "#9D9DF4",
+              "#B39CF3",
+              "#B97BC4",
+              "#4FD7FA",
+              "#3F94D3",
+              "#50C1F5",
+              "#D2A4F8",
+              "#AF52DE",
+              "#C679B7",
+              "#0EC3C0",
+              "#FFA080",
+              "#EB90C0",
+              "#E07E9E",
+              "#E98390",
+              "#FE988E",
+              "#00A4B4",
+              "#11B8A2",
+              "#37B58C",
+              "#3C9C63",
+              "#FAB066",
+              "#C5723D",
+              "#007AFF",
+              "#8CB25A",
+              "#CEAB46",
+              "#C5B952",
+              "#BE8828",
+              "#A52A2A",
+              "#5A9B51",
+              "#8E9A35"
+            ]
+          },
+          "legend": {
+            "title": "Approaches",
+            "symbolLimit": 0,
+            "labelFontSize": 10,
+            "symbolOpacity": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal"
+          },
+          {
+            "field": "role",
+            "type": "nominal"
+          },
+          {
+            "field": "axis1",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          {
+            "field": "axis2",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Sidekick",
+            "axis1": 2.984684599681654,
+            "axis2": 2.338528822690277,
+            "role": "best",
+            "color": "#FF3B30",
+            "label": "Sidekick",
+            "labelx": 2.984684599681654,
+            "labely": 2.520824436453328
+          },
+          {
+            "name": "Salesforce Voice",
+            "axis1": -2.984684599681654,
+            "axis2": -0.12165034389520277,
+            "role": "competitor",
+            "color": "#FE988E",
+            "label": "Salesforce Voice",
+            "labelx": -2.984684599681654,
+            "labely": 0.060645269867848156
+          },
+          {
+            "name": "Zendesk AI Voice",
+            "axis1": -2.479833197553423,
+            "axis2": -0.8021606768433815,
+            "role": "worst",
+            "color": "#A52A2A",
+            "label": "Zendesk AI Voice",
+            "labelx": -2.479833197553423,
+            "labely": -0.6198650630803306
+          },
+          {
+            "name": "Cresta Assist",
+            "axis1": -0.778929486222394,
+            "axis2": 1.0800662775570116,
+            "role": "innovative",
+            "color": "#AF52DE",
+            "label": "Cresta Assist",
+            "labelx": -0.20074965083695162,
+            "labely": 1.0800662775570116
+          },
+          {
+            "name": "Level (QA + real-time)",
+            "axis1": -1.2849416792001351,
+            "axis2": -0.5197384909702465,
+            "role": "competitor",
+            "color": "#FAB066",
+            "label": "Level (QA + real-time)",
+            "labelx": -0.38477406920103596,
+            "labely": -0.5197384909702465
+          },
+          {
+            "name": "Observe.AI",
+            "axis1": -0.9490302568132827,
+            "axis2": 0.8014851492179685,
+            "role": "competitor",
+            "color": "#C679B7",
+            "label": "Observe.AI",
+            "labelx": -1.4198808339941729,
+            "labely": 0.8014851492179685
+          },
+          {
+            "name": "Cogito Coach",
+            "axis1": -2.2409052501520295,
+            "axis2": -0.03985534381973688,
+            "role": "competitor",
+            "color": "#E07E9E",
+            "label": "Cogito Coach",
+            "labelx": -2.2409052501520295,
+            "labely": -0.2221509575827878
+          },
+          {
+            "name": "ASAPP GenAgent",
+            "axis1": -2.2409052501520295,
+            "axis2": -0.03985534381973688,
+            "role": "competitor",
+            "color": "#E98390",
+            "label": "",
+            "labelx": -2.2409052501520295,
+            "labely": -0.03985534381973688
+          },
+          {
+            "name": "Google Assist",
+            "axis1": -0.04459965712773517,
+            "axis2": 2.338528822690277,
+            "role": "competitor",
+            "color": "#9D9DF4",
+            "label": "Google Assist",
+            "labelx": -0.04459965712773517,
+            "labely": 2.520824436453328
+          },
+          {
+            "name": "Amazon Connect",
+            "axis1": -0.10826743229820035,
+            "axis2": 1.4421984564580044,
+            "role": "competitor",
+            "color": "#B39CF3",
+            "label": "Amazon Connect",
+            "labelx": -0.7222236870851602,
+            "labely": 1.6244940702210553
+          },
+          {
+            "name": "Azure Com + OpenAI",
+            "axis1": 0.37012245152643786,
+            "axis2": 0.2789005064077188,
+            "role": "competitor",
+            "color": "#50C1F5",
+            "label": "Azure Com + OpenAI",
+            "labelx": 0.37012245152643786,
+            "labely": 0.09660489264466787
+          },
+          {
+            "name": "NICE Enlighten AI",
+            "axis1": -1.3913746746205577,
+            "axis2": 0.09801074692298486,
+            "role": "competitor",
+            "color": "#EB90C0",
+            "label": "NICE Enlighten AI",
+            "labelx": -1.3913746746205577,
+            "labely": 0.28030636068603576
+          },
+          {
+            "name": "Genesys AI",
+            "axis1": -0.9611578849459699,
+            "axis2": 1.1279859916053996,
+            "role": "competitor",
+            "color": "#B97BC4",
+            "label": "Genesys AI",
+            "labelx": -0.9611578849459699,
+            "labely": 1.3102816053684505
+          },
+          {
+            "name": "Talkdesk Copilot",
+            "axis1": -0.5858411194254576,
+            "axis2": 0.758783653558228,
+            "role": "competitor",
+            "color": "#D2A4F8",
+            "label": "Talkdesk Copilot",
+            "labelx": -0.5858411194254576,
+            "labely": 0.576488039795177
+          },
+          {
+            "name": "Five9 AI",
+            "axis1": -1.6514906937042575,
+            "axis2": -0.6533833694203882,
+            "role": "competitor",
+            "color": "#C5723D",
+            "label": "Five9 AI",
+            "labelx": -1.6514906937042575,
+            "labely": -0.8356789831834391
+          },
+          {
+            "name": "Dialpad AI Contact",
+            "axis1": -0.26531033307777435,
+            "axis2": -0.10329127188848258,
+            "role": "competitor",
+            "color": "#FFA080",
+            "label": "Dialpad AI Contact",
+            "labelx": -1.0223722654708038,
+            "labely": -0.10329127188848258
+          },
+          {
+            "name": "Aircall AI",
+            "axis1": -0.7076547508850497,
+            "axis2": -0.8067656741834666,
+            "role": "competitor",
+            "color": "#BE8828",
+            "label": "Aircall AI",
+            "labelx": -0.7076547508850497,
+            "labely": -0.9890612879465175
+          },
+          {
+            "name": "Diabolocom / Zaion",
+            "axis1": 1.0711365808061037,
+            "axis2": 1.8747751106086885,
+            "role": "competitor",
+            "color": "#8BC2FF",
+            "label": "Diabolocom / Zaion",
+            "labelx": 1.0711365808061037,
+            "labely": 2.0570707243717394
+          },
+          {
+            "name": "Kwak.ai",
+            "axis1": 0.811020561722404,
+            "axis2": 1.1233809942653157,
+            "role": "competitor",
+            "color": "#3F94D3",
+            "label": "Kwak.ai",
+            "labelx": 0.811020561722404,
+            "labely": 1.3056766080283666
+          },
+          {
+            "name": "Allo-Media",
+            "axis1": 0.7045875663019807,
+            "axis2": 1.7411302321585462,
+            "role": "competitor",
+            "color": "#7C95E8",
+            "label": "Allo-Media",
+            "labelx": 0.7045875663019807,
+            "labely": 1.5588346183954953
+          },
+          {
+            "name": "Gladia",
+            "axis1": 0.8518722124673738,
+            "axis2": -0.7080510695326838,
+            "role": "competitor",
+            "color": "#3C9C63",
+            "label": "Gladia",
+            "labelx": 0.8518722124673738,
+            "labely": -0.8903466832957347
+          },
+          {
+            "name": "pyannoteAI",
+            "axis1": 0.939795243903213,
+            "axis2": -0.46472238807527244,
+            "role": "competitor",
+            "color": "#37B58C",
+            "label": "pyannoteAI",
+            "labelx": 0.4689446667223228,
+            "labely": -0.2824267743122215
+          },
+          {
+            "name": "OpenAI Realtime",
+            "axis1": 0.3988464741387202,
+            "axis2": -1.2260307150028493,
+            "role": "competitor",
+            "color": "#CEAB46",
+            "label": "OpenAI Realtime",
+            "labelx": 0.3988464741387202,
+            "labely": -1.0437351012397984
+          },
+          {
+            "name": "Anthropic Claude",
+            "axis1": 0.3988464741387202,
+            "axis2": -1.2260307150028493,
+            "role": "competitor",
+            "color": "#C5B952",
+            "label": "Anthropic Claude",
+            "labelx": -0.28666261945127436,
+            "labely": -1.2260307150028493
+          },
+          {
+            "name": "Whisper / LangChain",
+            "axis1": 2.381981624251684,
+            "axis2": -0.9263617997116609,
+            "role": "trustworthy",
+            "color": "#007AFF",
+            "label": "Whisper / LangChain",
+            "labelx": 2.381981624251684,
+            "labely": -0.74406618594861
+          },
+          {
+            "name": "pyannote OSS + Ollama",
+            "axis1": 2.984684599681654,
+            "axis2": 0.4139244337756936,
+            "role": "competitor",
+            "color": "#4FD7FA",
+            "label": "pyannote OSS + Ollama",
+            "labelx": 2.984684599681654,
+            "labely": 0.5962200475387445
+          },
+          {
+            "name": "LiveKit Agents",
+            "axis1": 2.447095707033459,
+            "axis2": -0.17103751904200026,
+            "role": "competitor",
+            "color": "#0EC3C0",
+            "label": "LiveKit Agents",
+            "labelx": 2.447095707033459,
+            "labely": 0.01125809472105066
+          },
+          {
+            "name": "pipecat",
+            "axis1": 2.447095707033459,
+            "axis2": -0.17103751904200026,
+            "role": "competitor",
+            "color": "#00A4B4",
+            "label": "pipecat",
+            "labelx": 2.447095707033459,
+            "labely": -0.3533331328050512
+          },
+          {
+            "name": "Vocode",
+            "axis1": 1.3674049351169821,
+            "axis2": -1.5740561593056812,
+            "role": "competitor",
+            "color": "#5A9B51",
+            "label": "Vocode",
+            "labelx": 1.3674049351169821,
+            "labely": -1.3917605455426303
+          },
+          {
+            "name": "Rasa Pro CALM",
+            "axis1": 1.6294345237056702,
+            "axis2": -0.5053095832898127,
+            "role": "competitor",
+            "color": "#11B8A2",
+            "label": "Rasa Pro CALM",
+            "labelx": 1.6294345237056702,
+            "labely": -0.32301396952676176
+          },
+          {
+            "name": "OpenOats",
+            "axis1": 1.3163320499728832,
+            "axis2": -2.338528822690277,
+            "role": "competitor",
+            "color": "#8E9A35",
+            "label": "OpenOats",
+            "labelx": 1.3163320499728832,
+            "labely": -2.156233208927226
+          },
+          {
+            "name": "Open Granola",
+            "axis1": 1.0168106877555236,
+            "axis2": -1.3994969607982632,
+            "role": "competitor",
+            "color": "#8CB25A",
+            "label": "Open Granola",
+            "labelx": 1.0168106877555236,
+            "labely": -1.2172013470352123
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.label != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 12,
+        "color": "#1C1C1E"
+      },
+      "encoding": {
+        "x": {
+          "field": "labelx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "labely",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

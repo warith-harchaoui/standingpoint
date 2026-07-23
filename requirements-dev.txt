@@ -1,4 +1,4 @@
-# pca4marketing — development & testing dependencies
+# standpoint — development & testing dependencies
 -r requirements.txt
 pytest>=7.0     # test suite
 ruff>=0.5       # lint + format
