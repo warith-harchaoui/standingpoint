@@ -1,8 +1,13 @@
 # --- standpoint specifics ---
-.private/        # private notes, todo, scratch (never committed)
-data/            # private / working input tables
-out/             # generated deliverables (the tracked showcase lives in examples/)
-.deepeval/       # deepeval telemetry / cache
+# (git does NOT support trailing/inline comments — keep patterns on their own line)
+# .private/  = private notes, todo, scratch (never committed)
+# data/      = private / working input tables
+# out/       = generated deliverables (the tracked showcase lives in examples/)
+# .deepeval/ = deepeval telemetry / cache
+.private/
+data/
+out/
+.deepeval/
 
 # --- Python bytecode & caches ---
 __pycache__/
