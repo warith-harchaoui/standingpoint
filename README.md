@@ -40,8 +40,6 @@ Standpoint is **local-first** by design. Three honest cases:
 
 [📋 Examples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
 
-[🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
-
 Input: a table of options and their ratings.
 
 | Language | Performance | Ease of Learning | Ecosystem | Concurrency | Type Safety | Job Market | Tooling |
