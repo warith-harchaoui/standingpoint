@@ -85,8 +85,8 @@ GUI_HTML = r"""<!doctype html>
     <p id="status" class="text-sm text-slate-500 hidden"></p>
     <p id="error" class="text-sm text-red-600 hidden"></p>
 
-    <!-- Output -->
-    <section class="grid md:grid-cols-2 gap-6">
+    <!-- Output: stacked so the wide map gets full width and the analysis sits below -->
+    <section class="space-y-6">
       <div class="bg-white rounded-xl shadow-sm p-4">
         <div class="flex items-center justify-between mb-2">
           <h2 class="font-semibold">Quadrant</h2>
@@ -94,7 +94,7 @@ GUI_HTML = r"""<!doctype html>
             <button id="dlYaml" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 hidden">YAML</button>
           </div>
         </div>
-        <div id="chart" class="min-h-[420px] flex items-center justify-center text-slate-400">
+        <div id="chart" class="min-h-[420px] flex items-center justify-center overflow-x-auto text-slate-400">
           Generate to see the map.
         </div>
       </div>
