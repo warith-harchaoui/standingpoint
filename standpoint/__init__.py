@@ -1157,13 +1157,25 @@ def to_vega(
 # Three-fold export: figures (PNG + SVG + Vega JSON), markdown, YAML
 # --------------------------------------------------------------------------- #
 def render_figures(spec: dict, stem: str) -> list[str]:
-    """Rasterize/vectorize a Vega-Lite spec to `<stem>.png` and `<stem>.svg`."""
-    png_path, svg_path = f"{stem}.png", f"{stem}.svg"
-    with open(png_path, "wb") as fh:
-        fh.write(vlc.vegalite_to_png(vl_spec=spec, scale=2.0))
-    with open(svg_path, "w", encoding="utf-8") as fh:
-        fh.write(vlc.vegalite_to_svg(vl_spec=spec))
-    return [png_path, svg_path]
+    """Rasterize/vectorize a Vega-Lite spec to transparent and white PNG + SVG.
+
+    Writes four files: the transparent `<stem>.png` / `<stem>.svg` (the default, for
+    dropping onto any coloured page) and a white-background `<stem>.white.png` /
+    `<stem>.white.svg` (for dark surfaces — e.g. GitHub dark mode — where the map's
+    near-black labels would otherwise vanish on a transparent background). Returns
+    the four paths in that order.
+    """
+    written: list[str] = []
+    # `spec` already carries background:null; the ".white" pass overrides it. Same
+    # layout both times, so the only difference is the baked-in backdrop.
+    for suffix, variant in ((".", spec), (".white.", {**spec, "background": "white"})):
+        png_path, svg_path = f"{stem}{suffix}png", f"{stem}{suffix}svg"
+        with open(png_path, "wb") as fh:
+            fh.write(vlc.vegalite_to_png(vl_spec=variant, scale=2.0))
+        with open(svg_path, "w", encoding="utf-8") as fh:
+            fh.write(vlc.vegalite_to_svg(vl_spec=variant))
+        written += [png_path, svg_path]
+    return written
 
 
 def png_on_white(spec: dict) -> bytes:

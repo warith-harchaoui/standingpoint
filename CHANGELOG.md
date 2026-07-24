@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Two figure backgrounds per run.** Every render now writes a **transparent**
+  `<name>.png` / `.svg` (default, drops onto any page) *and* a white-background
+  `<name>.white.png` / `.white.svg` (for dark surfaces where the near-black labels
+  would vanish on transparency). The `--check` vision self-assessment runs against a
+  white-composited render (`png_on_white`) so transparency can't fool it.
 - Bilingual documentation: reworked `README.md` and a French `LISEZMOI.md`, plus this
   `CHANGELOG.md`, a `CONTRIBUTING.md`, and the repository `CODING.md`.
 - A competitive positioning map of the tool itself in `LANDSCAPE.md` / `PAYSAGE.md`,

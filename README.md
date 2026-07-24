@@ -131,7 +131,7 @@ As a library:
 import standpoint as sp
 
 pos = sp.positioning("examples/programming_languages.csv")
-pos.export("out")                 # writes out/python.{png,svg,vl.json,md,yaml}
+pos.export("out")                 # writes out/python.{png,svg,white.png,white.svg,vl.json,md,yaml}
 print(pos.axes)
 # {'x': 'Concurrency ↔ Ecosystem', 'y': 'Safety ↔ Learning'}
 ```
@@ -190,6 +190,9 @@ only where they fit, and a legend for the rest.
   with `(↓)` (`Price (↓)`, `Latency (↓)`) or pass `--lower Price,Latency`. Standpoint
   negates it and names the pole for the benefit ("Affordable", "Portable"), never
   the drawback.
+- Every figure is written twice: a **transparent** `.png` / `.svg` that drops onto any
+  page, and a **white-background** `.white.png` / `.white.svg` for dark surfaces where
+  the near-black labels would otherwise vanish on transparency.
 - It is a 2D projection. The axes carry a stated fraction of the variance, so read
   it as a summary rather than the whole picture.
 

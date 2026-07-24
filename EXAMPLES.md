@@ -2,8 +2,10 @@
 
 Every example uses a table from
 [`examples/`](https://github.com/warith-harchaoui/standingpoint/tree/main/examples).
-Each run writes five files: `<name>.png`, `<name>.svg`, `<name>.vl.json`,
-`<name>.md`, and `<name>.yaml`.
+Each run writes seven files: the transparent figure `<name>.png` / `<name>.svg`, a
+white-background `<name>.white.png` / `<name>.white.svg` (for dark surfaces where the
+dark labels would vanish on transparency), the `<name>.vl.json` spec, the `<name>.md`
+analysis, and the `<name>.yaml` data.
 
 ## As a library
 
@@ -15,7 +17,7 @@ pos.axes            # {'x': 'Scalability ↔ Versatility', 'y': 'Flexibility ↔
 pos.coords          # DataFrame: axis-1 / axis-2 per option
 pos.loadings        # DataFrame: criterion weights per axis
 pos.role_of         # {'Python': 'best', 'Rust': 'worst', ...}
-pos.export("out")   # writes out/python.{png,svg,vl.json,md,yaml}
+pos.export("out")   # writes out/python.{png,svg,white.png,white.svg,vl.json,md,yaml}
 ```
 
 Pass a DataFrame if you already have one, and name the reference:
@@ -63,7 +65,9 @@ French. Leader: Tesla Model 3.
 
 ## The output files
 
-- `.png` and `.svg`: the figure.
+- `.png` and `.svg`: the figure on a **transparent** background — drops onto any page.
+- `.white.png` and `.white.svg`: the same figure on a **white** background, for dark
+  surfaces (e.g. GitHub dark mode) where the near-black labels would otherwise vanish.
 - `.vl.json`: the Vega-Lite spec. Edit it or embed it anywhere Vega runs.
 - `.md`: a short written analysis. What the axes mean, where the leader wins, which
   groups stand out, plus the loadings and a ranking.

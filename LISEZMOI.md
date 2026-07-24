@@ -139,7 +139,7 @@ En bibliothèque :
 import standpoint as sp
 
 pos = sp.positioning("examples/programming_languages.csv")
-pos.export("out")                 # écrit out/python.{png,svg,vl.json,md,yaml}
+pos.export("out")                 # écrit out/python.{png,svg,white.png,white.svg,vl.json,md,yaml}
 print(pos.axes)
 # {'x': 'Concurrency ↔ Ecosystem', 'y': 'Safety ↔ Learning'}
 ```
@@ -200,6 +200,10 @@ reste.
   son en-tête avec `(↓)` (`Price (↓)`, `Latency (↓)`) ou passez `--lower Price,Latency`.
   Standpoint la négativise et nomme le pôle pour le bénéfice (« Abordable »,
   « Léger »), jamais l'inconvénient.
+- Chaque figure est écrite deux fois : un `.png` / `.svg` **transparent** qui se pose
+  sur n'importe quelle page, et une version **fond blanc** `.white.png` / `.white.svg`
+  pour les surfaces sombres où les étiquettes presque noires disparaîtraient sur la
+  transparence.
 - C'est une projection 2D. Les axes portent une fraction annoncée de la variance,
   donc lisez-la comme un résumé plutôt que comme l'image complète.
 

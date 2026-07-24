@@ -268,9 +268,12 @@ def test_export_all_writes_three_fold(tmp_path, df, result, roles):
     colors = p4m.gradient_colors(result, roles)
     stem = str(tmp_path / "map")
     written = p4m.export_all(df, result, roles, poles, names, colors, stem, use_llm=False)
-    assert len(written) == 5
+    # transparent png+svg, white png+svg, then vl.json + md + yaml
+    assert len(written) == 7
     assert Path(f"{stem}.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
+    assert Path(f"{stem}.white.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
     assert "<svg" in Path(f"{stem}.svg").read_text()
+    assert "<svg" in Path(f"{stem}.white.svg").read_text()
     doc = yaml.safe_load(Path(f"{stem}.yaml").read_text())
     assert doc["meta"]["reference"] == "Python"
     assert len(doc["approaches"]) == 12
@@ -348,6 +351,8 @@ def test_positioning_export(tmp_path, df):
     assert {Path(w).name for w in written} == {
         "demo.png",
         "demo.svg",
+        "demo.white.png",
+        "demo.white.svg",
         "demo.vl.json",
         "demo.md",
         "demo.yaml",
