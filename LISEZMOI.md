@@ -42,6 +42,7 @@ Standpoint est **local-first** par conception. Trois cas, en toute honnêteté :
 ## Documentation
 
 [📋 Exemples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
+· [🗺️ Paysage](https://github.com/warith-harchaoui/standingpoint/blob/main/PAYSAGE.md)
 
 
 Entrée : un tableau d'options et de leurs notes.

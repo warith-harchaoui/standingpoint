@@ -39,6 +39,7 @@ Standpoint is **local-first** by design. Three honest cases:
 ## Documentation
 
 [📋 Examples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
+· [🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
 
 Input: a table of options and their ratings.
 

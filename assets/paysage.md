@@ -2,7 +2,7 @@
 
 ## Interpretation
 
-La carte de positionnement montre que Standpoint domine nettement en termes de précision et de compréhensibilité, ce qui le place au sommet du classement. QuadrantMaker se démarque par une facilité d'utilisation élevée tout en conservant un niveau de simplicité acceptable. Diapositives ou tableau blanc offrent une bonne balance entre simplicité et facilité d'utilisation. Factoextra + FactoMineR, bien qu'ayant des scores élevés dans la compréhensibilité, se situent plus vers le centre du classement en termes de facilité d'utilisation. Enfin, PCA (Python) est le concurrent qui offre les meilleures performances en facilité d'utilisation mais à l'opposé, il est moins précis et moins facile à comprendre que les autres solutions proposées.
+La carte de positionnement montre que Standpoint est le meilleur en termes de précision et de compréhensibilité, dominant clairement les autres solutions. QuadrantMaker se distingue par sa facilité d'utilisation tout en conservant une bonne simplicité. Diapositives ou tableau blanc offrent un bon équilibre entre simplicité et facilité d'utilisation. Factoextra + FactoMineR allie bien la compréhensibilité à une certaine complexité, tandis que PCA (scikit-learn) est le moins performant en termes de précision mais reste facile à utiliser. Les solutions comme prince se situent entre ces deux extrêmes selon les critères choisis.
 
 ## Axes
 
@@ -13,7 +13,7 @@ La carte de positionnement montre que Standpoint domine nettement en termes de p
 ## Highlighted approaches
 
 - **Leader (reference):** Standpoint
-- **Weakest overall:** pca (Python) (lowest projection on the leader diagonal)
+- **Weakest overall:** PCA (scikit-learn) (lowest projection on the leader diagonal)
 - **Strongest toward Compréhensibilité:** factoextra + FactoMineR (challenger furthest up the vertical axis)
 - **Strongest toward Facilité d'utilisation:** QuadrantMaker (challenger furthest along the horizontal axis)
 
@@ -24,6 +24,6 @@ La carte de positionnement montre que Standpoint domine nettement en termes de p
 3. Diapositives ou tableau blanc  (+0.49, -0.67)
 4. factoextra + FactoMineR  (-2.03, +1.84)
 5. prince  (-1.78, +1.27)
-6. pca (Python)  (-1.53, +0.94)
+6. PCA (scikit-learn)  (-1.53, +0.94)
 
 *Coordinates are PCA units; see the companion YAML for full coefficients.*

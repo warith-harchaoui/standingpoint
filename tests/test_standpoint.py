@@ -373,8 +373,9 @@ def test_axis_poles_llm_quality(result):
 @pytest.mark.skipif(
     not _model_available("qwen2.5vl"), reason="qwen2.5vl vision model not installed"
 )
-def test_vlm_assessment_of_rendered_figure(tmp_path, result):
-    png, _svg = p4m.render_figures(p4m.to_vega(result), str(tmp_path / "m"))
-    verdict = p4m.vlm_assess(png)
+def test_vlm_assessment_of_rendered_figure(result):
+    # Assess a white-composited render (the exported figure is transparent, which the
+    # model's backend would flatten onto black and misread — see png_on_white).
+    verdict = p4m.vlm_assess(p4m.png_on_white(p4m.to_vega(result)))
     assert verdict.get("leader_top_right") is True
     assert verdict.get("legend_visible") is True

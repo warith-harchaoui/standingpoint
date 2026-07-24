@@ -89,6 +89,7 @@ __all__ = [
     "gradient_colors",
     "to_vega",
     "render_figures",
+    "png_on_white",
     "export_all",
     "analysis_markdown",
     "results_yaml",
@@ -1165,12 +1166,26 @@ def render_figures(spec: dict, stem: str) -> list[str]:
     return [png_path, svg_path]
 
 
-def vlm_assess(image_path: str, model: str = DEFAULT_MODEL) -> dict:
+def png_on_white(spec: dict) -> bytes:
+    """Render `spec` to PNG bytes on an opaque white background.
+
+    The exported figures are transparent, but the vision self-check sends the image
+    to a model whose backend flattens transparency onto a dark canvas — which would
+    hide the near-black labels and legend and make the check misfire. White is the
+    figure's intended reading surface, so the check runs against a white-composited
+    copy rather than the transparent file on disk.
+    """
+    return vlc.vegalite_to_png(vl_spec={**spec, "background": "white"}, scale=2.0)
+
+
+def vlm_assess(image: str | bytes, model: str = DEFAULT_MODEL) -> dict:
     """Ask the qwen vision-LLM to sanity-check a rendered positioning map.
 
-    Returns a verdict dict — whether the red leader dot sits top-right, whether the
-    labels are readable, and whether the legend is fully visible — plus free-text
-    notes. Empty dict if the model or a rendered image is unavailable.
+    `image` is a PNG path or raw PNG bytes (bytes let the caller assess a
+    white-composited render without touching the transparent file on disk). Returns
+    a verdict dict — whether the red leader dot sits top-right, whether the labels
+    are readable, and whether the legend is fully visible — plus free-text notes.
+    Empty dict if the model or a rendered image is unavailable.
     """
     schema = {
         "type": "object",
@@ -1194,7 +1209,7 @@ def vlm_assess(image_path: str, model: str = DEFAULT_MODEL) -> dict:
             model=model,
             format=schema,
             options={"temperature": 0},
-            messages=[{"role": "user", "content": prompt, "images": [image_path]}],
+            messages=[{"role": "user", "content": prompt, "images": [image]}],
         )
         return json.loads(resp["message"]["content"])
     except Exception:
@@ -1604,8 +1619,10 @@ def run(
         print(f"  {path}")
 
     if check:
-        png = next((p for p in written if p.endswith(".png")), None)
-        verdict = vlm_assess(png, model=model) if png else {}
+        # Assess a white-composited render, not the transparent PNG on disk: the
+        # vision model's backend would otherwise flatten transparency onto black and
+        # wrongly report the dark legend as cut off (see `png_on_white`).
+        verdict = vlm_assess(png_on_white(pos.to_vega()), model=model)
         if verdict:
             print("\nVision self-check:")
             for key in ("leader_top_right", "readable", "legend_visible"):
