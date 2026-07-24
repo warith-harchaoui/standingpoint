@@ -1,19 +1,43 @@
 # Standpoint
 
-Know where each option stands.
+[🇫🇷](https://github.com/warith-harchaoui/standingpoint/blob/main/LISEZMOI.md) · [🇬🇧](https://github.com/warith-harchaoui/standingpoint/blob/main/README.md)
+
+[![CI](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml) [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.13-blue.svg)](#) [![Local-first](https://img.shields.io/badge/local--first-Ollama%20%2B%20Vega--Lite-brightgreen.svg)](#the-promise)
+
+`Standpoint` belongs to a collection of libraries called `AI Helpers` developed for building Artificial Intelligence.
+
+[🌍 AI Helpers](https://harchaoui.org/warith/ai-helpers)
+
+Know where each option actually stands.
 
 Standpoint reads a comparison table (options as rows, criteria as columns, numbers
 in the cells) and produces a 2D positioning map, a short written analysis, and a
 YAML file with all the coordinates and coefficients. One command does it.
-
-![Standpoint Logo](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/logo.png)
 
 The method is ordinary PCA, which people have used for perceptual maps for a long
 time. What Standpoint adds is the work you would otherwise do by hand: it orients
 the map around a reference option, names the axes in plain words (in the language
 of your columns), colours and labels the points, and writes everything out.
 
-## What you get
+## The Promise
+
+Standpoint is **local-first** by design. Three honest cases:
+
+1. **Guaranteed local.** Parsing, PCA, orientation, colouring, and figure rendering
+   (via [`vl-convert`](https://github.com/vega/vl-convert)) all run on your machine.
+   Your table is **never uploaded**. There is **no telemetry, no account, no SaaS**.
+2. **The one caveat: the local model.** Axis names and the written analysis are
+   produced by a local [Ollama](https://ollama.com) model on `localhost`. Ollama
+   downloads the model weights **once** on first pull; after that it runs offline.
+   Nothing leaves your machine.
+3. **Your decision.** You never have to run the model at all: `--no-llm` gives you
+   the full map deterministically, with axis names taken from the strongest column
+   at each end and no written narrative.
+
+## Documentation
+
+[📋 Examples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
+· [🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
 
 Input: a table of options and their ratings.
 
@@ -29,14 +53,70 @@ Output: a positioning map,
 
 ![Programming languages positioning map](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/examples/programming_languages.png)
 
-plus a Markdown analysis (what the axes mean, where the reference wins, which groups
+plus a Markdown analysis (what the axes mean, where the reference wins, which options
 stand out, with the loadings and a ranking) and a YAML file with every option's
 coordinates, role, colour, and original values.
 
-## Install and run
+## Features
+
+- **One command, three-fold deliverable**: a figure (PNG + SVG + Vega-Lite JSON), a
+  Markdown interpretation, and a YAML of coordinates + coefficients.
+- **Readable axes**: PCA keeps the axes as weighted sums of your columns; a local
+  model names the four poles as positive qualities, guarded against acronyms,
+  negatives, and antonym pairs.
+- **Multilingual**: axis names, the written analysis, and the figure title come out
+  in the table's own language (English, French, or Spanish), auto-detected from the
+  column names — a French table reads *Voitures dans le quadrant*.
+- **Reference-oriented**: the option you care about is rotated to the top-right; an
+  all-max reference is placed just past the best competitor rather than as an outlier.
+- **Four highlighted options**: the leader, the weakest overall, and the two
+  challengers that reach furthest toward the top and right poles.
+- **Polarity aware**: mark a lower-is-better column with `(↓)` (or `--lower`) and
+  Standpoint names the benefit (*Affordable*, *Portable*), never the drawback.
+- **Deterministic fallback**: `--no-llm` needs no model and no network at all.
+- **Vision self-check**: `--check` asks a local vision model whether the figure reads
+  correctly (leader top-right, labels legible, legend visible).
+
+**Two surfaces, one toolkit** — every operation is reachable as:
+
+- **Library**: `import standpoint as sp`.
+- **CLI ×2**: `standpoint` (argparse, always installed) and `standpoint-click`
+  (click twin) with identical flags.
+
+## Installation
+
+**Prerequisites** — **Python 3.10–3.13** and **git**, cross-platform:
+
+- 🍎 **macOS** ([Homebrew](https://brew.sh)): `brew install python git`
+- 🐧 **Ubuntu/Debian**: `sudo apt update && sudo apt install -y python3 python3-pip git`
+- 🪟 **Windows** (PowerShell): `winget install Python.Python.3.12 Git.Git`
+
+For axis names and the written analysis, install [Ollama](https://ollama.com) and pull
+the default model once (optional — skip it and use `--no-llm`):
+
+- 🍎 **macOS**: `brew install ollama` — then `ollama serve &` and `ollama pull qwen2.5vl:7b`
+- 🐧 **Ubuntu/Debian**: `curl -fsSL https://ollama.com/install.sh | sh` — then `ollama pull qwen2.5vl:7b`
+- 🪟 **Windows**: install from [ollama.com/download](https://ollama.com/download), then `ollama pull qwen2.5vl:7b`
+
+We recommend a Python environment. If you're new to that, see [🥸 Tech tips](https://harchaoui.org/warith/4ml/#install).
+
+### From source
 
 ```bash
+git clone https://github.com/warith-harchaoui/standingpoint.git
+cd standingpoint
 pip install -e .          # or: pip install -r requirements.txt
+```
+
+Or install straight from GitHub (the import name is `standpoint`):
+
+```bash
+pip install "git+https://github.com/warith-harchaoui/standingpoint.git@v0.1.0"
+```
+
+## Usage
+
+```bash
 standpoint examples/programming_languages.csv --outdir out
 # without installing: python3 -m standpoint examples/programming_languages.csv --outdir out
 ```
@@ -47,20 +127,21 @@ As a library:
 
 ```python
 import standpoint as sp
-sp.positioning("examples/programming_languages.csv").export("out")
+
+pos = sp.positioning("examples/programming_languages.csv")
+pos.export("out")                 # writes out/python.{png,svg,vl.json,md,yaml}
+print(pos.axes)
+# {'x': 'Concurrency ↔ Ecosystem', 'y': 'Safety ↔ Learning'}
 ```
 
-More in [EXAMPLES.md](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md).
-
-Axis names and the written analysis need a local [Ollama](https://ollama.com)
-model (default `qwen2.5vl:7b`, which also checks the figure when you pass
-`--check`). Without it, use `--no-llm`: you still get the map, with axis names
-taken from the strongest column at each end and no written analysis.
+Skip the model for a fast, deterministic run (no Ollama needed):
 
 ```bash
 standpoint my_table.csv --no-llm
 standpoint my_table.csv --model qwen3:8b
 ```
+
+More in [EXAMPLES.md](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md).
 
 ## Input format
 
@@ -87,15 +168,16 @@ The first row is the reference and goes to the top right. Change it with
 3. Rotate the map so the reference sits top right. If the reference scores top
    marks on everything, it is placed just past the best competitor on each axis
    rather than far off on its own.
-4. Label it. Roles (best, worst, most innovative, most trustworthy) come from
-   projections in the standardized space. Each option takes its own colour from its
-   position. A local model reads the loadings and names the four axis ends, as
-   positive qualities, in your columns' language (English, French, or Spanish).
+4. Label it. The four highlighted options (leader, weakest, and the two challengers
+   furthest toward the top and right poles) come straight from the map geometry.
+   Each option takes its own colour from its position. A local model reads the
+   loadings and names the four axis ends, as positive qualities, in your columns'
+   language (English, French, or Spanish).
 
 The figure keeps to a dotted cross for the axes, the pole words at the ends, labels
 only where they fit, and a legend for the rest.
 
-![Electric cars, French input gives French axis names](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/examples/voitures_electriques.png)
+![Electric cars, French input gives a French title and French axis names](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/examples/voitures_electriques.png)
 
 ## Notes
 
@@ -123,10 +205,14 @@ Tracked in `examples/`, input CSV and generated figures:
 ## Development
 
 ```bash
-pip install -r requirements-dev.txt
-python3 -m pytest tests/ -q       # deterministic tests; model-backed ones auto-skip
-python3 -m ruff check .
+pip install -r requirements-dev.txt   # or: pip install -e ".[dev]"
+python3 -m pytest tests/ -q           # deterministic tests; model-backed ones auto-skip
+python3 -m ruff check standpoint tests
+python3 -m ruff format --check standpoint tests
 ```
+
+The coding standard for this repository is [CODING.md](https://github.com/warith-harchaoui/standingpoint/blob/main/CODING.md);
+the contribution and versioning policy is in [CONTRIBUTING.md](https://github.com/warith-harchaoui/standingpoint/blob/main/CONTRIBUTING.md).
 
 ## Credits
 
