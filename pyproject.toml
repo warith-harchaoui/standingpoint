@@ -32,9 +32,12 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-# Testing + linting. `deepeval` powers the optional LLM pole-naming evaluation in
-# tests/test_eval.py (auto-skipped when Ollama or the model is unavailable).
-dev = ["pytest>=7.0", "ruff>=0.5", "deepeval>=1.0"]
+# Testing + linting kept light so CI installs fast.
+dev = ["pytest>=7.0", "ruff>=0.5"]
+# `deepeval` powers the optional pole-naming evaluation in tests/test_eval.py. It is
+# a separate, heavier extra: the eval is skipped unless both deepeval and a local
+# Ollama model are available, so it runs on a workstation, not in the default CI job.
+eval = ["deepeval>=1.0"]
 
 [project.urls]
 Homepage = "https://github.com/warith-harchaoui/standingpoint"

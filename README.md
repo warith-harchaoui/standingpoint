@@ -8,13 +8,13 @@
 
 [🌍 AI Helpers](https://harchaoui.org/warith/ai-helpers)
 
+[![Standpoint logo](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/logo.png)](https://harchaoui.org/warith/ai-helpers)
+
 Know where each option actually stands.
 
 Standpoint reads a comparison table (options as rows, criteria as columns, numbers
 in the cells) and produces a 2D positioning map, a short written analysis, and a
 YAML file with all the coordinates and coefficients. One command does it.
-
-![Standpoint logo](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/logo.png)
 
 The method is ordinary PCA, which people have used for perceptual maps for a long
 time. What Standpoint adds is the work you would otherwise do by hand: it orients
@@ -39,7 +39,8 @@ Standpoint is **local-first** by design. Three honest cases:
 ## Documentation
 
 [📋 Examples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
-· [🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
+
+[🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
 
 Input: a table of options and their ratings.
 
