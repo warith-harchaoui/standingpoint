@@ -1128,6 +1128,9 @@ def to_vega(
     return {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "title": {"text": title, "font": FONT, "fontSize": 18},
+        # Transparent background: Vega-Lite otherwise bakes an opaque white rectangle
+        # into the PNG/SVG. Null lets the map drop cleanly onto any page or slide.
+        "background": None,
         "width": 1000,
         "height": height,
         "autosize": {"type": "pad", "resize": True},  # grow to fit the legend

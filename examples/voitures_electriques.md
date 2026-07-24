@@ -2,17 +2,7 @@
 
 ## Interpretation
 
-La Tesla Model 3 domine clairement en termes de connectivité et d'accessibilité, située dans le coin supérieur droit de la carte. Elle offre un excellent équilibre entre simplicité et durabilité, reflétant une approche moderne et technologique.
-
-BMW i4 se distingue par sa position à droite, signifiant qu'elle est très axée sur la durabilité, tout en conservant des niveaux acceptables d'accessibilité et de connectivité. Elle fait preuve d'une volonté affirmée de respecter les normes environnementales.
-
-Hyundai Ioniq 5 et Kia EV6 se positionnent à gauche et au centre, indiquant une forte orientation vers l'accessibilité et la simplicité. Ces voitures offrent des solutions pratiques et abordables pour ceux qui recherchent un véhicule électrique sans trop de compromis technologiques.
-
-Renault Mégane E-Tech se situe à droite mais en bas, ce qui signifie qu'elle est plus orientée vers la durabilité que vers la connectivité. Elle offre une combinaison intéressante entre des performances écologiques et un design moderne.
-
-Le Dacia Spring, quant à lui, se trouve dans le coin inférieur gauche de la carte, indiquant qu'il est orienté vers l'accessibilité et la simplicité, mais il manque clairement en termes de connectivité et de durabilité. Il s'agit du véhicule qui offre le moins d'avancées technologiques parmi ceux analysés.
-
-En résumé, la Tesla Model 3 est la référence pour l'innovation et la connectivité, tandis que BMW i4 se distingue par sa forte orientation vers la durabilité. Les voitures comme Hyundai Ioniq 5 ou Kia EV6 offrent des options abordables avec une bonne accessibilité mais manquent de technologie avancée. Le Dacia Spring est le véhicule qui offre le moins d'avancées en matière de connectivité et de durabilité, tandis que Renault Mégane E-Tech se positionne comme un compromis entre la durabilité et l'accessibilité.
+La carte de positionnement met en lumière les caractéristiques clés des véhicules électriques sur deux axes : l'accessibilité et la durabilité, avec une progression vers le haut pour la simplicité et vers le bas pour la connectivité. La Tesla Model 3 domine nettement dans cette représentation, signifiant qu'elle offre un excellent équilibre entre ces facteurs. Le BMW i4 se distingue en allant plus loin sur l'accessibilité et la durabilité, tandis que le Renault Mégane E-Tech se démarque par sa forte connectivité. La Dacia Spring figure comme le véhicule le moins performant dans cette analyse. Les modèles tels que la Hyundai Ioniq 5, Kia EV6, Polestar 2, Volkswagen ID.3 et Peugeot e-208 occupent des positions intermédiaires, reflétant un équilibre varié entre les différents critères examinés.
 
 ## Axes
 

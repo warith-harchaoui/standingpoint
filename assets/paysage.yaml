@@ -1,0 +1,136 @@
+meta:
+  reference: Standpoint
+  rotation_deg: -0.525
+  explained_variance_ratio:
+  - 0.4787
+  - 0.4139
+  cumulative_variance: 0.8926
+  n_approaches: 6
+  attributes:
+  - Nommage Automatique des Axes
+  - Sortie Multilingue
+  - Exécution Locale
+  - Une Seule Commande
+  - Livrable Triple
+  - Reproductibilité
+  - Axes Lisibles
+  - Simplicité d'Installation
+  lower_is_better: []
+axes:
+  axis_1:
+    name: Précision ↔ Facilité d'utilisation
+    pole_left: Précision
+    pole_right: Facilité d'utilisation
+    loadings:
+      Nommage Automatique des Axes: 0.3476
+      Sortie Multilingue: 0.4409
+      Exécution Locale: -0.2327
+      Une Seule Commande: 0.4632
+      Livrable Triple: 0.2931
+      Reproductibilité: -0.2262
+      Axes Lisibles: -0.3058
+      Simplicité d'Installation: 0.4307
+  axis_2:
+    name: Simplicité ↔ Compréhensibilité
+    pole_bottom: Simplicité
+    pole_top: Compréhensibilité
+    loadings:
+      Nommage Automatique des Axes: 0.4019
+      Sortie Multilingue: 0.2072
+      Exécution Locale: 0.3707
+      Une Seule Commande: 0.1426
+      Livrable Triple: 0.442
+      Reproductibilité: 0.4607
+      Axes Lisibles: 0.4007
+      Simplicité d'Installation: -0.264
+approaches:
+- name: Standpoint
+  coordinates:
+    axis_1: 2.0269
+    axis_2: 1.8442
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Nommage Automatique des Axes: 5.0
+    Sortie Multilingue: 5.0
+    Exécution Locale: 5.0
+    Une Seule Commande: 5.0
+    Livrable Triple: 5.0
+    Reproductibilité: 5.0
+    Axes Lisibles: 4.0
+    Simplicité d'Installation: 4.0
+- name: prince
+  coordinates:
+    axis_1: -1.7775
+    axis_2: 1.2662
+  role: competitor
+  color: '#009E89'
+  attributes:
+    Nommage Automatique des Axes: 1.0
+    Sortie Multilingue: 1.0
+    Exécution Locale: 5.0
+    Une Seule Commande: 2.0
+    Livrable Triple: 1.0
+    Reproductibilité: 5.0
+    Axes Lisibles: 5.0
+    Simplicité d'Installation: 3.0
+- name: pca (Python)
+  coordinates:
+    axis_1: -1.5323
+    axis_2: 0.945
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Nommage Automatique des Axes: 1.0
+    Sortie Multilingue: 1.0
+    Exécution Locale: 5.0
+    Une Seule Commande: 2.0
+    Livrable Triple: 1.0
+    Reproductibilité: 5.0
+    Axes Lisibles: 4.0
+    Simplicité d'Installation: 3.0
+- name: factoextra + FactoMineR
+  coordinates:
+    axis_1: -2.0269
+    axis_2: 1.8442
+  role: top
+  color: '#AF52DE'
+  attributes:
+    Nommage Automatique des Axes: 1.0
+    Sortie Multilingue: 1.0
+    Exécution Locale: 5.0
+    Une Seule Commande: 2.0
+    Livrable Triple: 2.0
+    Reproductibilité: 5.0
+    Axes Lisibles: 5.0
+    Simplicité d'Installation: 2.0
+- name: QuadrantMaker
+  coordinates:
+    axis_1: 2.0269
+    axis_2: -1.8442
+  role: right
+  color: '#007AFF'
+  attributes:
+    Nommage Automatique des Axes: 1.0
+    Sortie Multilingue: 2.0
+    Exécution Locale: 2.0
+    Une Seule Commande: 4.0
+    Livrable Triple: 1.0
+    Reproductibilité: 1.0
+    Axes Lisibles: 2.0
+    Simplicité d'Installation: 5.0
+- name: Diapositives ou tableau blanc
+  coordinates:
+    axis_1: 0.4906
+    axis_2: -0.6672
+  role: competitor
+  color: '#FFA1C1'
+  attributes:
+    Nommage Automatique des Axes: 1.0
+    Sortie Multilingue: 3.0
+    Exécution Locale: 5.0
+    Une Seule Commande: 2.0
+    Livrable Triple: 1.0
+    Reproductibilité: 1.0
+    Axes Lisibles: 2.0
+    Simplicité d'Installation: 4.0

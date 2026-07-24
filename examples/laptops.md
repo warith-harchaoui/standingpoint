@@ -2,17 +2,13 @@
 
 ## Interpretation
 
-The positioning map uses a horizontal axis that spans from 'Affordable' on the left to 'Durable' on the right, indicating different aspects of laptop performance or features. The vertical axis moves from 'Powerful' at the bottom to 'Portable' at the top, suggesting trade-offs between processing power and mobility.
+The positioning map uses two axes to evaluate laptops: one horizontal from 'Affordable' on the left to 'Durable' on the right, and another vertical from 'Powerful' at the bottom to 'Portable' at the top. The MacBook Air, positioned at the top-right corner, leads in both categories with a combined score that places it as the best laptop according to this map. Lenovo Legion, located near the bottom-left, is identified as the worst performer due to its poor performance on all axes.
 
-The MacBook Air leads in both categories, placing it at the top-right corner, which signifies its excellence across all dimensions—power, portability, affordability, and durability. This positioning indicates that the MacBook Air is a premium product with strong appeal to users who value both performance and ease of use.
+The Acer Swift, which reaches furthest toward 'Portable', stands out for its emphasis on portability over other attributes like durability or power. Conversely, the MacBook Pro, positioned further right than most other laptops, highlights its focus on durability while still maintaining a powerful processor and reasonable portability.
 
-Acer Swift stands out as the strongest contender for 'Portable,' reaching closer to this quadrant than any other laptop on the map. However, its placement near the center suggests it may compromise somewhat in terms of power or durability compared to more specialized models like the MacBook Pro.
+In terms of the leaderboard based on combined scores, the top performers include the MacBook Air at the top-right corner, followed by ThinkPad X1, which balances well across all axes. The MacBook Pro, despite its emphasis on durability, ranks fourth due to its lower score in other areas. Other notable laptops like HP Spectre and Dell XPS also perform well but slightly less than the MacBook Air and ThinkPad X1.
 
-The MacBook Pro, positioned towards the right side of the map, excels particularly in 'Durable' features while still maintaining a good level of portability and processing power. This makes it an appealing choice for users who prioritize robustness over immediate mobility but still desire powerful computing capabilities.
-
-In terms of overall performance, as measured by combined scores on this map, the MacBook Air emerges as the clear leader, followed closely by ThinkPad X1 and MacBook Pro. The HP Spectre, Dell XPS, Asus Zenbook, Acer Swift, and Framework also cluster around these top performers but with slightly lower scores, indicating they are strong contenders in their respective niches.
-
-The reference 'MacBook Air' leads at the top-right corner of this map due to its balanced excellence across all dimensions—powerful yet portable, affordable without compromising on durability. This strategic positioning makes it a standout choice for many consumers seeking a versatile and high-performing laptop that doesn't sacrifice one feature for another.
+The Asus Zenbook stands out for its balanced performance, with a strong emphasis on portability while still managing decent scores in power and durability. The Framework laptop is positioned further down towards 'Portable', indicating it excels more in this category compared to others. Overall, the map reveals the trade-offs between different attributes that various laptops prioritize, offering insights into consumer preferences for each model.
 
 ## Axes
 

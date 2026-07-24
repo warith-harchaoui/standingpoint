@@ -2,11 +2,7 @@
 
 ## Interpretation
 
-The positioning map uses a two-dimensional grid to compare cloud service providers based on their performance across four key dimensions: Ease of Use (left), Scalability (right), Affordability (bottom), and Flexibility (top). At the top-right corner is AWS, which leads in both Scalability and Flexibility. This indicates that AWS excels at handling large-scale operations efficiently while also offering a high degree of flexibility for various use cases.
-
-The reference point, AWS, stands out as the best performer overall due to its strong presence across all dimensions. Microsoft Azure is another notable leader, achieving top rankings in both Scalability and Flexibility but slightly trailing AWS on Affordability. IBM Cloud excels particularly in Scalability, suggesting it's a robust choice for businesses needing scalable infrastructure.
-
-The leaderboard reflects these performances with AWS leading the pack, followed by Microsoft Azure, Google Cloud, IBM Cloud, Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel. This ranking is determined by combining scores across all four dimensions, highlighting AWS as the clear leader in cloud services.
+The positioning map illustrates how different cloud service providers compare across two key dimensions: ease of use on one axis and scalability on another. The vertical axis represents affordability at its base and flexibility towards the top. AWS leads in both 'Ease of Use' and 'Scalability,' as it reaches the top-right corner, indicating a strong position in these areas. Microsoft Azure stands out by extending furthest toward 'Flexibility,' suggesting it offers highly adaptable solutions that can cater to diverse needs. IBM Cloud, on the other hand, excels in 'Scalability,' making it a compelling choice for businesses requiring robust and scalable cloud services. The leaderboard, determined by combining scores across all dimensions, places AWS at the top followed closely by Microsoft Azure, Google Cloud, IBM Cloud, Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel. This analysis highlights that while AWS leads overall, there are distinct clusters of providers excelling in specific areas, catering to different strategic needs within the cloud computing landscape.
 
 ## Axes
 

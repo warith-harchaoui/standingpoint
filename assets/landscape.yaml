@@ -1,0 +1,136 @@
+meta:
+  reference: Standpoint
+  rotation_deg: -0.525
+  explained_variance_ratio:
+  - 0.4787
+  - 0.4139
+  cumulative_variance: 0.8926
+  n_approaches: 6
+  attributes:
+  - Automated Axis Naming
+  - Multilingual Output
+  - Local Execution
+  - One Command
+  - Threefold Deliverable
+  - Reproducibility
+  - Readable Axes
+  - Ease of Setup
+  lower_is_better: []
+axes:
+  axis_1:
+    name: Clarity ↔ Versatility
+    pole_left: Clarity
+    pole_right: Versatility
+    loadings:
+      Automated Axis Naming: 0.3476
+      Multilingual Output: 0.4409
+      Local Execution: -0.2327
+      One Command: 0.4632
+      Threefold Deliverable: 0.2931
+      Reproducibility: -0.2262
+      Readable Axes: -0.3058
+      Ease of Setup: 0.4307
+  axis_2:
+    name: Ease ↔ Comprehensive
+    pole_bottom: Ease
+    pole_top: Comprehensive
+    loadings:
+      Automated Axis Naming: 0.4019
+      Multilingual Output: 0.2072
+      Local Execution: 0.3707
+      One Command: 0.1426
+      Threefold Deliverable: 0.442
+      Reproducibility: 0.4607
+      Readable Axes: 0.4007
+      Ease of Setup: -0.264
+approaches:
+- name: Standpoint
+  coordinates:
+    axis_1: 2.0269
+    axis_2: 1.8442
+  role: best
+  color: '#FF3B30'
+  attributes:
+    Automated Axis Naming: 5.0
+    Multilingual Output: 5.0
+    Local Execution: 5.0
+    One Command: 5.0
+    Threefold Deliverable: 5.0
+    Reproducibility: 5.0
+    Readable Axes: 4.0
+    Ease of Setup: 4.0
+- name: prince
+  coordinates:
+    axis_1: -1.7775
+    axis_2: 1.2662
+  role: competitor
+  color: '#009E89'
+  attributes:
+    Automated Axis Naming: 1.0
+    Multilingual Output: 1.0
+    Local Execution: 5.0
+    One Command: 2.0
+    Threefold Deliverable: 1.0
+    Reproducibility: 5.0
+    Readable Axes: 5.0
+    Ease of Setup: 3.0
+- name: pca (Python)
+  coordinates:
+    axis_1: -1.5323
+    axis_2: 0.945
+  role: worst
+  color: '#A52A2A'
+  attributes:
+    Automated Axis Naming: 1.0
+    Multilingual Output: 1.0
+    Local Execution: 5.0
+    One Command: 2.0
+    Threefold Deliverable: 1.0
+    Reproducibility: 5.0
+    Readable Axes: 4.0
+    Ease of Setup: 3.0
+- name: factoextra + FactoMineR
+  coordinates:
+    axis_1: -2.0269
+    axis_2: 1.8442
+  role: top
+  color: '#AF52DE'
+  attributes:
+    Automated Axis Naming: 1.0
+    Multilingual Output: 1.0
+    Local Execution: 5.0
+    One Command: 2.0
+    Threefold Deliverable: 2.0
+    Reproducibility: 5.0
+    Readable Axes: 5.0
+    Ease of Setup: 2.0
+- name: QuadrantMaker
+  coordinates:
+    axis_1: 2.0269
+    axis_2: -1.8442
+  role: right
+  color: '#007AFF'
+  attributes:
+    Automated Axis Naming: 1.0
+    Multilingual Output: 2.0
+    Local Execution: 2.0
+    One Command: 4.0
+    Threefold Deliverable: 1.0
+    Reproducibility: 1.0
+    Readable Axes: 2.0
+    Ease of Setup: 5.0
+- name: Slides or whiteboard
+  coordinates:
+    axis_1: 0.4906
+    axis_2: -0.6672
+  role: competitor
+  color: '#FFA1C1'
+  attributes:
+    Automated Axis Naming: 1.0
+    Multilingual Output: 3.0
+    Local Execution: 5.0
+    One Command: 2.0
+    Threefold Deliverable: 1.0
+    Reproducibility: 1.0
+    Readable Axes: 2.0
+    Ease of Setup: 4.0
