@@ -112,8 +112,22 @@ def test_components_orthonormal(result):
 def test_roles_are_principled(result, roles):
     role_of = dict(zip(result.names, roles))
     assert role_of[result.reference] == "best"
-    for r in ("best", "worst", "innovative", "trustworthy"):
+    for r in ("best", "worst", "top", "right"):
         assert roles.count(r) == 1
+
+
+def test_axis_champions_are_geometric(result, roles):
+    # the "top"/"right" highlights are the challengers reaching furthest up the
+    # vertical / along the horizontal axis, with the leader (and top) excluded.
+    role_of = dict(zip(result.names, roles))
+    idx = {n: k for k, n in enumerate(result.names)}
+    leader = result.reference
+    non_leader = [k for k, n in enumerate(result.names) if n != leader]
+    top_name = next(n for n, r in role_of.items() if r == "top")
+    assert idx[top_name] == max(non_leader, key=lambda k: result.scores[k, 1])
+    right_name = next(n for n, r in role_of.items() if r == "right")
+    rest = [k for k in non_leader if result.names[k] != top_name]
+    assert idx[right_name] == max(rest, key=lambda k: result.scores[k, 0])
 
 
 def test_colors_distinct_valid_and_roles_fixed(result, roles):
@@ -194,7 +208,7 @@ def test_i18n_all_languages_present_and_formattable():
                                   bottom="c", top="d")
         tpl["narrative_prompt"].format(
             left="a", right="b", bottom="c", top="d", reference="r", best="x",
-            worst="y", innovative="z", trustworthy="w", leaderboard="l",
+            worst="y", champ_top="z", champ_right="w", leaderboard="l",
         )
         tpl["noun_prompt"].format(word="Language")
 

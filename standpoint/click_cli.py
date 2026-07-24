@@ -17,17 +17,19 @@ from standpoint import DEFAULT_MODEL, run
 @click.option("-o", "--outdir", default="out", show_default=True,
               help="Output directory for the deliverable.")
 @click.option("--stem", default=None, help="Basename for outputs (default: from reference).")
-@click.option("--innovative", default=None, help="Exact name of the 'most innovative' option.")
-@click.option("--trustworthy", default=None, help="Exact name of the 'most trustworthy' option.")
+@click.option("--top", default=None,
+              help="Exact name of the option to highlight as strongest toward the top pole.")
+@click.option("--right", default=None,
+              help="Exact name of the option to highlight as strongest toward the right pole.")
 @click.option("--lower", default="", help="Comma-separated criteria where lower is better.")
 @click.option("--model", default=DEFAULT_MODEL, show_default=True,
               help="Ollama model for axis naming.")
 @click.option("--no-llm", is_flag=True, help="Skip the LLM; deterministic axis names.")
 @click.option("--check", is_flag=True, help="Vision-model sanity-check of the figure.")
-def main_click(table, reference, outdir, stem, innovative, trustworthy, lower,
+def main_click(table, reference, outdir, stem, top, right, lower,
                model, no_llm, check):
     """Turn a comparison TABLE (CSV or Markdown) into a positioning map."""
-    run(table, reference, outdir, stem, innovative, trustworthy, lower, model,
+    run(table, reference, outdir, stem, top, right, lower, model,
         no_llm, check)
 
 

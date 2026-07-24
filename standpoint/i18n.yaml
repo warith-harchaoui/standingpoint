@@ -5,8 +5,9 @@
 #
 # Placeholders (Python str.format): {glossary} {left} {right} {bottom} {top}
 # for axis_prompt; {left} {right} {bottom} {top} {reference} {best} {worst}
-# {innovative} {trustworthy} {leaderboard} for narrative_prompt. JSON braces are
-# escaped as {{ }}.
+# {champ_top} {champ_right} {leaderboard} for narrative_prompt ({champ_top} /
+# {champ_right} are the challengers that reach furthest toward the top / right
+# poles). JSON braces are escaped as {{ }}.
 
 en:
   noun_prompt: |
@@ -44,8 +45,9 @@ en:
     Write 4-6 sentences of precise, sober analysis of a positioning map, in English.
     The horizontal axis runs from '{left}' (left) to '{right}' (right); the vertical
     from '{bottom}' (bottom) to '{top}' (top). The reference '{reference}' leads at
-    the top-right. Best={best}, worst={worst}, most innovative={innovative}, most
-    trustworthy={trustworthy}. Leaderboard by combined score: {leaderboard}. Explain
+    the top-right. Best={best}, worst={worst}, the challenger reaching furthest
+    toward '{top}'={champ_top}, the challenger reaching furthest toward
+    '{right}'={champ_right}. Leaderboard by combined score: {leaderboard}. Explain
     what the axes mean, where the reference wins, and which clusters stand out. No
     acronyms. Plain prose, no bullet lists.
 
@@ -87,8 +89,9 @@ fr:
     Rédigez 4 à 6 phrases d'analyse précise et sobre d'une carte de positionnement,
     en français. L'axe horizontal va de « {left} » (gauche) à « {right} » (droite) ;
     l'axe vertical de « {bottom} » (bas) à « {top} » (haut). La référence « {reference} »
-    domine en haut à droite. Meilleur={best}, pire={worst}, plus innovant={innovative},
-    plus digne de confiance={trustworthy}. Classement par score combiné : {leaderboard}.
+    domine en haut à droite. Meilleur={best}, pire={worst}, le concurrent qui va le
+    plus loin vers « {top} »={champ_top}, celui qui va le plus loin vers
+    « {right} »={champ_right}. Classement par score combiné : {leaderboard}.
     Expliquez le sens des axes, où la référence l'emporte et quels groupes se
     distinguent. Pas d'acronymes. Prose simple, sans listes à puces.
 
@@ -129,7 +132,8 @@ es:
     Escribe de 4 a 6 frases de análisis preciso y sobrio de un mapa de posicionamiento,
     en español. El eje horizontal va de « {left} » (izquierda) a « {right} » (derecha);
     el vertical de « {bottom} » (abajo) a « {top} » (arriba). La referencia « {reference} »
-    lidera arriba a la derecha. Mejor={best}, peor={worst}, más innovador={innovative},
-    más fiable={trustworthy}. Clasificación por puntuación combinada: {leaderboard}.
+    lidera arriba a la derecha. Mejor={best}, peor={worst}, el rival que llega más
+    lejos hacia « {top} »={champ_top}, el que llega más lejos hacia
+    « {right} »={champ_right}. Clasificación por puntuación combinada: {leaderboard}.
     Explica qué significan los ejes, dónde gana la referencia y qué grupos destacan.
     Sin siglas. Prosa sencilla, sin listas con viñetas.

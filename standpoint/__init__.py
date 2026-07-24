@@ -38,6 +38,7 @@ __version__ = "0.1.0"
 
 import argparse
 import json
+import logging
 import math
 import os
 import re
@@ -54,18 +55,21 @@ from sklearn.preprocessing import StandardScaler
 
 DetectorFactory.seed = 0  # deterministic language detection
 
+# Library diagnostics go through logging, never bare print (a library must not
+# grab stdout). The CLI in `run()` is the one place that prints on purpose.
+logger = logging.getLogger("standpoint")
+
 # "Good Colors" Apple-base palette — https://harchaoui.org/warith/colors/.
-# The four named roles keep a fixed identity hue drawn from the psychology
-# projection; the axis cross and labels use neutrals. Every other dot is coloured
-# by its map position (see `gradient_colors`).
+# The four highlighted roles keep a fixed identity hue; the axis cross and labels
+# use neutrals. Every other dot is coloured by its map position (`gradient_colors`).
 PALETTE = {
-    "reference": "#FF3B30",    # Red    — hero / best (Power, Passion)
-    "trustworthy": "#007AFF",  # Blue   — most trustworthy peer (Trust, Loyalty)
-    "worst": "#A52A2A",        # Brown  — worst-positioned peer
-    "innovative": "#AF52DE",   # Purple — most innovative (Wisdom, Creativity)
-    "competitor": "#8E8E93",   # Gray   — placeholder; overridden by gradient_colors
-    "axis": "#C7C7CC",         # light gray for the centred, dotted axis cross
-    "label": "#1C1C1E",        # near-black label text
+    "reference": "#FF3B30",   # Red    — the reference leader (best), sits top-right
+    "right": "#007AFF",       # Blue   — challenger that most defines the right pole
+    "worst": "#A52A2A",       # Brown  — weakest overall, sits bottom-left
+    "top": "#AF52DE",         # Purple — challenger that most defines the top pole
+    "competitor": "#8E8E93",  # Gray   — placeholder; overridden by gradient_colors
+    "axis": "#C7C7CC",        # light gray for the centred, dotted axis cross
+    "label": "#1C1C1E",       # near-black label text
 }
 FONT = "Roboto, -apple-system, Helvetica, Arial, sans-serif"
 
@@ -96,14 +100,22 @@ def _cell_to_number(cell: str) -> float:
 
 
 def _looks_like_markdown(text: str) -> bool:
+    """True if any line starts with a pipe, i.e. the text is a Markdown table."""
     return any(line.lstrip().startswith("|") for line in text.splitlines())
 
 
 def _parse_markdown(text: str) -> pd.DataFrame:
+    """Parse a GitHub-flavoured Markdown table into a numeric DataFrame.
+
+    The first pipe-delimited row is the header (its first cell names the index);
+    the separator row (only pipes/dashes/colons) is dropped, and every remaining
+    cell is coerced to a number via `_cell_to_number`.
+    """
     rows = [ln.strip() for ln in text.splitlines() if ln.strip().startswith("|")]
     # A GitHub separator row is only pipes/dashes/colons/spaces.
     rows = [r for r in rows if not re.fullmatch(r"[|\s:\-]+", r)]
     def split(row: str) -> list[str]:
+        """Split one table row into stripped cell strings, dropping edge pipes."""
         return [c.strip() for c in row.strip().strip("|").split("|")]
 
     header = split(rows[0])
@@ -259,6 +271,7 @@ def prepare(df: pd.DataFrame) -> tuple[np.ndarray, list[str]]:
 # 3./4. PCA + orientation
 # --------------------------------------------------------------------------- #
 def _rotation(alpha: float) -> np.ndarray:
+    """The 2x2 counter-clockwise rotation matrix for an angle `alpha` (radians)."""
     c, s = np.cos(alpha), np.sin(alpha)
     return np.array([[c, -s], [s, c]])
 
@@ -357,25 +370,22 @@ def analyze(
 # --------------------------------------------------------------------------- #
 # roles (colour semantics)
 # --------------------------------------------------------------------------- #
-# Concept -> attributes it is *defined by*. This is the only semantic input; the
-# selection itself is a principled linear projection (below), not a heuristic.
-CONCEPTS = {
-    "innovative": ("real-time", "stream", "diariz", "domain"),  # frontier capability
-    "trustworthy": ("privacy", "anonym", "gdpr", "pii", "on-prem"),  # trust / compliance
-}
-
-# Highest priority last (wins ties): competitor < trustworthy < innovative < worst < best.
-ROLE_ORDER = ["competitor", "trustworthy", "innovative", "worst", "best"]
+# Four highlighted roles, each a *domain-agnostic* pick from the map geometry
+# (see `assign_roles`): the leader, the weakest, and the two challengers that
+# reach furthest toward the top and right poles. Highest priority last (wins
+# ties): competitor < right < top < worst < best.
+ROLE_ORDER = ["competitor", "right", "top", "worst", "best"]
 ROLE_STYLE = {
     "best": {"color": PALETTE["reference"], "size": 170, "bold": True},
     "worst": {"color": PALETTE["worst"], "size": 120, "bold": True},
-    "innovative": {"color": PALETTE["innovative"], "size": 120, "bold": True},
-    "trustworthy": {"color": PALETTE["trustworthy"], "size": 120, "bold": True},
+    "top": {"color": PALETTE["top"], "size": 120, "bold": True},
+    "right": {"color": PALETTE["right"], "size": 120, "bold": True},
     "competitor": {"color": PALETTE["competitor"], "size": 70, "bold": False},
 }
 
 
 def _rgb_to_hex(rgb: tuple[float, float, float]) -> str:
+    """Convert an (r, g, b) triple in [0, 1] to a clamped ``#RRGGBB`` hex string."""
     return "#%02X%02X%02X" % tuple(max(0, min(255, round(c * 255))) for c in rgb)
 
 
@@ -391,6 +401,7 @@ def _oklab_to_hex(lightness: float, a: float, b: float) -> str:
         -0.0041960863 * lc - 0.7034186147 * mc + 1.7076147010 * sc,
     )
     def gamma(u: float) -> float:
+        """Apply the sRGB transfer function to one clamped linear channel."""
         u = max(0.0, min(1.0, u))
         return 1.055 * u ** (1 / 2.4) - 0.055 if u > 0.0031308 else 12.92 * u
     return _rgb_to_hex(tuple(gamma(c) for c in rgb_lin))
@@ -468,7 +479,9 @@ def corner_extremes(scores: np.ndarray) -> dict[str, int]:
 _LABEL_DIRS = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, 1), (1, -1), (-1, -1)]
 
 
-def _overlaps(a, b) -> bool:
+def _overlaps(a: tuple[float, float, float, float],
+              b: tuple[float, float, float, float]) -> bool:
+    """True if two axis-aligned boxes ``(x0, y0, x1, y1)`` intersect."""
     return not (a[2] < b[0] or a[0] > b[2] or a[3] < b[1] or a[1] > b[3])
 
 
@@ -514,65 +527,76 @@ def label_placements(result: PCAResult, view_x: float, view_y: float,
     return placements
 
 
-def concept_direction(features: list[str], keys: tuple[str, ...]) -> np.ndarray:
-    """Unit vector in feature space for a concept: the normalized indicator of its
-    attributes. Projecting the z-scored data onto it ranks solutions by that concept.
+def _axis_champion(axis_values: np.ndarray, exclude: set[int]) -> int:
+    """Index of the option reaching furthest (largest value) along one axis.
+
+    Parameters
+    ----------
+    axis_values : np.ndarray
+        One column of the oriented scores, e.g. every option's axis-1 coordinate.
+    exclude : set[int]
+        Row indices to skip (typically the leader, and an already-claimed champion),
+        so the same option is never highlighted twice.
+
+    Returns
+    -------
+    int
+        Row index of the highest not-excluded value along `axis_values`.
     """
-    weights = np.array([1.0 if any(k in f.lower() for k in keys) else 0.0
-                        for f in features])
-    if not weights.any():                      # no attribute matched -> use all
-        weights = np.ones(len(features))
-    return weights / np.linalg.norm(weights)
-
-
-def _argmax_projection(x_std: np.ndarray, direction: np.ndarray,
-                       exclude: set[int]) -> int:
-    """Solution whose z-scored profile projects furthest along `direction`."""
-    score = x_std @ direction
-    score = np.array(score, dtype=float)
-    for i in exclude:
-        score[i] = -np.inf
-    return int(np.argmax(score))
+    order = np.argsort(axis_values)[::-1]                 # highest coordinate first
+    return int(next(i for i in order if int(i) not in exclude))
 
 
 def assign_roles(
     result: PCAResult,
-    innovative: str | None = None,
-    trustworthy: str | None = None,
+    top: str | None = None,
+    right: str | None = None,
 ) -> list[str]:
-    """Automatically label each solution by a principled projection in z-scored space.
+    """Label four options by domain-agnostic map geometry; the rest are competitors.
 
-    Every rule is a linear functional (a projection), the same mathematics as PCA:
+    Every pick is read straight off the oriented coordinates, so it means the same
+    thing for any table (no per-domain keyword list):
 
-    best         the reference row, sitting at the top-right corner by construction;
-    worst        the antipode along the hero axis: the minimum projection onto the
-                 top-right diagonal (equivalently argmin of axis1 + axis2);
-    innovative   argmax projection onto the "frontier capability" concept direction;
-    trustworthy  argmax projection onto the "trust / compliance" concept direction.
+    best   the reference, sitting at the top-right corner by construction;
+    worst  the weakest overall: the minimum projection onto the top-right hero
+           diagonal (equivalently the smallest axis-1 + axis-2);
+    top    the challenger reaching furthest up the vertical axis — the peer that
+           most defines the map's *top* pole (the leader excluded);
+    right  the challenger reaching furthest along the horizontal axis — the peer
+           that most defines the *right* pole (leader and top champion excluded).
 
-    Concept directions come from `CONCEPTS` (attribute membership -> unit vector).
-    Named overrides bypass the projection. Collisions resolve by ROLE_ORDER.
+    Parameters
+    ----------
+    result : PCAResult
+        The oriented positioning (`scores` and `reference`).
+    top, right : str, optional
+        Force a specific option into the top-pole / right-pole highlight by exact
+        name, bypassing the geometric pick.
+
+    Returns
+    -------
+    list[str]
+        One role per option, aligned with ``result.names``; collisions resolve by
+        ``ROLE_ORDER`` (best beats worst beats the two champions).
     """
     names = result.names
-    x_std = result.x_std
+    scores = result.scores
     best_idx = names.index(result.reference)
 
     # Hero axis = the +45 deg diagonal after orientation; project onto (1, 1)/sqrt(2).
-    hero_projection = result.scores @ (np.ones(2) / np.sqrt(2))
+    hero_projection = scores @ (np.ones(2) / np.sqrt(2))
     worst_idx = int(next(i for i in np.argsort(hero_projection) if i != best_idx))
 
-    innov_idx = (names.index(innovative) if innovative is not None
-                 else _argmax_projection(
-                     x_std, concept_direction(result.features, CONCEPTS["innovative"]),
-                     {best_idx}))
-    trust_idx = (names.index(trustworthy) if trustworthy is not None
-                 else _argmax_projection(
-                     x_std, concept_direction(result.features, CONCEPTS["trustworthy"]),
-                     {best_idx, innov_idx}))
+    # The leader is the max on both axes, so a champion is the *next* option out
+    # along each axis — the challenger that best embodies that winning pole.
+    top_idx = (names.index(top) if top is not None
+               else _axis_champion(scores[:, 1], {best_idx}))
+    right_idx = (names.index(right) if right is not None
+                 else _axis_champion(scores[:, 0], {best_idx, top_idx}))
 
     roles = ["competitor"] * len(names)
-    for role in ROLE_ORDER[1:]:  # skip "competitor" (the default); apply low->high priority
-        idx = {"trustworthy": trust_idx, "innovative": innov_idx,
+    for role in ROLE_ORDER[1:]:  # skip "competitor" (default); low -> high priority
+        idx = {"right": right_idx, "top": top_idx,
                "worst": worst_idx, "best": best_idx}[role]
         roles[idx] = role
     return roles
@@ -756,7 +780,8 @@ def axis_poles(result: PCAResult, model: str = DEFAULT_MODEL,
         # Clean, de-duplicate, and reject antonym/shared-word pairs.
         return finalize_poles(raw, fallback_poles)
     except Exception as exc:  # ollama missing / model absent / bad JSON
-        print(f"[axis naming] LLM unavailable ({exc}); using deterministic names")
+        logger.warning("axis naming: LLM unavailable (%s); using deterministic names",
+                       exc)
         return fallback_poles
 
 
@@ -1028,14 +1053,14 @@ def analysis_markdown(result: PCAResult, roles: list[str],
 
     ranked = sorted(names, key=lambda n: -(coords.loc[n].sum()))
     role_rows = {r: next((n for n, rr in role_of.items() if rr == r), "—")
-                 for r in ("best", "worst", "innovative", "trustworthy")}
+                 for r in ("best", "worst", "top", "right")}
 
     narrative = _llm_text(
         i18n(lang)["narrative_prompt"].format(
             left=left, right=right, bottom=bottom, top=top,
             reference=result.reference, best=role_rows["best"],
-            worst=role_rows["worst"], innovative=role_rows["innovative"],
-            trustworthy=role_rows["trustworthy"],
+            worst=role_rows["worst"], champ_top=role_rows["top"],
+            champ_right=role_rows["right"],
             leaderboard=", ".join(ranked[:8]),
         ),
         model, use_llm,
@@ -1046,8 +1071,9 @@ def analysis_markdown(result: PCAResult, roles: list[str],
             f"approaches. **{result.reference}** anchors the top-right as the "
             f"reference leader, strongest on the {right.lower()} and {top.lower()} "
             f"directions. **{role_rows['worst']}** sits opposite as the weakest on "
-            f"these dimensions, while **{role_rows['innovative']}** leads on frontier "
-            f"capability and **{role_rows['trustworthy']}** on trust and compliance."
+            f"these dimensions, while among the challengers **{role_rows['top']}** "
+            f"reaches furthest toward {top.lower()} and **{role_rows['right']}** "
+            f"furthest toward {right.lower()}."
         ),
     )
 
@@ -1071,11 +1097,11 @@ def analysis_markdown(result: PCAResult, roles: list[str],
         "",
         f"- **Leader (reference):** {role_rows['best']}",
         f"- **Weakest overall:** {role_rows['worst']} (lowest projection on the "
-        "leader axis)",
-        f"- **Most innovative:** {role_rows['innovative']} (frontier-capability "
-        "projection)",
-        f"- **Most trustworthy:** {role_rows['trustworthy']} (privacy / compliance "
-        "projection)",
+        "leader diagonal)",
+        f"- **Strongest toward {top}:** {role_rows['top']} (challenger furthest up "
+        "the vertical axis)",
+        f"- **Strongest toward {right}:** {role_rows['right']} (challenger furthest "
+        "along the horizontal axis)",
         "",
         "## Leaderboard (by combined axis score)",
         "",
@@ -1218,16 +1244,17 @@ class Positioning:
                           model=model, use_llm=use_llm, noun_plural=self.noun_plural)
 
 
-def positioning(data, reference: int | str = 0, innovative: str | None = None,
-                trustworthy: str | None = None, lower_is_better: list[str] | None = None,
+def positioning(data, reference: int | str = 0, top: str | None = None,
+                right: str | None = None, lower_is_better: list[str] | None = None,
                 model: str = DEFAULT_MODEL, use_llm: bool = True) -> Positioning:
     """Position options from a table in one call.
 
     `data` is a pandas DataFrame (options × numeric criteria) or a path / raw string
     of a CSV or Markdown table. `lower_is_better` names criteria where a lower value
-    is better (also picked up from ``(↓)`` header markers). Returns a `Positioning`
-    with `.coords`, `.loadings`, `.axes`, `.to_vega()`, `.to_markdown()`,
-    `.to_yaml()`, and `.export(outdir)`.
+    is better (also picked up from ``(↓)`` header markers). `top` / `right` force a
+    named option into the top-pole / right-pole highlight (see `assign_roles`).
+    Returns a `Positioning` with `.coords`, `.loadings`, `.axes`, `.to_vega()`,
+    `.to_markdown()`, `.to_yaml()`, and `.export(outdir)`.
 
     >>> pos = positioning("examples/programming_languages.csv")
     >>> pos.export("out")
@@ -1235,7 +1262,7 @@ def positioning(data, reference: int | str = 0, innovative: str | None = None,
     df = data if isinstance(data, pd.DataFrame) else parse_table(data)
     df, lower = resolve_polarity(df, lower_is_better)      # clean names + lower set
     result = analyze(df, reference=reference, lower_is_better=list(lower))
-    roles = assign_roles(result, innovative=innovative, trustworthy=trustworthy)
+    roles = assign_roles(result, top=top, right=right)
     lang = detect_language(result.features)
     poles = axis_poles(result, model=model, use_llm=use_llm, lang=lang)
     singular, plural = noun_forms(str(df.index.name or "Approach"), model=model,
@@ -1248,19 +1275,20 @@ def positioning(data, reference: int | str = 0, innovative: str | None = None,
 # CLI
 # --------------------------------------------------------------------------- #
 def run(table: str, reference: str = "0", outdir: str = "out",
-        stem: str | None = None, innovative: str | None = None,
-        trustworthy: str | None = None, lower: str = "",
+        stem: str | None = None, top: str | None = None,
+        right: str | None = None, lower: str = "",
         model: str = DEFAULT_MODEL, no_llm: bool = False,
         check: bool = False) -> list[str]:
     """Shared CLI core: build the positioning, print a summary, write the files.
 
     Used by both the argparse (`main`) and click (`main_click`) entry points.
+    `top` / `right` force a named option into the top-pole / right-pole highlight.
     Returns the list of written paths.
     """
     ref: int | str = int(reference) if reference.lstrip("-").isdigit() else reference
     lower_cols = [c.strip() for c in lower.split(",") if c.strip()]
-    pos = positioning(parse_table(table), reference=ref, innovative=innovative,
-                      trustworthy=trustworthy, lower_is_better=lower_cols,
+    pos = positioning(parse_table(table), reference=ref, top=top,
+                      right=right, lower_is_better=lower_cols,
                       model=model, use_llm=not no_llm)
     result, evr = pos.result, pos.result.explained_variance_ratio
 
@@ -1270,10 +1298,14 @@ def run(table: str, reference: str = "0", outdir: str = "out",
     print(f"PCA explained variance: axis-1(PC1)={evr[0]:.1%}  axis-2(PC2)={evr[1]:.1%}  "
           f"(cumulative {evr.sum():.1%})\n")
     print(f"Axis names: axis-1 = {pos.axis_names[0]!r}   axis-2 = {pos.axis_names[1]!r}\n")
-    print("Highlighted roles:")
-    for role in ["best", "worst", "innovative", "trustworthy"]:
+    # poles are [left, right, bottom, top]; name each highlight by its pole word.
+    print("Highlighted options:")
+    highlights = [("best", "leader (reference)"), ("worst", "weakest overall"),
+                  ("top", f"strongest toward {pos.poles[3]!r}"),
+                  ("right", f"strongest toward {pos.poles[1]!r}")]
+    for role, label in highlights:
         who = next((n for n, r in pos.role_of.items() if r == role), "—")
-        print(f"  {role:12s}: {who}")
+        print(f"  {label:34s}: {who}")
     print()
     print("Canonical axes in the oriented frame (loadings):")
     print(pos.loadings.round(3).to_string(), "\n")
@@ -1306,8 +1338,10 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("-o", "--outdir", default="out",
                     help="output directory for the three-fold deliverable (default out/)")
     ap.add_argument("--stem", help="basename for outputs (default: derived from reference)")
-    ap.add_argument("--innovative", help="exact name of the 'most innovative' peer")
-    ap.add_argument("--trustworthy", help="exact name of the 'most trustworthy' peer")
+    ap.add_argument("--top", help="exact name of the option to highlight as strongest "
+                    "toward the top pole (default: picked from the map)")
+    ap.add_argument("--right", help="exact name of the option to highlight as strongest "
+                    "toward the right pole (default: picked from the map)")
     ap.add_argument("--lower", default="",
                     help="comma-separated criteria where lower is better (e.g. Price,Latency)")
     ap.add_argument("--model", default=DEFAULT_MODEL,
@@ -1317,7 +1351,7 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--check", action="store_true",
                     help="ask the vision model to sanity-check the rendered figure")
     a = ap.parse_args(argv)
-    run(a.table, a.reference, a.outdir, a.stem, a.innovative, a.trustworthy,
+    run(a.table, a.reference, a.outdir, a.stem, a.top, a.right,
         a.lower, a.model, a.no_llm, a.check)
 
 
