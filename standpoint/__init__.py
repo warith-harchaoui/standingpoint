@@ -862,6 +862,11 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
 
     # Sizes adapt to the option count: bigger when few, smaller when many.
     def _scaled(lo: int, hi: int, few: int = 8, many: int = 40) -> int:
+        """Interpolate a size between `hi` (at `few` options) and `lo` (at `many`).
+
+        Keeps the map legible across table sizes: large glyphs on a sparse map,
+        smaller ones once the plot gets crowded. Clamped outside ``[few, many]``.
+        """
         t = (min(max(n, few), many) - few) / (many - few)
         return round(hi + (lo - hi) * t)
     label_font = _scaled(11, 17)
@@ -889,7 +894,8 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
     xenc = {"field": "axis1", "type": "quantitative", "scale": xdom, "axis": bare}
     yenc = {"field": "axis2", "type": "quantitative", "scale": ydom, "axis": bare}
 
-    def rule(x0, x1, y0, y1):  # a centred, dotted axis line through the origin
+    def rule(x0: float, x1: float, y0: float, y1: float) -> dict:
+        """A Vega-Lite layer drawing one dotted axis segment in data coordinates."""
         return {
             "data": {"values": [{}]},
             "mark": {"type": "rule", "color": PALETTE["axis"], "size": 1.2,
@@ -902,7 +908,8 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
                          "y2": {"datum": y1}},
         }
 
-    def pole_label(x, y, text, align, baseline):
+    def pole_label(x: float, y: float, text: str, align: str, baseline: str) -> dict:
+        """A Vega-Lite text layer placing one italic pole word at an axis end."""
         return {
             "data": {"values": [{"x": x, "y": y, "t": text}]},
             "mark": {"type": "text", "fontSize": pole_font, "fontStyle": "italic",
