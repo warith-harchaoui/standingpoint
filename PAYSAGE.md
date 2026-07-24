@@ -9,16 +9,26 @@ l'outil, exactement comme n'importe quel autre exemple.
 
 La comparaison (plus haut vaut mieux, sur une échelle de 1 à 5) :
 
-| Outil | Nommage Automatique des Axes | Sortie Multilingue | Exécution Locale | Une Seule Commande | Livrable Triple | Reproductibilité | Axes Lisibles | Simplicité d'Installation |
-|---|---|---|---|---|---|---|---|---|
-| Standpoint | 5 | 5 | 5 | 5 | 5 | 5 | 4 | 4 |
-| prince | 1 | 1 | 5 | 2 | 1 | 5 | 5 | 3 |
-| PCA (scikit-learn) | 1 | 1 | 5 | 2 | 1 | 5 | 4 | 3 |
-| factoextra + FactoMineR | 1 | 1 | 5 | 2 | 2 | 5 | 5 | 2 |
-| QuadrantMaker | 1 | 2 | 2 | 4 | 1 | 1 | 2 | 5 |
-| Diapositives ou tableau blanc | 1 | 3 | 5 | 2 | 1 | 1 | 2 | 4 |
+<!-- TABLE:START -->
+| Cartes de positionnement | Nommage Automatique des Axes | Sortie Multilingue | Exécution Locale | Une Seule Commande | Livrable Triple | Reproductibilité | Axes Lisibles | Simplicité d'Installation |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Standpoint** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| prince | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| PCA (scikit-learn) | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| factoextra + FactoMineR | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+| QuadrantMaker | ⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Diapositives ou tableau blanc | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+<!-- TABLE:END -->
 
-![Standpoint comparé aux autres outils de cartes de positionnement](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/paysage.png)
+## Carte de positionnement
+
+<!-- FIGURE:START -->
+Représentation 2D du tableau ci-dessus.
+
+![Carte de positionnement](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/paysage.png)
+
+La carte est un résumé en 2D des 8 critères : à lire comme une forme, pas comme un classement. « Standpoint » se situe dans le coin en haut à droite. Les axes se lisent **Horizontal — Facile à Installer ↔ Fiable et Automatisé** et **Vertical — Simplicité de Début ↔ Répétable et Clair**.
+<!-- FIGURE:END -->
 
 Les en-têtes du tableau étant en français, la carte sort **entièrement en français** —
 titre, noms des axes et analyse — ce qui illustre au passage le côté multilingue de
