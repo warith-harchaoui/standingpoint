@@ -24,11 +24,17 @@ dependencies = [
 classifiers = [
     "License :: OSI Approved :: BSD License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Visualization",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0", "ruff>=0.5"]
+# Testing + linting. `deepeval` powers the optional LLM pole-naming evaluation in
+# tests/test_eval.py (auto-skipped when Ollama or the model is unavailable).
+dev = ["pytest>=7.0", "ruff>=0.5", "deepeval>=1.0"]
 
 [project.urls]
 Homepage = "https://github.com/warith-harchaoui/standingpoint"
@@ -46,3 +52,21 @@ version = { attr = "standpoint.__version__" }
 
 [tool.setuptools.package-data]
 standpoint = ["i18n.yaml"]
+
+[tool.ruff]
+# One source of truth for lint + format (Rule 17). 100 cols matches the prose-heavy
+# docstrings; target the oldest supported interpreter so no newer syntax slips in.
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Conservative, high-signal set: pyflakes (F), pycodestyle errors/warnings (E/W),
+# isort (I), bugbear (B), comprehensions (C4), pyupgrade (UP), simplify (SIM).
+select = ["E", "F", "W", "I", "B", "C4", "UP", "SIM"]
+ignore = [
+    "E501",   # line length is enforced by the formatter, not the linter
+    "SIM108", # ternary-over-if/else sometimes hurts readability
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]  # `assert False` is idiomatic in pytest

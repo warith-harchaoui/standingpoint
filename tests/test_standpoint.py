@@ -42,6 +42,7 @@ def _model_available(prefix: str) -> bool:
     """True if an Ollama model whose name starts with `prefix` is installed."""
     try:
         import ollama
+
         models = ollama.list().get("models", [])
         names = [getattr(m, "model", None) or m.get("model", "") for m in models]
         return any(str(n).startswith(prefix) for n in names)
@@ -55,7 +56,7 @@ def _model_available(prefix: str) -> bool:
 def test_parse_csv_shape(df):
     assert df.shape == (12, 7)
     assert df.index[0] == "Python"
-    assert df.notna().all().all()          # the example has no blanks
+    assert df.notna().all().all()  # the example has no blanks
 
 
 def test_parse_markdown_matches_csv():
@@ -67,7 +68,7 @@ def test_parse_markdown_matches_csv():
 
 def test_cell_to_number_blanks_and_numbers():
     assert p4m._cell_to_number("3.5") == 3.5
-    assert p4m._cell_to_number("1,5") == 1.5           # comma decimal
+    assert p4m._cell_to_number("1,5") == 1.5  # comma decimal
     for blank in ("", "-", "n/a", "?"):
         assert np.isnan(p4m._cell_to_number(blank))
 
@@ -110,7 +111,7 @@ def test_components_orthonormal(result):
 # roles / colours / legend
 # --------------------------------------------------------------------------- #
 def test_roles_are_principled(result, roles):
-    role_of = dict(zip(result.names, roles))
+    role_of = dict(zip(result.names, roles, strict=False))
     assert role_of[result.reference] == "best"
     for r in ("best", "worst", "top", "right"):
         assert roles.count(r) == 1
@@ -119,7 +120,7 @@ def test_roles_are_principled(result, roles):
 def test_axis_champions_are_geometric(result, roles):
     # the "top"/"right" highlights are the challengers reaching furthest up the
     # vertical / along the horizontal axis, with the leader (and top) excluded.
-    role_of = dict(zip(result.names, roles))
+    role_of = dict(zip(result.names, roles, strict=False))
     idx = {n: k for k, n in enumerate(result.names)}
     leader = result.reference
     non_leader = [k for k, n in enumerate(result.names) if n != leader]
@@ -134,7 +135,7 @@ def test_colors_distinct_valid_and_roles_fixed(result, roles):
     colors = p4m.gradient_colors(result, roles)
     assert len(colors) == len(result.names)
     assert all(HEX.match(c) for c in colors)
-    assert len(set(colors)) == len(colors)             # every dot its own colour
+    assert len(set(colors)) == len(colors)  # every dot its own colour
     for i, role in enumerate(roles):
         if role != "competitor":
             assert colors[i] == p4m.ROLE_STYLE[role]["color"]
@@ -168,7 +169,7 @@ def test_finalize_poles_rejects_shared_words():
     words = [p4m._content_words(o) for o in out]
     for a in range(4):
         for b in range(a + 1, 4):
-            assert not (words[a] & words[b])           # no antonym/shared-word pair
+            assert not (words[a] & words[b])  # no antonym/shared-word pair
 
 
 def test_finalize_poles_rejects_negatives():
@@ -202,13 +203,19 @@ def test_fallback_poles_no_acronyms(result):
 def test_i18n_all_languages_present_and_formattable():
     for lang in p4m.SUPPORTED_LANGS:
         tpl = p4m.i18n(lang)
-        assert {"glossary_prefix", "axis_prompt", "narrative_prompt",
-                "noun_prompt"} <= set(tpl)
-        tpl["axis_prompt"].format(glossary="", left="a", right="b",
-                                  bottom="c", top="d")
+        assert {"glossary_prefix", "axis_prompt", "narrative_prompt", "noun_prompt"} <= set(tpl)
+        tpl["axis_prompt"].format(glossary="", left="a", right="b", bottom="c", top="d")
         tpl["narrative_prompt"].format(
-            left="a", right="b", bottom="c", top="d", reference="r", best="x",
-            worst="y", champ_top="z", champ_right="w", leaderboard="l",
+            left="a",
+            right="b",
+            bottom="c",
+            top="d",
+            reference="r",
+            best="x",
+            worst="y",
+            champ_top="z",
+            champ_right="w",
+            leaderboard="l",
         )
         tpl["noun_prompt"].format(word="Language")
 
@@ -219,10 +226,16 @@ def test_noun_forms_fallback():
 
 
 def test_detect_language():
-    assert p4m.detect_language(["Real-time streaming", "Operator experience",
-                                "On-prem privacy"]) == "en"
-    assert p4m.detect_language(["Diffusion en temps réel", "Confidentialité des "
-                                "données", "Qualité de l'expérience"]) == "fr"
+    assert (
+        p4m.detect_language(["Real-time streaming", "Operator experience", "On-prem privacy"])
+        == "en"
+    )
+    assert (
+        p4m.detect_language(
+            ["Diffusion en temps réel", "Confidentialité des données", "Qualité de l'expérience"]
+        )
+        == "fr"
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -247,8 +260,7 @@ def test_export_all_writes_three_fold(tmp_path, df, result, roles):
     names = p4m._poles_to_names(poles)
     colors = p4m.gradient_colors(result, roles)
     stem = str(tmp_path / "map")
-    written = p4m.export_all(df, result, roles, poles, names, colors, stem,
-                             use_llm=False)
+    written = p4m.export_all(df, result, roles, poles, names, colors, stem, use_llm=False)
     assert len(written) == 5
     assert Path(f"{stem}.png").read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
     assert "<svg" in Path(f"{stem}.svg").read_text()
@@ -263,9 +275,9 @@ def test_export_all_writes_three_fold(tmp_path, df, result, roles):
 # --------------------------------------------------------------------------- #
 def test_validate_table_rejects_degenerate_input():
     with pytest.raises(ValueError):
-        p4m.validate_table(pd.DataFrame({"x": [1.0]}))                 # 1 row
+        p4m.validate_table(pd.DataFrame({"x": [1.0]}))  # 1 row
     with pytest.raises(ValueError):
-        p4m.validate_table(pd.DataFrame({"x": [1.0, 2.0]}))            # 1 column
+        p4m.validate_table(pd.DataFrame({"x": [1.0, 2.0]}))  # 1 column
     with pytest.raises(ValueError):
         p4m.validate_table(pd.DataFrame({"x": [1.0, 2.0], "y": [np.nan, np.nan]}))
 
@@ -291,24 +303,26 @@ def test_resolve_polarity_marker_and_explicit():
 
 
 def test_lower_is_better_flips_the_axis():
-    data = pd.DataFrame({"Price": [1, 5, 3], "Quality": [3, 3, 3]},
-                        index=["cheap", "pricey", "mid"])
-    hi = p4m.analyze(data, reference=0)                          # naive higher-better
+    data = pd.DataFrame(
+        {"Price": [1, 5, 3], "Quality": [3, 3, 3]}, index=["cheap", "pricey", "mid"]
+    )
+    hi = p4m.analyze(data, reference=0)  # naive higher-better
     lo = p4m.analyze(data, reference=0, lower_is_better=["Price"])
     assert "Price" in lo.lower
     j = lo.features.index("Price")
     ci, pi = lo.names.index("cheap"), lo.names.index("pricey")
     # lower-is-better: the cheap option scores higher on the (negated) Price column
     assert lo.x_std[ci, j] > lo.x_std[pi, j]
-    assert hi.x_std[ci, j] < hi.x_std[pi, j]                     # opposite without it
+    assert hi.x_std[ci, j] < hi.x_std[pi, j]  # opposite without it
 
 
 def test_positioning_lower_marker_cleaned():
-    marked = pd.DataFrame({"Price (↓)": [1, 5, 3, 2], "Quality": [3, 2, 4, 5]},
-                          index=["a", "b", "c", "d"])
+    marked = pd.DataFrame(
+        {"Price (↓)": [1, 5, 3, 2], "Quality": [3, 2, 4, 5]}, index=["a", "b", "c", "d"]
+    )
     pos = p4m.positioning(marked, use_llm=False)
     assert "Price" in pos.result.lower
-    assert "Price" in pos.df.columns                            # marker stripped
+    assert "Price" in pos.df.columns  # marker stripped
 
 
 def test_positioning_api(df):
@@ -325,7 +339,12 @@ def test_positioning_export(tmp_path, df):
     pos = p4m.positioning(df, use_llm=False)
     written = pos.export(str(tmp_path), stem="demo", use_llm=False)
     assert {Path(w).name for w in written} == {
-        "demo.png", "demo.svg", "demo.vl.json", "demo.md", "demo.yaml"}
+        "demo.png",
+        "demo.svg",
+        "demo.vl.json",
+        "demo.md",
+        "demo.yaml",
+    }
 
 
 def test_positioning_accepts_path_and_string(df):
@@ -336,17 +355,17 @@ def test_positioning_accepts_path_and_string(df):
 # --------------------------------------------------------------------------- #
 # model-backed (skipped when the qwen model is not installed)
 # --------------------------------------------------------------------------- #
-@pytest.mark.skipif(not _model_available("qwen"),
-                    reason="no qwen model in Ollama")
+@pytest.mark.skipif(not _model_available("qwen"), reason="no qwen model in Ollama")
 def test_axis_poles_llm_quality(result):
     poles = p4m.axis_poles(result, use_llm=True)
     assert len(poles) == 4 and len(set(poles)) == 4
     joined = p4m._content_words(" ".join(poles))
-    assert not (joined & p4m._NEGATIVE_WORDS)           # only positive qualities
+    assert not (joined & p4m._NEGATIVE_WORDS)  # only positive qualities
 
 
-@pytest.mark.skipif(not _model_available("qwen2.5vl"),
-                    reason="qwen2.5vl vision model not installed")
+@pytest.mark.skipif(
+    not _model_available("qwen2.5vl"), reason="qwen2.5vl vision model not installed"
+)
 def test_vlm_assessment_of_rendered_figure(tmp_path, result):
     png, _svg = p4m.render_figures(p4m.to_vega(result), str(tmp_path / "m"))
     verdict = p4m.vlm_assess(png)

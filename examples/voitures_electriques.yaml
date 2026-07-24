@@ -59,8 +59,8 @@ approaches:
   coordinates:
     axis_1: 0.9328
     axis_2: 0.4385
-  role: competitor
-  color: '#A5C0FF'
+  role: top
+  color: '#AF52DE'
   attributes:
     Autonomie: 4.0
     Performances: 4.0
@@ -87,8 +87,8 @@ approaches:
   coordinates:
     axis_1: 2.8515
     axis_2: -0.1968
-  role: innovative
-  color: '#AF52DE'
+  role: competitor
+  color: '#59D5FF'
   attributes:
     Autonomie: 4.0
     Performances: 4.0
@@ -101,8 +101,8 @@ approaches:
   coordinates:
     axis_1: 2.8515
     axis_2: -0.1968
-  role: trustworthy
-  color: '#007AFF'
+  role: competitor
+  color: '#718ADB'
   attributes:
     Autonomie: 4.0
     Performances: 4.0
@@ -129,8 +129,8 @@ approaches:
   coordinates:
     axis_1: 3.4612
     axis_2: -0.4385
-  role: competitor
-  color: '#00A792'
+  role: right
+  color: '#007AFF'
   attributes:
     Autonomie: 4.0
     Performances: 5.0
@@ -144,7 +144,7 @@ approaches:
     axis_1: 2.4728
     axis_2: -0.1945
   role: competitor
-  color: '#28B0DA'
+  color: '#16B9A3'
   attributes:
     Autonomie: 4.0
     Performances: 4.0

@@ -57,8 +57,8 @@ approaches:
   coordinates:
     axis_1: 2.3614
     axis_2: -1.3129
-  role: innovative
-  color: '#AF52DE'
+  role: right
+  color: '#007AFF'
   attributes:
     Price: 5.0
     Performance: 5.0
@@ -70,8 +70,8 @@ approaches:
   coordinates:
     axis_1: 0.891
     axis_2: -0.3987
-  role: trustworthy
-  color: '#007AFF'
+  role: competitor
+  color: '#BC722B'
   attributes:
     Price: 4.0
     Performance: 4.0
@@ -84,7 +84,7 @@ approaches:
     axis_1: 1.4648
     axis_2: 0.9298
   role: competitor
-  color: '#E49753'
+  color: '#A1B656'
   attributes:
     Price: 4.0
     Performance: 4.0
@@ -110,7 +110,7 @@ approaches:
     axis_1: -0.8793
     axis_2: 1.3103
   role: competitor
-  color: '#52DEC7'
+  color: '#72CFFF'
   attributes:
     Price: 2.0
     Performance: 3.0
@@ -123,7 +123,7 @@ approaches:
     axis_1: 0.0695
     axis_2: 0.9268
   role: competitor
-  color: '#7D912E'
+  color: '#00AA95'
   attributes:
     Price: 3.0
     Performance: 3.0
@@ -148,8 +148,8 @@ approaches:
   coordinates:
     axis_1: -2.3614
     axis_2: 2.6563
-  role: competitor
-  color: '#3B9BD7'
+  role: top
+  color: '#AF52DE'
   attributes:
     Price: 1.0
     Performance: 2.0

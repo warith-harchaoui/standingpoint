@@ -49,7 +49,8 @@ import ollama
 import pandas as pd
 import vl_convert as vlc
 import yaml
-from langdetect import DetectorFactory, detect as _langdetect
+from langdetect import DetectorFactory
+from langdetect import detect as _langdetect
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
@@ -63,13 +64,13 @@ logger = logging.getLogger("standpoint")
 # The four highlighted roles keep a fixed identity hue; the axis cross and labels
 # use neutrals. Every other dot is coloured by its map position (`gradient_colors`).
 PALETTE = {
-    "reference": "#FF3B30",   # Red    — the reference leader (best), sits top-right
-    "right": "#007AFF",       # Blue   — challenger that most defines the right pole
-    "worst": "#A52A2A",       # Brown  — weakest overall, sits bottom-left
-    "top": "#AF52DE",         # Purple — challenger that most defines the top pole
+    "reference": "#FF3B30",  # Red    — the reference leader (best), sits top-right
+    "right": "#007AFF",  # Blue   — challenger that most defines the right pole
+    "worst": "#A52A2A",  # Brown  — weakest overall, sits bottom-left
+    "top": "#AF52DE",  # Purple — challenger that most defines the top pole
     "competitor": "#8E8E93",  # Gray   — placeholder; overridden by gradient_colors
-    "axis": "#C7C7CC",        # light gray for the centred, dotted axis cross
-    "label": "#1C1C1E",       # near-black label text
+    "axis": "#C7C7CC",  # light gray for the centred, dotted axis cross
+    "label": "#1C1C1E",  # near-black label text
 }
 FONT = "Roboto, -apple-system, Helvetica, Arial, sans-serif"
 
@@ -78,10 +79,26 @@ FONT = "Roboto, -apple-system, Helvetica, Arial, sans-serif"
 DEFAULT_MODEL = "qwen2.5vl:7b"
 
 __all__ = [
-    "positioning", "Positioning", "parse_table", "analyze", "PCAResult",
-    "assign_roles", "axis_poles", "gradient_colors", "to_vega", "render_figures",
-    "export_all", "analysis_markdown", "results_yaml", "validate_table",
-    "resolve_polarity", "detect_language", "i18n", "vlm_assess", "run", "main",
+    "positioning",
+    "Positioning",
+    "parse_table",
+    "analyze",
+    "PCAResult",
+    "assign_roles",
+    "axis_poles",
+    "gradient_colors",
+    "to_vega",
+    "render_figures",
+    "export_all",
+    "analysis_markdown",
+    "results_yaml",
+    "validate_table",
+    "resolve_polarity",
+    "detect_language",
+    "i18n",
+    "vlm_assess",
+    "run",
+    "main",
 ]
 
 
@@ -114,6 +131,7 @@ def _parse_markdown(text: str) -> pd.DataFrame:
     rows = [ln.strip() for ln in text.splitlines() if ln.strip().startswith("|")]
     # A GitHub separator row is only pipes/dashes/colons/spaces.
     rows = [r for r in rows if not re.fullmatch(r"[|\s:\-]+", r)]
+
     def split(row: str) -> list[str]:
         """Split one table row into stripped cell strings, dropping edge pipes."""
         return [c.strip() for c in row.strip().strip("|").split("|")]
@@ -126,7 +144,7 @@ def _parse_markdown(text: str) -> pd.DataFrame:
         index.append(name)
         records.append([_cell_to_number(c) for c in cells[1:]])
     frame = pd.DataFrame(records, index=index, columns=header[1:])
-    frame.index.name = header[0]        # keep the first-column name (e.g. "Language")
+    frame.index.name = header[0]  # keep the first-column name (e.g. "Language")
     return frame
 
 
@@ -143,7 +161,7 @@ def parse_table(source: str) -> pd.DataFrame:
             with open(source, encoding="utf-8") as fh:
                 text = fh.read()
         except (OSError, ValueError):
-            text, is_path = source, False   # not a real path -> treat as raw text
+            text, is_path = source, False  # not a real path -> treat as raw text
 
     if _looks_like_markdown(text):
         return _parse_markdown(text)
@@ -213,8 +231,7 @@ def _resolve_reference(df: pd.DataFrame, reference: int | str) -> int:
             raise ValueError(f"reference {reference!r} is not one of the options.")
         return int(df.index.get_loc(reference))
     if not -df.shape[0] <= reference < df.shape[0]:
-        raise ValueError(f"reference index {reference} is out of range "
-                         f"(0..{df.shape[0] - 1}).")
+        raise ValueError(f"reference index {reference} is out of range (0..{df.shape[0] - 1}).")
     return int(reference % df.shape[0])
 
 
@@ -230,12 +247,13 @@ def impute(df: pd.DataFrame) -> pd.DataFrame:
 # A header marker declaring a criterion as lower-is-better, e.g. "Price (↓)",
 # "Latency (lower)", "Errors (lower is better)". Stripped from the shown name.
 _LOWER_MARK = re.compile(
-    r"\s*\(?\s*(↓|lower(?:\s+is\s+better)?|less\s+is\s+better)\s*\)?\s*$", re.I)
+    r"\s*\(?\s*(↓|lower(?:\s+is\s+better)?|less\s+is\s+better)\s*\)?\s*$", re.I
+)
 
 
-def resolve_polarity(df: pd.DataFrame,
-                     lower_is_better: list[str] | None = None
-                     ) -> tuple[pd.DataFrame, frozenset[str]]:
+def resolve_polarity(
+    df: pd.DataFrame, lower_is_better: list[str] | None = None
+) -> tuple[pd.DataFrame, frozenset[str]]:
     """Detect lower-is-better criteria and return a clean-named copy + their names.
 
     A criterion is lower-is-better if its header carries a marker (``Price (↓)``,
@@ -246,7 +264,7 @@ def resolve_polarity(df: pd.DataFrame,
     rename, lower = {}, set()
     for col in df.columns:
         clean = _LOWER_MARK.sub("", str(col)).strip()
-        if clean != col:                       # had a marker
+        if clean != col:  # had a marker
             lower.add(clean)
         if clean in explicit or col in explicit:
             lower.add(clean)
@@ -278,22 +296,22 @@ def _rotation(alpha: float) -> np.ndarray:
 
 @dataclass
 class PCAResult:
-    names: list[str]                 # row labels
-    features: list[str]              # attribute names
-    scores: np.ndarray               # (n, 2) oriented coordinates
-    components: np.ndarray           # (2, p) oriented canonical axes (loadings)
+    names: list[str]  # row labels
+    features: list[str]  # attribute names
+    scores: np.ndarray  # (n, 2) oriented coordinates
+    components: np.ndarray  # (2, p) oriented canonical axes (loadings)
     explained_variance_ratio: np.ndarray  # from the original PCA fit
-    rotation_deg: float              # alpha applied, in degrees
-    reference: str                   # row placed top-right
-    x_std: np.ndarray                # (n, p) normalized feature matrix (PCA input)
-    lower: frozenset[str] = frozenset()   # criteria where lower is better (negated)
+    rotation_deg: float  # alpha applied, in degrees
+    reference: str  # row placed top-right
+    x_std: np.ndarray  # (n, p) normalized feature matrix (PCA input)
+    lower: frozenset[str] = frozenset()  # criteria where lower is better (negated)
 
     def loadings(self) -> pd.DataFrame:
-        return pd.DataFrame(
-            self.components.T, index=self.features, columns=["axis-1", "axis-2"]
-        )
+        """Criterion weights per oriented axis, as a features x (axis-1, axis-2) frame."""
+        return pd.DataFrame(self.components.T, index=self.features, columns=["axis-1", "axis-2"])
 
     def coords(self) -> pd.DataFrame:
+        """Oriented (axis-1, axis-2) coordinates, one row per option."""
         return pd.DataFrame(self.scores, index=self.names, columns=["axis-1", "axis-2"])
 
 
@@ -324,20 +342,20 @@ def analyze(
     ref_idx = _resolve_reference(df, reference)
     signed = df.copy()
     if lower:
-        signed[list(lower)] = -signed[list(lower)]   # flip so higher is better
+        signed[list(lower)] = -signed[list(lower)]  # flip so higher is better
     x, features = prepare(signed)
 
     pca = PCA(n_components=2)
-    scores = pca.fit_transform(x)          # (n, 2) in original PC frame
-    components = pca.components_           # (2, p) rows = PC1, PC2
+    scores = pca.fit_transform(x)  # (n, 2) in original PC frame
+    components = pca.components_  # (2, p) rows = PC1, PC2
 
     ref_vec = scores[ref_idx]
-    phi = np.arctan2(ref_vec[1], ref_vec[0])   # current angle of the reference
-    alpha = np.pi / 4 - phi                     # rotate it onto +45 deg
+    phi = np.arctan2(ref_vec[1], ref_vec[0])  # current angle of the reference
+    alpha = np.pi / 4 - phi  # rotate it onto +45 deg
 
     r = _rotation(alpha)
-    scores_rot = scores @ r.T                    # rotate every point
-    components_rot = r @ components              # recompute canonical axes
+    scores_rot = scores @ r.T  # rotate every point
+    components_rot = r @ components  # recompute canonical axes
 
     if soften_reference:
         # Place the reference at the best *Pareto* point: just beyond best-in-class
@@ -386,7 +404,8 @@ ROLE_STYLE = {
 
 def _rgb_to_hex(rgb: tuple[float, float, float]) -> str:
     """Convert an (r, g, b) triple in [0, 1] to a clamped ``#RRGGBB`` hex string."""
-    return "#%02X%02X%02X" % tuple(max(0, min(255, round(c * 255))) for c in rgb)
+    r, g, b = (max(0, min(255, round(c * 255))) for c in rgb)
+    return f"#{r:02X}{g:02X}{b:02X}"
 
 
 def _oklab_to_hex(lightness: float, a: float, b: float) -> str:
@@ -394,16 +413,18 @@ def _oklab_to_hex(lightness: float, a: float, b: float) -> str:
     l_ = lightness + 0.3963377774 * a + 0.2158037573 * b
     m_ = lightness - 0.1055613458 * a - 0.0638541728 * b
     s_ = lightness - 0.0894841775 * a - 1.2914855480 * b
-    lc, mc, sc = l_ ** 3, m_ ** 3, s_ ** 3
+    lc, mc, sc = l_**3, m_**3, s_**3
     rgb_lin = (
         +4.0767416621 * lc - 3.3077115913 * mc + 0.2309699292 * sc,
         -1.2684380046 * lc + 2.6097574011 * mc - 0.3413193965 * sc,
         -0.0041960863 * lc - 0.7034186147 * mc + 1.7076147010 * sc,
     )
+
     def gamma(u: float) -> float:
         """Apply the sRGB transfer function to one clamped linear channel."""
         u = max(0.0, min(1.0, u))
         return 1.055 * u ** (1 / 2.4) - 0.055 if u > 0.0031308 else 12.92 * u
+
     return _rgb_to_hex(tuple(gamma(c) for c in rgb_lin))
 
 
@@ -431,14 +452,15 @@ def gradient_colors(result: PCAResult, roles: list[str]) -> list[str]:
     ordered = sorted(comps, key=lambda i: float(angles[i]))
     m = max(1, len(ordered))
     lightness_key = sorted(comps, key=lambda i: (sum(map(ord, result.names[i])), i))
-    l_of = {i: _L_LO + (_L_HI - _L_LO) * (rank / max(1, len(comps) - 1))
-            for rank, i in enumerate(lightness_key)}
+    l_of = {
+        i: _L_LO + (_L_HI - _L_LO) * (rank / max(1, len(comps) - 1))
+        for rank, i in enumerate(lightness_key)
+    }
 
     colors = [""] * n
     for rank, i in enumerate(ordered):
-        hue = 2 * math.pi * (rank / m)          # evenly spaced around the wheel
-        colors[i] = _oklab_to_hex(l_of[i], _DOT_CHROMA * math.cos(hue),
-                                  _DOT_CHROMA * math.sin(hue))
+        hue = 2 * math.pi * (rank / m)  # evenly spaced around the wheel
+        colors[i] = _oklab_to_hex(l_of[i], _DOT_CHROMA * math.cos(hue), _DOT_CHROMA * math.sin(hue))
     for i, role in enumerate(roles):
         if role != "competitor":
             colors[i] = ROLE_STYLE[role]["color"]
@@ -452,13 +474,13 @@ def legend_order(scores: np.ndarray) -> list[int]:
     n = len(scores)
     if n == 0:
         return []
-    bands = max(1, round(n ** 0.5))
+    bands = max(1, round(n**0.5))
     per = math.ceil(n / bands)
     top_to_bottom = sorted(range(n), key=lambda i: -float(scores[i][1]))
     order: list[int] = []
     for b in range(bands):
-        row = top_to_bottom[b * per:(b + 1) * per]
-        row.sort(key=lambda i: -float(scores[i][0]))   # right -> left within the row
+        row = top_to_bottom[b * per : (b + 1) * per]
+        row.sort(key=lambda i: -float(scores[i][0]))  # right -> left within the row
         order.extend(row)
     return order
 
@@ -479,15 +501,19 @@ def corner_extremes(scores: np.ndarray) -> dict[str, int]:
 _LABEL_DIRS = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, 1), (1, -1), (-1, -1)]
 
 
-def _overlaps(a: tuple[float, float, float, float],
-              b: tuple[float, float, float, float]) -> bool:
+def _overlaps(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> bool:
     """True if two axis-aligned boxes ``(x0, y0, x1, y1)`` intersect."""
     return not (a[2] < b[0] or a[0] > b[2] or a[3] < b[1] or a[1] > b[3])
 
 
-def label_placements(result: PCAResult, view_x: float, view_y: float,
-                     width_px: int = 900, height_px: int = 760,
-                     font_px: float = 11.0) -> dict[int, tuple[float, float]]:
+def label_placements(
+    result: PCAResult,
+    view_x: float,
+    view_y: float,
+    width_px: int = 900,
+    height_px: int = 760,
+    font_px: float = 11.0,
+) -> dict[int, tuple[float, float]]:
     """Greedy de-clutter: choose which approaches to label and *where* to put each
     label. For every dot (corner extremes first, then outermost), try eight
     placements around it and keep the first that overlaps neither another label nor
@@ -497,15 +523,17 @@ def label_placements(result: PCAResult, view_x: float, view_y: float,
     so the pixel-to-data conversion is correct even when the map is not square.
     """
     scores = result.scores
-    sx = 2 * view_x / width_px         # data units per pixel, x
-    sy = 2 * view_y / height_px        # data units per pixel, y
+    sx = 2 * view_x / width_px  # data units per pixel, x
+    sy = 2 * view_y / height_px  # data units per pixel, y
     pad = 4 * sx
     dot_rx, dot_ry = 7 * sx, 7 * sy
     boxes = [(x - dot_rx, y - dot_ry, x + dot_rx, y + dot_ry) for x, y in scores]
 
     corners = list(corner_extremes(scores).values())
-    others = sorted((i for i in range(len(result.names)) if i not in corners),
-                    key=lambda i: -float(np.hypot(*scores[i])))
+    others = sorted(
+        (i for i in range(len(result.names)) if i not in corners),
+        key=lambda i: -float(np.hypot(*scores[i])),
+    )
     placements: dict[int, tuple[float, float]] = {}
     for i in corners + others:
         x, y = scores[i]
@@ -513,7 +541,7 @@ def label_placements(result: PCAResult, view_x: float, view_y: float,
         h = 1.3 * font_px * sy
         best = None  # (distance, box, (lx, ly)) — pick the free side nearest the dot
         for ox, oy in _LABEL_DIRS:
-            lx = x + ox * (dot_rx + pad + w / 2)   # clear the dot marker, then pad
+            lx = x + ox * (dot_rx + pad + w / 2)  # clear the dot marker, then pad
             ly = y + oy * (dot_ry + pad + h / 2)
             box = (lx - w / 2, ly - h / 2, lx + w / 2, ly + h / 2)
             if any(_overlaps(box, b) for b in boxes):
@@ -543,7 +571,7 @@ def _axis_champion(axis_values: np.ndarray, exclude: set[int]) -> int:
     int
         Row index of the highest not-excluded value along `axis_values`.
     """
-    order = np.argsort(axis_values)[::-1]                 # highest coordinate first
+    order = np.argsort(axis_values)[::-1]  # highest coordinate first
     return int(next(i for i in order if int(i) not in exclude))
 
 
@@ -589,15 +617,16 @@ def assign_roles(
 
     # The leader is the max on both axes, so a champion is the *next* option out
     # along each axis — the challenger that best embodies that winning pole.
-    top_idx = (names.index(top) if top is not None
-               else _axis_champion(scores[:, 1], {best_idx}))
-    right_idx = (names.index(right) if right is not None
-                 else _axis_champion(scores[:, 0], {best_idx, top_idx}))
+    top_idx = names.index(top) if top is not None else _axis_champion(scores[:, 1], {best_idx})
+    right_idx = (
+        names.index(right)
+        if right is not None
+        else _axis_champion(scores[:, 0], {best_idx, top_idx})
+    )
 
     roles = ["competitor"] * len(names)
     for role in ROLE_ORDER[1:]:  # skip "competitor" (default); low -> high priority
-        idx = {"right": right_idx, "top": top_idx,
-               "worst": worst_idx, "best": best_idx}[role]
+        idx = {"right": right_idx, "top": top_idx, "worst": worst_idx, "best": best_idx}[role]
         roles[idx] = role
     return roles
 
@@ -607,9 +636,17 @@ def assign_roles(
 # --------------------------------------------------------------------------- #
 # Expand common acronyms to real words — never show acronyms in the figure.
 _ACRONYM_WORDS = {
-    "tco": "Cost", "pii": "Privacy", "gdpr": "Compliance", "ux": "Experience",
-    "fr": "French", "ev": "Vehicles", "ai": "Intelligence", "qa": "Quality",
-    "stt": "Speech", "api": "Interface", "diy": "Homemade",
+    "tco": "Cost",
+    "pii": "Privacy",
+    "gdpr": "Compliance",
+    "ux": "Experience",
+    "fr": "French",
+    "ev": "Vehicles",
+    "ai": "Intelligence",
+    "qa": "Quality",
+    "stt": "Speech",
+    "api": "Interface",
+    "diy": "Homemade",
 }
 
 
@@ -617,7 +654,7 @@ def _deacronym(label: str) -> str:
     """Expand or drop acronym tokens in a label so the figure shows real words."""
     out = []
     for tok in label.split():
-        if tok.isupper() and len(tok) <= 5:            # looks like an acronym
+        if tok.isupper() and len(tok) <= 5:  # looks like an acronym
             expanded = _ACRONYM_WORDS.get(tok.lower())
             if expanded:
                 out.append(expanded)
@@ -635,31 +672,78 @@ def _one_word(feature: str) -> str:
     words = [t for t in toks if len(t) > 1 and not t.isupper()]  # drop acronyms
     if words:
         return max(words, key=len).capitalize()
-    for tok in toks:                                             # only acronyms left
+    for tok in toks:  # only acronyms left
         if tok.lower() in _ACRONYM_WORDS:
             return _ACRONYM_WORDS[tok.lower()]
     return _ACRONYM_WORDS.get(feature.strip().lower(), feature.strip().capitalize())
 
 
 # Small stop-words ignored when comparing labels for shared content words.
-_LABEL_STOP = {"and", "the", "for", "with", "your", "our", "per", "les", "des",
-               "las", "los", "una", "por", "con", "sur", "del"}
+_LABEL_STOP = {
+    "and",
+    "the",
+    "for",
+    "with",
+    "your",
+    "our",
+    "per",
+    "les",
+    "des",
+    "las",
+    "los",
+    "una",
+    "por",
+    "con",
+    "sur",
+    "del",
+}
 
 # A pole must be a positive quality; these markers signal a drawback (en/fr/es) and
 # get the label rejected — e.g. "High Cost", "Slow", "Expensive" never appear.
 _NEGATIVE_WORDS = {
-    "high", "low", "expensive", "costly", "slow", "complex", "complicated", "poor",
-    "weak", "insecure", "unreliable", "difficult", "limited", "hidden", "risky",
-    "lack", "worse", "bad", "élevé", "eleve", "cher", "lent", "complexe",
-    "coûteux", "couteux", "difficile", "faible", "alto", "caro", "lento", "complejo",
-    "costoso", "débil", "debil", "riesgo",
+    "high",
+    "low",
+    "expensive",
+    "costly",
+    "slow",
+    "complex",
+    "complicated",
+    "poor",
+    "weak",
+    "insecure",
+    "unreliable",
+    "difficult",
+    "limited",
+    "hidden",
+    "risky",
+    "lack",
+    "worse",
+    "bad",
+    "élevé",
+    "eleve",
+    "cher",
+    "lent",
+    "complexe",
+    "coûteux",
+    "couteux",
+    "difficile",
+    "faible",
+    "alto",
+    "caro",
+    "lento",
+    "complejo",
+    "costoso",
+    "débil",
+    "debil",
+    "riesgo",
 }
 
 
 def _content_words(label: str) -> set[str]:
     """Significant lowercase words in a label (>= 3 letters, minus stop-words)."""
-    return {t for t in re.findall(r"[a-zA-Z]+", label.lower())
-            if len(t) >= 3 and t not in _LABEL_STOP}
+    return {
+        t for t in re.findall(r"[a-zA-Z]+", label.lower()) if len(t) >= 3 and t not in _LABEL_STOP
+    }
 
 
 def _clean_label(label: str) -> str:
@@ -677,18 +761,24 @@ def finalize_poles(raw: list[str], fallback: list[str]) -> list[str]:
     'Cost Efficient' / 'High Cost'. A rejected label is replaced by its
     loading-derived fallback (drawn from a different criterion).
     """
+
     def bad(w: str) -> bool:
+        """True if label `w` must be rejected: empty, duplicate, shares a content
+        word with an already-accepted label (rules out antonym pairs), or contains
+        a negative word (a pole must name a positive quality).
+        """
         cw = _content_words(w)
-        return (not w or w.lower() in seen or bool(cw & used_words)
-                or bool(cw & _NEGATIVE_WORDS))       # never a drawback / negative
+        return (
+            not w or w.lower() in seen or bool(cw & used_words) or bool(cw & _NEGATIVE_WORDS)
+        )  # never a drawback / negative
 
     out: list[str] = []
     seen: set[str] = set()
     used_words: set[str] = set()
-    for i, (label, fb) in enumerate(zip(raw, fallback)):
+    for i, (label, fb) in enumerate(zip(raw, fallback, strict=False)):
         w = _clean_label(label)
         if bad(w):
-            w = _clean_label(fb)                       # fall back to the loading word
+            w = _clean_label(fb)  # fall back to the loading word
             if bad(w):
                 w = f"{w} {i}"
         seen.add(w.lower())
@@ -708,8 +798,10 @@ def _fallback_poles(components: np.ndarray, features: list[str]) -> list[str]:
     poles: list[str] = []
     for axis, sign in specs:
         order = np.argsort(components[axis])[::sign]  # sign +1 -> low end first
-        word = next((w for i in order if (w := _one_word(features[i])).lower()
-                     not in used), _one_word(features[order[0]]))
+        word = next(
+            (w for i in order if (w := _one_word(features[i])).lower() not in used),
+            _one_word(features[order[0]]),
+        )
         used.add(word.lower())
         poles.append(word)
     return poles
@@ -721,8 +813,9 @@ def _poles_to_names(poles: list[str]) -> list[str]:
     return [f"{left} ↔ {right}", f"{bottom} ↔ {top}"]
 
 
-def axis_poles(result: PCAResult, model: str = DEFAULT_MODEL,
-               use_llm: bool = True, lang: str | None = None) -> list[str]:
+def axis_poles(
+    result: PCAResult, model: str = DEFAULT_MODEL, use_llm: bool = True, lang: str | None = None
+) -> list[str]:
     """Four distinct pole labels [left, right, bottom, top] for the two axes.
 
     Each PCA axis is a weighted mix of the criteria. The local LLM names each pole
@@ -743,36 +836,57 @@ def axis_poles(result: PCAResult, model: str = DEFAULT_MODEL,
         # Every rating is higher-is-better, so a pole is best described by the
         # criteria approaches THERE score high on (its sign of the loading).
         def show(f: str) -> str:
-            # A lower-is-better criterion was negated, so a high score means LOW
-            # value: present it as "low <name>" so the model names the benefit.
+            """Present a criterion to the model, flagging negated (lower-better) ones.
+
+            A lower-is-better criterion was negated for the PCA, so a high score
+            means a LOW raw value: show it as "low <name>" so the model names the
+            benefit ("Affordable") rather than the drawback ("Expensive").
+            """
             return f"low {f}" if f in result.lower else f
 
         def pole_strengths(k: int, sign: int) -> str:
-            pairs = [(f, w) for f, w in zip(feats, result.components[k])
-                     if (w > 0) == (sign > 0) and abs(w) > 0.05]
+            """Criteria (with weights) that define one end of axis `k`.
+
+            `sign` selects the end: +1 for the positive-loading pole, -1 for the
+            negative one. Returns them strongest-first as a human-readable string,
+            or "—" when nothing loads meaningfully on that end.
+            """
+            pairs = [
+                (f, w)
+                for f, w in zip(feats, result.components[k], strict=False)
+                if (w > 0) == (sign > 0) and abs(w) > 0.05
+            ]
             pairs.sort(key=lambda t: -abs(t[1]))
             return ", ".join(f"{show(f)} (weight {abs(w):.2f})" for f, w in pairs) or "—"
 
         # Glossary of any acronyms present in the columns, so the model translates
         # them instead of echoing them (built from the actual column names).
-        present = {a.upper(): w for a, w in _ACRONYM_WORDS.items()
-                   if any(a.upper() in f.upper() for f in feats)}
-        glossary = (tpl["glossary_prefix"]
-                    + "; ".join(f"{k} = {v}" for k, v in present.items())
-                    + ".\n\n") if present else ""
+        present = {
+            a.upper(): w
+            for a, w in _ACRONYM_WORDS.items()
+            if any(a.upper() in f.upper() for f in feats)
+        }
+        glossary = (
+            (tpl["glossary_prefix"] + "; ".join(f"{k} = {v}" for k, v in present.items()) + ".\n\n")
+            if present
+            else ""
+        )
         prompt = tpl["axis_prompt"].format(
             glossary=glossary,
-            left=pole_strengths(0, -1), right=pole_strengths(0, +1),
-            bottom=pole_strengths(1, -1), top=pole_strengths(1, +1),
+            left=pole_strengths(0, -1),
+            right=pole_strengths(0, +1),
+            bottom=pole_strengths(1, -1),
+            top=pole_strengths(1, +1),
         )
         schema = {
             "type": "object",
-            "properties": {k: {"type": "string"}
-                           for k in ("left", "right", "bottom", "top")},
+            "properties": {k: {"type": "string"} for k in ("left", "right", "bottom", "top")},
             "required": ["left", "right", "bottom", "top"],
         }
         resp = ollama.chat(
-            model=model, format=schema, options={"temperature": 0},
+            model=model,
+            format=schema,
+            options={"temperature": 0},
             messages=[{"role": "user", "content": prompt}],
         )
         data = json.loads(resp["message"]["content"])
@@ -780,13 +894,13 @@ def axis_poles(result: PCAResult, model: str = DEFAULT_MODEL,
         # Clean, de-duplicate, and reject antonym/shared-word pairs.
         return finalize_poles(raw, fallback_poles)
     except Exception as exc:  # ollama missing / model absent / bad JSON
-        logger.warning("axis naming: LLM unavailable (%s); using deterministic names",
-                       exc)
+        logger.warning("axis naming: LLM unavailable (%s); using deterministic names", exc)
         return fallback_poles
 
 
-def noun_forms(word: str, model: str = DEFAULT_MODEL, use_llm: bool = True,
-               lang: str | None = None) -> tuple[str, str]:
+def noun_forms(
+    word: str, model: str = DEFAULT_MODEL, use_llm: bool = True, lang: str | None = None
+) -> tuple[str, str]:
     """Singular and plural of `word` (the first-column name), in its own language.
 
     Used for the figure title and legend heading, so a table of "Language" reads
@@ -794,7 +908,7 @@ def noun_forms(word: str, model: str = DEFAULT_MODEL, use_llm: bool = True,
     naive `+s` plural without a model.
     """
     word = (word or "Approach").strip() or "Approach"
-    if len(word) > 1 and word.lower().endswith("s"):        # looks plural already
+    if len(word) > 1 and word.lower().endswith("s"):  # looks plural already
         naive = (word[:-1].capitalize(), word.capitalize())
     else:
         naive = (word.capitalize(), word.capitalize() + "s")
@@ -803,21 +917,23 @@ def noun_forms(word: str, model: str = DEFAULT_MODEL, use_llm: bool = True,
     if lang is None:
         lang = detect_language([word])
     try:
-        schema = {"type": "object",
-                  "properties": {"singular": {"type": "string"},
-                                 "plural": {"type": "string"}},
-                  "required": ["singular", "plural"]}
+        schema = {
+            "type": "object",
+            "properties": {"singular": {"type": "string"}, "plural": {"type": "string"}},
+            "required": ["singular", "plural"],
+        }
         resp = ollama.chat(
-            model=model, format=schema, options={"temperature": 0},
-            messages=[{"role": "user",
-                       "content": i18n(lang)["noun_prompt"].format(word=word)}],
+            model=model,
+            format=schema,
+            options={"temperature": 0},
+            messages=[{"role": "user", "content": i18n(lang)["noun_prompt"].format(word=word)}],
         )
         data = json.loads(resp["message"]["content"])
         s = (str(data.get("singular") or "").strip() or naive[0]).capitalize()
         p = (str(data.get("plural") or "").strip() or naive[1]).capitalize()
         # Guard against the model swapping in a synonym (e.g. Voiture -> Véhicules):
         # a valid form must share a prefix with the actual column word.
-        prefix = word.lower()[:max(3, len(word) - 2)]
+        prefix = word.lower()[: max(3, len(word) - 2)]
         if not s.lower().startswith(prefix):
             s = naive[0]
         if not p.lower().startswith(prefix):
@@ -830,15 +946,24 @@ def noun_forms(word: str, model: str = DEFAULT_MODEL, use_llm: bool = True,
 # --------------------------------------------------------------------------- #
 # Vega-Lite
 # --------------------------------------------------------------------------- #
-def to_vega(result: PCAResult, roles: list[str] | None = None,
-            poles: list[str] | None = None, colors: list[str] | None = None,
-            noun_plural: str = "Approaches") -> dict:
+def to_vega(
+    result: PCAResult,
+    roles: list[str] | None = None,
+    poles: list[str] | None = None,
+    colors: list[str] | None = None,
+    noun_plural: str = "Approaches",
+    title: str | None = None,
+) -> dict:
     """Build a self-contained Vega-Lite v5 spec (inline data) for the map.
 
     Layers, bottom to top: a centred cross of axes through the origin (the neutral
     intersection), every approach coloured by its position (Apple-wheel HSV), the
     four pole words at the axis ends, and labels for the four corner extremes. No
     frame, spines, ticks, numeric scales, or arrows.
+
+    `title` is the fully-localized figure title (e.g. "Voitures dans le quadrant");
+    when omitted it defaults to the English "<plural> in the Quadrant" so direct
+    callers still get a sensible heading.
     """
     ref = result.reference
     names = result.names
@@ -869,6 +994,7 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
         """
         t = (min(max(n, few), many) - few) / (many - few)
         return round(hi + (lo - hi) * t)
+
     label_font = _scaled(11, 17)
     pole_font = _scaled(13, 22)
     legend_font = _scaled(9, 13)
@@ -882,10 +1008,19 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
     legend_colors = [colors[i] for i in order]
 
     points = [
-        {"name": nm, "axis1": float(x), "axis2": float(y), "role": r, "color": c,
-         "label": nm if i in placements else "",
-         "labelx": placements.get(i, (x, y))[0], "labely": placements.get(i, (x, y))[1]}
-        for i, ((x, y), nm, r, c) in enumerate(zip(result.scores, names, roles, colors))
+        {
+            "name": nm,
+            "axis1": float(x),
+            "axis2": float(y),
+            "role": r,
+            "color": c,
+            "label": nm if i in placements else "",
+            "labelx": placements.get(i, (x, y))[0],
+            "labely": placements.get(i, (x, y))[1],
+        }
+        for i, ((x, y), nm, r, c) in enumerate(
+            zip(result.scores, names, roles, colors, strict=False)
+        )
     ]
 
     xdom = {"domain": [-view_x, view_x]}
@@ -898,80 +1033,116 @@ def to_vega(result: PCAResult, roles: list[str] | None = None,
         """A Vega-Lite layer drawing one dotted axis segment in data coordinates."""
         return {
             "data": {"values": [{}]},
-            "mark": {"type": "rule", "color": PALETTE["axis"], "size": 1.2,
-                     "strokeDash": [2, 4]},
-            "encoding": {"x": {"datum": x0, "type": "quantitative", "scale": xdom,
-                               "axis": bare},
-                         "x2": {"datum": x1},
-                         "y": {"datum": y0, "type": "quantitative", "scale": ydom,
-                               "axis": bare},
-                         "y2": {"datum": y1}},
+            "mark": {"type": "rule", "color": PALETTE["axis"], "size": 1.2, "strokeDash": [2, 4]},
+            "encoding": {
+                "x": {"datum": x0, "type": "quantitative", "scale": xdom, "axis": bare},
+                "x2": {"datum": x1},
+                "y": {"datum": y0, "type": "quantitative", "scale": ydom, "axis": bare},
+                "y2": {"datum": y1},
+            },
         }
 
     def pole_label(x: float, y: float, text: str, align: str, baseline: str) -> dict:
         """A Vega-Lite text layer placing one italic pole word at an axis end."""
         return {
             "data": {"values": [{"x": x, "y": y, "t": text}]},
-            "mark": {"type": "text", "fontSize": pole_font, "fontStyle": "italic",
-                     "color": "#6E6E73", "align": align, "baseline": baseline},
-            "encoding": {"x": {"field": "x", "type": "quantitative", "scale": xdom,
-                               "axis": bare},
-                         "y": {"field": "y", "type": "quantitative", "scale": ydom,
-                               "axis": bare},
-                         "text": {"field": "t", "type": "nominal"}},
+            "mark": {
+                "type": "text",
+                "fontSize": pole_font,
+                "fontStyle": "italic",
+                "color": "#6E6E73",
+                "align": align,
+                "baseline": baseline,
+            },
+            "encoding": {
+                "x": {"field": "x", "type": "quantitative", "scale": xdom, "axis": bare},
+                "y": {"field": "y", "type": "quantitative", "scale": ydom, "axis": bare},
+                "text": {"field": "t", "type": "nominal"},
+            },
         }
 
-    edge_x, edge_y = view_x * 0.98, view_y * 0.98   # axes span the full view
-    gap_x, gap_y = span_x * 0.04, span_y * 0.04     # keep pole words off the lines
+    edge_x, edge_y = view_x * 0.98, view_y * 0.98  # axes span the full view
+    gap_x, gap_y = span_x * 0.04, span_y * 0.04  # keep pole words off the lines
     layers = [
-        rule(-edge_x, edge_x, 0, 0),     # horizontal axis
-        rule(0, 0, -edge_y, edge_y),     # vertical axis
+        rule(-edge_x, edge_x, 0, 0),  # horizontal axis
+        rule(0, 0, -edge_y, edge_y),  # vertical axis
         pole_label(edge_x, gap_y, right, "right", "bottom"),
         pole_label(-edge_x, gap_y, left, "left", "bottom"),
         pole_label(gap_x, edge_y, top, "left", "top"),
         pole_label(gap_x, -edge_y, bottom, "left", "bottom"),
         {  # every dot coloured by position; legend maps name -> colour
             "data": {"values": points},
-            "mark": {"type": "point", "filled": True, "opacity": 0.95,
-                     "stroke": "white", "strokeWidth": 1, "size": dot_size},
+            "mark": {
+                "type": "point",
+                "filled": True,
+                "opacity": 0.95,
+                "stroke": "white",
+                "strokeWidth": 1,
+                "size": dot_size,
+            },
             "encoding": {
                 "x": xenc,
                 "y": yenc,
-                "color": {"field": "name", "type": "nominal",
-                          "scale": {"domain": legend_names, "range": legend_colors},
-                          "legend": {"title": noun_plural, "symbolLimit": 0,
-                                     "labelFontSize": legend_font, "symbolOpacity": 1}},
-                "tooltip": [{"field": "name", "type": "nominal"},
-                            {"field": "role", "type": "nominal"},
-                            {"field": "axis1", "type": "quantitative", "format": ".2f"},
-                            {"field": "axis2", "type": "quantitative", "format": ".2f"}],
+                "color": {
+                    "field": "name",
+                    "type": "nominal",
+                    "scale": {"domain": legend_names, "range": legend_colors},
+                    "legend": {
+                        "title": noun_plural,
+                        "symbolLimit": 0,
+                        "labelFontSize": legend_font,
+                        "symbolOpacity": 1,
+                    },
+                },
+                "tooltip": [
+                    {"field": "name", "type": "nominal"},
+                    {"field": "role", "type": "nominal"},
+                    {"field": "axis1", "type": "quantitative", "format": ".2f"},
+                    {"field": "axis2", "type": "quantitative", "format": ".2f"},
+                ],
             },
         },
         {  # labels — de-cluttered, placed on whichever side is free
             "data": {"values": points},
             "transform": [{"filter": "datum.label != ''"}],
-            "mark": {"type": "text", "align": "center", "baseline": "middle",
-                     "fontSize": label_font, "color": PALETTE["label"]},
-            "encoding": {"x": {"field": "labelx", "type": "quantitative"},
-                         "y": {"field": "labely", "type": "quantitative"},
-                         "text": {"field": "label", "type": "nominal"}},
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": label_font,
+                "color": PALETTE["label"],
+            },
+            "encoding": {
+                "x": {"field": "labelx", "type": "quantitative"},
+                "y": {"field": "labely", "type": "quantitative"},
+                "text": {"field": "label", "type": "nominal"},
+            },
         },
     ]
 
     # The plotting area is tall enough that the one-row-per-approach legend beside
     # it is never taller than the canvas (so it can't be clipped).
     height = max(720, 24 * n + 140)
+    if title is None:  # direct callers get the English default; localized via i18n
+        title = f"{noun_plural} in the Quadrant"
     return {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "title": {"text": f"{noun_plural} in the Quadrant", "font": FONT, "fontSize": 18},
-        "width": 1000, "height": height,
-        "autosize": {"type": "pad", "resize": True},   # grow to fit the legend
+        "title": {"text": title, "font": FONT, "fontSize": 18},
+        "width": 1000,
+        "height": height,
+        "autosize": {"type": "pad", "resize": True},  # grow to fit the legend
         "config": {
             "font": FONT,
             "padding": 12,
-            "view": {"stroke": None},   # no box around the plotting area
-            "axis": {"grid": False, "domain": False, "ticks": False, "labels": False,
-                     "labelFont": FONT, "titleFont": FONT},
+            "view": {"stroke": None},  # no box around the plotting area
+            "axis": {
+                "grid": False,
+                "domain": False,
+                "ticks": False,
+                "labels": False,
+                "labelFont": FONT,
+                "titleFont": FONT,
+            },
             "text": {"font": FONT},
         },
         "layer": layers,
@@ -1017,7 +1188,9 @@ def vlm_assess(image_path: str, model: str = DEFAULT_MODEL) -> dict:
     )
     try:
         resp = ollama.chat(
-            model=model, format=schema, options={"temperature": 0},
+            model=model,
+            format=schema,
+            options={"temperature": 0},
             messages=[{"role": "user", "content": prompt, "images": [image_path]}],
         )
         return json.loads(resp["message"]["content"])
@@ -1030,16 +1203,24 @@ def _llm_text(prompt: str, model: str, use_llm: bool, fallback: str) -> str:
     if not use_llm:
         return fallback
     try:
-        resp = ollama.chat(model=model, options={"temperature": 0.3},
-                           messages=[{"role": "user", "content": prompt}])
+        resp = ollama.chat(
+            model=model,
+            options={"temperature": 0.3},
+            messages=[{"role": "user", "content": prompt}],
+        )
         return resp["message"]["content"].strip() or fallback
     except Exception:
         return fallback
 
 
-def analysis_markdown(result: PCAResult, roles: list[str],
-                      poles: list[str], model: str = DEFAULT_MODEL,
-                      use_llm: bool = True, lang: str | None = None) -> str:
+def analysis_markdown(
+    result: PCAResult,
+    roles: list[str],
+    poles: list[str],
+    model: str = DEFAULT_MODEL,
+    use_llm: bool = True,
+    lang: str | None = None,
+) -> str:
     """A thoughtful, precise interpretation of the map as Markdown.
 
     Combines data-derived facts (axis loadings, variance, roles, coordinates) with
@@ -1049,28 +1230,39 @@ def analysis_markdown(result: PCAResult, roles: list[str],
     left, right, bottom, top = poles
     evr = result.explained_variance_ratio
     names = result.names
-    role_of = dict(zip(names, roles))
+    role_of = dict(zip(names, roles, strict=False))
     coords = result.coords()
     if lang is None:
         lang = detect_language(result.features)
 
     def loading_line(k: int) -> str:
-        pairs = sorted(zip(result.features, result.components[k]), key=lambda t: -t[1])
+        """Axis `k`'s criteria and signed weights, highest-first, as one line."""
+        pairs = sorted(
+            zip(result.features, result.components[k], strict=False), key=lambda t: -t[1]
+        )
         return " · ".join(f"{f} ({w:+.2f})" for f, w in pairs)
 
     ranked = sorted(names, key=lambda n: -(coords.loc[n].sum()))
-    role_rows = {r: next((n for n, rr in role_of.items() if rr == r), "—")
-                 for r in ("best", "worst", "top", "right")}
+    role_rows = {
+        r: next((n for n, rr in role_of.items() if rr == r), "—")
+        for r in ("best", "worst", "top", "right")
+    }
 
     narrative = _llm_text(
         i18n(lang)["narrative_prompt"].format(
-            left=left, right=right, bottom=bottom, top=top,
-            reference=result.reference, best=role_rows["best"],
-            worst=role_rows["worst"], champ_top=role_rows["top"],
+            left=left,
+            right=right,
+            bottom=bottom,
+            top=top,
+            reference=result.reference,
+            best=role_rows["best"],
+            worst=role_rows["worst"],
+            champ_top=role_rows["top"],
             champ_right=role_rows["right"],
             leaderboard=", ".join(ranked[:8]),
         ),
-        model, use_llm,
+        model,
+        use_llm,
         fallback=(
             f"The map's horizontal axis contrasts **{left}** (left) with **{right}** "
             f"(right); the vertical contrasts **{bottom}** (bottom) with **{top}** "
@@ -1103,8 +1295,7 @@ def analysis_markdown(result: PCAResult, roles: list[str],
         "## Highlighted approaches",
         "",
         f"- **Leader (reference):** {role_rows['best']}",
-        f"- **Weakest overall:** {role_rows['worst']} (lowest projection on the "
-        "leader diagonal)",
+        f"- **Weakest overall:** {role_rows['worst']} (lowest projection on the leader diagonal)",
         f"- **Strongest toward {top}:** {role_rows['top']} (challenger furthest up "
         "the vertical axis)",
         f"- **Strongest toward {right}:** {role_rows['right']} (challenger furthest "
@@ -1113,16 +1304,22 @@ def analysis_markdown(result: PCAResult, roles: list[str],
         "## Leaderboard (by combined axis score)",
         "",
     ]
-    lines += [f"{i}. {n}  ({coords.loc[n, 'axis-1']:+.2f}, {coords.loc[n, 'axis-2']:+.2f})"
-              for i, n in enumerate(ranked, 1)]
-    lines += ["", "*Coordinates are PCA units; see the companion YAML for full "
-              "coefficients.*", ""]
+    lines += [
+        f"{i}. {n}  ({coords.loc[n, 'axis-1']:+.2f}, {coords.loc[n, 'axis-2']:+.2f})"
+        for i, n in enumerate(ranked, 1)
+    ]
+    lines += ["", "*Coordinates are PCA units; see the companion YAML for full coefficients.*", ""]
     return "\n".join(lines)
 
 
-def results_yaml(df: pd.DataFrame, result: PCAResult, roles: list[str],
-                 poles: list[str], axis_names: list[str],
-                 colors: list[str]) -> str:
+def results_yaml(
+    df: pd.DataFrame,
+    result: PCAResult,
+    roles: list[str],
+    poles: list[str],
+    axis_names: list[str],
+    colors: list[str],
+) -> str:
     """Everything about the fit as YAML: metadata, axis loadings, and per-approach
     coordinates, roles, colours, and original attribute values."""
     evr = result.explained_variance_ratio
@@ -1142,14 +1339,20 @@ def results_yaml(df: pd.DataFrame, result: PCAResult, roles: list[str],
         },
         "axes": {
             "axis_1": {
-                "name": axis_names[0], "pole_left": left, "pole_right": right,
-                "loadings": {f: round(float(w), 4)
-                             for f, w in zip(feats, result.components[0])},
+                "name": axis_names[0],
+                "pole_left": left,
+                "pole_right": right,
+                "loadings": {
+                    f: round(float(w), 4) for f, w in zip(feats, result.components[0], strict=False)
+                },
             },
             "axis_2": {
-                "name": axis_names[1], "pole_bottom": bottom, "pole_top": top,
-                "loadings": {f: round(float(w), 4)
-                             for f, w in zip(feats, result.components[1])},
+                "name": axis_names[1],
+                "pole_bottom": bottom,
+                "pole_top": top,
+                "loadings": {
+                    f: round(float(w), 4) for f, w in zip(feats, result.components[1], strict=False)
+                },
             },
         },
         "approaches": [
@@ -1160,22 +1363,34 @@ def results_yaml(df: pd.DataFrame, result: PCAResult, roles: list[str],
                 "color": color,
                 "attributes": {f: round(float(raw.loc[n, f]), 3) for f in feats},
             }
-            for n, (x, y), role, color in zip(result.names, result.scores, roles, colors)
+            for n, (x, y), role, color in zip(
+                result.names, result.scores, roles, colors, strict=False
+            )
         ],
     }
     return yaml.dump(doc, sort_keys=False, allow_unicode=True, width=100)
 
 
-def export_all(df: pd.DataFrame, result: PCAResult, roles: list[str],
-               poles: list[str], axis_names: list[str], colors: list[str],
-               stem: str, model: str = DEFAULT_MODEL, use_llm: bool = True,
-               noun_plural: str = "Approaches") -> list[str]:
+def export_all(
+    df: pd.DataFrame,
+    result: PCAResult,
+    roles: list[str],
+    poles: list[str],
+    axis_names: list[str],
+    colors: list[str],
+    stem: str,
+    model: str = DEFAULT_MODEL,
+    use_llm: bool = True,
+    noun_plural: str = "Approaches",
+    title: str | None = None,
+) -> list[str]:
     """Write the full three-fold deliverable for one table: figures (PNG + SVG +
     Vega JSON), a Markdown interpretation, and a YAML of coordinates + coefficients.
     Returns the list of paths written.
     """
-    spec = to_vega(result, roles=roles, poles=poles, colors=colors,
-                   noun_plural=noun_plural)
+    spec = to_vega(
+        result, roles=roles, poles=poles, colors=colors, noun_plural=noun_plural, title=title
+    )
     written = render_figures(spec, stem)
     for path, text in [
         (f"{stem}.vl.json", json.dumps(spec, indent=2, ensure_ascii=False)),
@@ -1194,6 +1409,7 @@ def export_all(df: pd.DataFrame, result: PCAResult, roles: list[str],
 @dataclass
 class Positioning:
     """Result of `positioning()` — the map plus everything computed for it."""
+
     df: pd.DataFrame
     result: PCAResult
     roles: list[str]
@@ -1202,6 +1418,7 @@ class Positioning:
     colors: list[str]
     noun_singular: str = "Approach"
     noun_plural: str = "Approaches"
+    title: str = "Approaches in the Quadrant"  # fully-localized figure title
 
     @property
     def coords(self) -> pd.DataFrame:
@@ -1221,12 +1438,18 @@ class Positioning:
     @property
     def role_of(self) -> dict[str, str]:
         """Map each option name to its role (best / worst / … / competitor)."""
-        return dict(zip(self.result.names, self.roles))
+        return dict(zip(self.result.names, self.roles, strict=False))
 
     def to_vega(self) -> dict:
         """The Vega-Lite spec for the map."""
-        return to_vega(self.result, self.roles, self.poles, self.colors,
-                       noun_plural=self.noun_plural)
+        return to_vega(
+            self.result,
+            self.roles,
+            self.poles,
+            self.colors,
+            noun_plural=self.noun_plural,
+            title=self.title,
+        )
 
     def to_markdown(self, model: str = DEFAULT_MODEL, use_llm: bool = True) -> str:
         """The written interpretation as Markdown."""
@@ -1234,26 +1457,48 @@ class Positioning:
 
     def to_yaml(self) -> str:
         """All coordinates + coefficients as YAML."""
-        return results_yaml(self.df, self.result, self.roles, self.poles,
-                            self.axis_names, self.colors)
+        return results_yaml(
+            self.df, self.result, self.roles, self.poles, self.axis_names, self.colors
+        )
 
     def figure(self, stem: str) -> list[str]:
         """Render the map to `<stem>.png` and `<stem>.svg`; returns the paths."""
         return render_figures(self.to_vega(), stem)
 
-    def export(self, outdir: str = ".", stem: str | None = None,
-               model: str = DEFAULT_MODEL, use_llm: bool = True) -> list[str]:
+    def export(
+        self,
+        outdir: str = ".",
+        stem: str | None = None,
+        model: str = DEFAULT_MODEL,
+        use_llm: bool = True,
+    ) -> list[str]:
         """Write the full three-fold deliverable into `outdir`; returns the paths."""
         os.makedirs(outdir, exist_ok=True)
         name = stem or re.sub(r"[^A-Za-z0-9]+", "_", self.result.reference).strip("_").lower()
-        return export_all(self.df, self.result, self.roles, self.poles,
-                          self.axis_names, self.colors, os.path.join(outdir, name),
-                          model=model, use_llm=use_llm, noun_plural=self.noun_plural)
+        return export_all(
+            self.df,
+            self.result,
+            self.roles,
+            self.poles,
+            self.axis_names,
+            self.colors,
+            os.path.join(outdir, name),
+            model=model,
+            use_llm=use_llm,
+            noun_plural=self.noun_plural,
+            title=self.title,
+        )
 
 
-def positioning(data, reference: int | str = 0, top: str | None = None,
-                right: str | None = None, lower_is_better: list[str] | None = None,
-                model: str = DEFAULT_MODEL, use_llm: bool = True) -> Positioning:
+def positioning(
+    data: pd.DataFrame | str,
+    reference: int | str = 0,
+    top: str | None = None,
+    right: str | None = None,
+    lower_is_better: list[str] | None = None,
+    model: str = DEFAULT_MODEL,
+    use_llm: bool = True,
+) -> Positioning:
     """Position options from a table in one call.
 
     `data` is a pandas DataFrame (options × numeric criteria) or a path / raw string
@@ -1267,25 +1512,45 @@ def positioning(data, reference: int | str = 0, top: str | None = None,
     >>> pos.export("out")
     """
     df = data if isinstance(data, pd.DataFrame) else parse_table(data)
-    df, lower = resolve_polarity(df, lower_is_better)      # clean names + lower set
+    df, lower = resolve_polarity(df, lower_is_better)  # clean names + lower set
     result = analyze(df, reference=reference, lower_is_better=list(lower))
     roles = assign_roles(result, top=top, right=right)
     lang = detect_language(result.features)
     poles = axis_poles(result, model=model, use_llm=use_llm, lang=lang)
-    singular, plural = noun_forms(str(df.index.name or "Approach"), model=model,
-                                  use_llm=use_llm, lang=lang)
-    return Positioning(df, result, roles, poles, _poles_to_names(poles),
-                       gradient_colors(result, roles), singular, plural)
+    singular, plural = noun_forms(
+        str(df.index.name or "Approach"), model=model, use_llm=use_llm, lang=lang
+    )
+    # Localize the whole title, not just the noun: a French table reads
+    # "Voitures dans le quadrant", never "Voitures in the Quadrant".
+    title = i18n(lang)["title_template"].format(plural=plural)
+    return Positioning(
+        df,
+        result,
+        roles,
+        poles,
+        _poles_to_names(poles),
+        gradient_colors(result, roles),
+        singular,
+        plural,
+        title,
+    )
 
 
 # --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
-def run(table: str, reference: str = "0", outdir: str = "out",
-        stem: str | None = None, top: str | None = None,
-        right: str | None = None, lower: str = "",
-        model: str = DEFAULT_MODEL, no_llm: bool = False,
-        check: bool = False) -> list[str]:
+def run(
+    table: str,
+    reference: str = "0",
+    outdir: str = "out",
+    stem: str | None = None,
+    top: str | None = None,
+    right: str | None = None,
+    lower: str = "",
+    model: str = DEFAULT_MODEL,
+    no_llm: bool = False,
+    check: bool = False,
+) -> list[str]:
     """Shared CLI core: build the positioning, print a summary, write the files.
 
     Used by both the argparse (`main`) and click (`main_click`) entry points.
@@ -1294,22 +1559,35 @@ def run(table: str, reference: str = "0", outdir: str = "out",
     """
     ref: int | str = int(reference) if reference.lstrip("-").isdigit() else reference
     lower_cols = [c.strip() for c in lower.split(",") if c.strip()]
-    pos = positioning(parse_table(table), reference=ref, top=top,
-                      right=right, lower_is_better=lower_cols,
-                      model=model, use_llm=not no_llm)
+    pos = positioning(
+        parse_table(table),
+        reference=ref,
+        top=top,
+        right=right,
+        lower_is_better=lower_cols,
+        model=model,
+        use_llm=not no_llm,
+    )
     result, evr = pos.result, pos.result.explained_variance_ratio
 
     print(f"Parsed {pos.df.shape[0]} options x {pos.df.shape[1]} criteria")
-    print(f"Reference '{result.reference}' rotated by {result.rotation_deg:+.1f} deg "
-          "onto the top-right diagonal\n")
-    print(f"PCA explained variance: axis-1(PC1)={evr[0]:.1%}  axis-2(PC2)={evr[1]:.1%}  "
-          f"(cumulative {evr.sum():.1%})\n")
+    print(
+        f"Reference '{result.reference}' rotated by {result.rotation_deg:+.1f} deg "
+        "onto the top-right diagonal\n"
+    )
+    print(
+        f"PCA explained variance: axis-1(PC1)={evr[0]:.1%}  axis-2(PC2)={evr[1]:.1%}  "
+        f"(cumulative {evr.sum():.1%})\n"
+    )
     print(f"Axis names: axis-1 = {pos.axis_names[0]!r}   axis-2 = {pos.axis_names[1]!r}\n")
     # poles are [left, right, bottom, top]; name each highlight by its pole word.
     print("Highlighted options:")
-    highlights = [("best", "leader (reference)"), ("worst", "weakest overall"),
-                  ("top", f"strongest toward {pos.poles[3]!r}"),
-                  ("right", f"strongest toward {pos.poles[1]!r}")]
+    highlights = [
+        ("best", "leader (reference)"),
+        ("worst", "weakest overall"),
+        ("top", f"strongest toward {pos.poles[3]!r}"),
+        ("right", f"strongest toward {pos.poles[1]!r}"),
+    ]
     for role, label in highlights:
         who = next((n for n, r in pos.role_of.items() if r == role), "—")
         print(f"  {label:34s}: {who}")
@@ -1340,26 +1618,49 @@ def main(argv: list[str] | None = None) -> None:
     """argparse entry point (console command ``standpoint``)."""
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("table", help="path to a markdown or CSV table")
-    ap.add_argument("-r", "--reference", default="0",
-                    help="row placed top-right: index (default 0) or exact name")
-    ap.add_argument("-o", "--outdir", default="out",
-                    help="output directory for the three-fold deliverable (default out/)")
+    ap.add_argument(
+        "-r",
+        "--reference",
+        default="0",
+        help="row placed top-right: index (default 0) or exact name",
+    )
+    ap.add_argument(
+        "-o",
+        "--outdir",
+        default="out",
+        help="output directory for the three-fold deliverable (default out/)",
+    )
     ap.add_argument("--stem", help="basename for outputs (default: derived from reference)")
-    ap.add_argument("--top", help="exact name of the option to highlight as strongest "
-                    "toward the top pole (default: picked from the map)")
-    ap.add_argument("--right", help="exact name of the option to highlight as strongest "
-                    "toward the right pole (default: picked from the map)")
-    ap.add_argument("--lower", default="",
-                    help="comma-separated criteria where lower is better (e.g. Price,Latency)")
-    ap.add_argument("--model", default=DEFAULT_MODEL,
-                    help=f"Ollama model for axis naming (default {DEFAULT_MODEL})")
-    ap.add_argument("--no-llm", action="store_true",
-                    help="skip the LLM; use deterministic axis names")
-    ap.add_argument("--check", action="store_true",
-                    help="ask the vision model to sanity-check the rendered figure")
+    ap.add_argument(
+        "--top",
+        help="exact name of the option to highlight as strongest "
+        "toward the top pole (default: picked from the map)",
+    )
+    ap.add_argument(
+        "--right",
+        help="exact name of the option to highlight as strongest "
+        "toward the right pole (default: picked from the map)",
+    )
+    ap.add_argument(
+        "--lower",
+        default="",
+        help="comma-separated criteria where lower is better (e.g. Price,Latency)",
+    )
+    ap.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help=f"Ollama model for axis naming (default {DEFAULT_MODEL})",
+    )
+    ap.add_argument(
+        "--no-llm", action="store_true", help="skip the LLM; use deterministic axis names"
+    )
+    ap.add_argument(
+        "--check",
+        action="store_true",
+        help="ask the vision model to sanity-check the rendered figure",
+    )
     a = ap.parse_args(argv)
-    run(a.table, a.reference, a.outdir, a.stem, a.top, a.right,
-        a.lower, a.model, a.no_llm, a.check)
+    run(a.table, a.reference, a.outdir, a.stem, a.top, a.right, a.lower, a.model, a.no_llm, a.check)
 
 
 if __name__ == "__main__":

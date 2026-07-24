@@ -2,11 +2,11 @@
 
 ## Interpretation
 
-The positioning map uses two axes to compare cloud service providers based on their ease of use, scalability, affordability, and flexibility. On the horizontal axis, from left to right, "Ease of Use" is prioritized over "Scalability," suggesting that simplicity in operation takes precedence for many users. The vertical axis, from bottom to top, emphasizes "Affordability" at the lower end and moves towards "Flexibility" as it ascends.
+The positioning map uses a two-dimensional grid to compare cloud service providers based on ease of use, scalability, affordability, and flexibility. The horizontal axis represents these dimensions, with "Ease of Use" on the left and "Scalability" on the right. Similarly, the vertical axis measures from "Affordability" at the bottom to "Flexibility" at the top.
 
-AWS leads at the top-right corner on both axes, indicating its dominance in terms of ease of use and scalability. Microsoft Azure follows closely behind AWS, showcasing strong performance across all dimensions. Google Cloud is noted for its innovation, particularly in flexibility, while maintaining a high score in other areas. Microsoft Azure also stands out as one of the most trustworthy providers according to user perception.
+Amazon Web Services (AWS) leads in scalability and affordability but lags slightly behind Microsoft Azure when it comes to flexibility. Microsoft Azure excels particularly in its ability to offer a wide range of services, making it highly flexible despite not being as affordable or scalable as AWS. IBM Cloud stands out for its strong performance in scalability, which is reflected by its position furthest towards the right on the map.
 
-The leaderboard reflects these scores: AWS maintains its top position with a comprehensive lead over competitors like Microsoft Azure and Google Cloud. IBM Cloud, Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel round out the list, each excelling in specific areas that cater to diverse customer needs. This analysis highlights how different providers can be best suited for various business requirements based on their positioning within this map.
+The leaderboard reveals that AWS maintains the top spot with a combined score reflecting its overall dominance across all dimensions. Microsoft Azure and Google Cloud follow closely behind, showcasing robust capabilities in both flexibility and scalability. IBM Cloud's standout feature of scalability makes it a notable challenger for cloud service providers aiming to handle large-scale applications efficiently. Alibaba Cloud, Cloudflare, Oracle Cloud, and Vercel also occupy significant positions on the map, each contributing unique strengths that cater to specific needs within their respective niches.
 
 ## Axes
 
@@ -17,9 +17,9 @@ The leaderboard reflects these scores: AWS maintains its top position with a com
 ## Highlighted approaches
 
 - **Leader (reference):** AWS
-- **Weakest overall:** DigitalOcean (lowest projection on the leader axis)
-- **Most innovative:** Google Cloud (frontier-capability projection)
-- **Most trustworthy:** Microsoft Azure (privacy / compliance projection)
+- **Weakest overall:** DigitalOcean (lowest projection on the leader diagonal)
+- **Strongest toward Flexibility:** Microsoft Azure (challenger furthest up the vertical axis)
+- **Strongest toward Scalability:** IBM Cloud (challenger furthest along the horizontal axis)
 
 ## Leaderboard (by combined axis score)
 

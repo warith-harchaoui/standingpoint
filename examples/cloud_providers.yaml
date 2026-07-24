@@ -59,8 +59,8 @@ approaches:
   coordinates:
     axis_1: 1.3773
     axis_2: 1.843
-  role: innovative
-  color: '#AF52DE'
+  role: competitor
+  color: '#6BD5A0'
   attributes:
     Compute Breadth: 4.0
     Managed AI/ML: 5.0
@@ -73,8 +73,8 @@ approaches:
   coordinates:
     axis_1: 2.2037
     axis_2: 2.5502
-  role: trustworthy
-  color: '#007AFF'
+  role: top
+  color: '#AF52DE'
   attributes:
     Compute Breadth: 4.0
     Managed AI/ML: 4.0
@@ -88,7 +88,7 @@ approaches:
     axis_1: 1.2574
     axis_2: -0.7578
   role: competitor
-  color: '#E6B356'
+  color: '#DEAB4D'
   attributes:
     Compute Breadth: 3.0
     Managed AI/ML: 2.0
@@ -101,8 +101,8 @@ approaches:
   coordinates:
     axis_1: 1.7671
     axis_2: 0.0355
-  role: competitor
-  color: '#A2B858'
+  role: right
+  color: '#007AFF'
   attributes:
     Compute Breadth: 3.0
     Managed AI/ML: 3.0
@@ -116,7 +116,7 @@ approaches:
     axis_1: 1.0845
     axis_2: 0.5036
   role: competitor
-  color: '#74DDA8'
+  color: '#BAD070'
   attributes:
     Compute Breadth: 4.0
     Managed AI/ML: 3.0
@@ -144,7 +144,7 @@ approaches:
     axis_1: -1.2016
     axis_2: 2.3246
   role: competitor
-  color: '#26CCD3'
+  color: '#10C4CB'
   attributes:
     Compute Breadth: 2.0
     Managed AI/ML: 3.0

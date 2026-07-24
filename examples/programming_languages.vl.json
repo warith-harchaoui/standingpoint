@@ -409,8 +409,8 @@
             "name": "Go",
             "axis1": 0.6481990985638397,
             "axis2": -1.262448314651634,
-            "role": "trustworthy",
-            "color": "#007AFF",
+            "role": "competitor",
+            "color": "#75A857",
             "label": "Go",
             "labelx": 0.8195509380222206,
             "labely": -1.262448314651634
@@ -420,7 +420,7 @@
             "axis1": 2.0837170619103262,
             "axis2": 1.5732333986784677,
             "role": "competitor",
-            "color": "#4ECBF7",
+            "color": "#9CB7FF",
             "label": "JavaScript",
             "labelx": 2.0837170619103262,
             "labely": 1.8101620779778422
@@ -430,7 +430,7 @@
             "axis1": 2.3178900904340023,
             "axis2": -0.5016293694010787,
             "role": "competitor",
-            "color": "#52DEC7",
+            "color": "#59D5FF",
             "label": "TypeScript",
             "labelx": 2.3178900904340023,
             "labely": -0.7385580487004533
@@ -439,8 +439,8 @@
             "name": "Java",
             "axis1": 2.4530230882570265,
             "axis2": -2.024928481318392,
-            "role": "innovative",
-            "color": "#AF52DE",
+            "role": "right",
+            "color": "#007AFF",
             "label": "Java",
             "labelx": 2.4530230882570265,
             "labely": -1.7879998020190173
@@ -460,7 +460,7 @@
             "axis1": 1.2177475438275662,
             "axis2": -1.8374408134420461,
             "role": "competitor",
-            "color": "#649745",
+            "color": "#009E89",
             "label": "C#",
             "labelx": 1.389099383285947,
             "labely": -1.8374408134420461
@@ -469,8 +469,8 @@
             "name": "Ruby",
             "axis1": 0.008386360390015168,
             "axis2": 2.862067462963746,
-            "role": "competitor",
-            "color": "#7992E4",
+            "role": "top",
+            "color": "#AF52DE",
             "label": "Ruby",
             "labelx": 0.008386360390015168,
             "labely": 3.098996142263121
@@ -570,15 +570,15 @@
             ],
             "range": [
               "#FF3B30",
-              "#4ECBF7",
-              "#7992E4",
+              "#9CB7FF",
+              "#AF52DE",
               "#C790DF",
-              "#52DEC7",
-              "#007AFF",
+              "#59D5FF",
+              "#75A857",
               "#D1AE49",
               "#DF7D9D",
-              "#AF52DE",
-              "#649745",
+              "#007AFF",
+              "#009E89",
               "#CC744A",
               "#A52A2A"
             ]
@@ -639,8 +639,8 @@
             "name": "Go",
             "axis1": 0.6481990985638397,
             "axis2": -1.262448314651634,
-            "role": "trustworthy",
-            "color": "#007AFF",
+            "role": "competitor",
+            "color": "#75A857",
             "label": "Go",
             "labelx": 0.8195509380222206,
             "labely": -1.262448314651634
@@ -650,7 +650,7 @@
             "axis1": 2.0837170619103262,
             "axis2": 1.5732333986784677,
             "role": "competitor",
-            "color": "#4ECBF7",
+            "color": "#9CB7FF",
             "label": "JavaScript",
             "labelx": 2.0837170619103262,
             "labely": 1.8101620779778422
@@ -660,7 +660,7 @@
             "axis1": 2.3178900904340023,
             "axis2": -0.5016293694010787,
             "role": "competitor",
-            "color": "#52DEC7",
+            "color": "#59D5FF",
             "label": "TypeScript",
             "labelx": 2.3178900904340023,
             "labely": -0.7385580487004533
@@ -669,8 +669,8 @@
             "name": "Java",
             "axis1": 2.4530230882570265,
             "axis2": -2.024928481318392,
-            "role": "innovative",
-            "color": "#AF52DE",
+            "role": "right",
+            "color": "#007AFF",
             "label": "Java",
             "labelx": 2.4530230882570265,
             "labely": -1.7879998020190173
@@ -690,7 +690,7 @@
             "axis1": 1.2177475438275662,
             "axis2": -1.8374408134420461,
             "role": "competitor",
-            "color": "#649745",
+            "color": "#009E89",
             "label": "C#",
             "labelx": 1.389099383285947,
             "labely": -1.8374408134420461
@@ -699,8 +699,8 @@
             "name": "Ruby",
             "axis1": 0.008386360390015168,
             "axis2": 2.862067462963746,
-            "role": "competitor",
-            "color": "#7992E4",
+            "role": "top",
+            "color": "#AF52DE",
             "label": "Ruby",
             "labelx": 0.008386360390015168,
             "labely": 3.098996142263121

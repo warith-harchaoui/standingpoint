@@ -10,6 +10,9 @@
 # poles). JSON braces are escaped as {{ }}.
 
 en:
+  # Figure title. {plural} is the plural of the table's first-column noun. The whole
+  # title is localized, so a French table never reads "Voitures in the Quadrant".
+  title_template: "{plural} in the Quadrant"
   noun_prompt: |
     Give the singular and plural of EXACTLY this word, in English, capitalized, without
     replacing it by a synonym: "{word}".
@@ -52,6 +55,8 @@ en:
     acronyms. Plain prose, no bullet lists.
 
 fr:
+  # « Voitures dans le quadrant » — jamais « Voitures in the Quadrant ».
+  title_template: "{plural} dans le quadrant"
   noun_prompt: |
     Donnez le singulier et le pluriel EXACTEMENT de ce mot, en français, avec une
     majuscule, sans le remplacer par un synonyme : « {word} ».
@@ -96,6 +101,8 @@ fr:
     distinguent. Pas d'acronymes. Prose simple, sans listes à puces.
 
 es:
+  # «Coches en el cuadrante» — nunca «Coches in the Quadrant».
+  title_template: "{plural} en el cuadrante"
   noun_prompt: |
     Da el singular y el plural EXACTAMENTE de esta palabra, en español, con mayúscula,
     sin reemplazarla por un sinónimo: «{word}».

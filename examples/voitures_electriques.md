@@ -2,13 +2,7 @@
 
 ## Interpretation
 
-La carte de positionnement montre que Tesla Model 3 est considérée comme la voiture électrique la plus performante dans le domaine de l'innovation et de la durabilité, se situant en haut à droite du graphique. Elle est également perçue comme la plus accessible en termes d'utilisation, ce qui la place au centre de l'axe horizontal.
-
-Hyundai Ioniq 5 et Kia EV6 suivent dans le classement, reflétant une forte confiance des utilisateurs en leur qualité, tout en restant dans les domaines de l'innovation et de la durabilité. Ces deux voitures sont également facilement accessibles pour un large public.
-
-BMW i4 se distingue par sa connectivité avancée, ce qui le place plus haut sur l'axe vertical. Cependant, elle est légèrement moins innovante que Tesla Model 3 mais reste dans la zone des performances élevées en termes de durabilité et d'accès.
-
-En revanche, Dacia Spring se trouve à l'autre extrémité du graphique, indiquant qu'elle est considérée comme la voiture électrique la plus accessible et simple à utiliser, tout en étant moins innovante et durable que les autres modèles représentés.
+La carte de positionnement montre clairement que Tesla Model 3 domine dans les domaines de la connectivité et de la durabilité, située en haut à droite du graphique. En revanche, Dacia Spring se trouve en bas à gauche, indiquant une faible accessibilité et simplicité. Renault Mégane E-Tech est le modèle qui avance le plus vers l'accessibilité et la connectivité, tandis que BMW i4 se démarque pour sa forte durabilité. Les modèles comme Hyundai Ioniq 5, Kia EV6, Polestar 2 et Volkswagen ID.3 occupent des positions intermédiaires, offrant un bon équilibre entre les différentes catégories. Enfin, Peugeot e-208 se situe dans une zone qui combine une certaine simplicité avec de l'accessibilité modérée.
 
 ## Axes
 
@@ -19,9 +13,9 @@ En revanche, Dacia Spring se trouve à l'autre extrémité du graphique, indiqua
 ## Highlighted approaches
 
 - **Leader (reference):** Tesla Model 3
-- **Weakest overall:** Dacia Spring (lowest projection on the leader axis)
-- **Most innovative:** Hyundai Ioniq 5 (frontier-capability projection)
-- **Most trustworthy:** Kia EV6 (privacy / compliance projection)
+- **Weakest overall:** Dacia Spring (lowest projection on the leader diagonal)
+- **Strongest toward Connectivité:** Renault Mégane E-Tech (challenger furthest up the vertical axis)
+- **Strongest toward Durabilité:** BMW i4 (challenger furthest along the horizontal axis)
 
 ## Leaderboard (by combined axis score)
 

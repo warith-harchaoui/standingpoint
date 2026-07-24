@@ -399,8 +399,8 @@
             "name": "MacBook Pro",
             "axis1": 2.3614176539294798,
             "axis2": -1.3128590522998154,
-            "role": "innovative",
-            "color": "#AF52DE",
+            "role": "right",
+            "color": "#007AFF",
             "label": "MacBook Pro",
             "labelx": 2.3614176539294798,
             "labely": -1.084755360240281
@@ -409,8 +409,8 @@
             "name": "Dell XPS",
             "axis1": 0.8910170758152786,
             "axis2": -0.3986867858940918,
-            "role": "trustworthy",
-            "color": "#007AFF",
+            "role": "competitor",
+            "color": "#BC722B",
             "label": "Dell XPS",
             "labelx": 0.8910170758152786,
             "labely": -0.626790477953626
@@ -420,7 +420,7 @@
             "axis1": 1.464765139653159,
             "axis2": 0.9298179549757113,
             "role": "competitor",
-            "color": "#E49753",
+            "color": "#A1B656",
             "label": "ThinkPad X1",
             "labelx": 1.464765139653159,
             "labely": 1.1579216470352456
@@ -440,7 +440,7 @@
             "axis1": -0.879314930374814,
             "axis2": 1.3103174296997016,
             "role": "competitor",
-            "color": "#52DEC7",
+            "color": "#72CFFF",
             "label": "Asus Zenbook",
             "labelx": -0.879314930374814,
             "labely": 1.5384211217592358
@@ -450,7 +450,7 @@
             "axis1": 0.06947362733546453,
             "axis2": 0.926754525268963,
             "role": "competitor",
-            "color": "#7D912E",
+            "color": "#00AA95",
             "label": "HP Spectre",
             "labelx": 0.06947362733546453,
             "labely": 1.1548582173284971
@@ -469,8 +469,8 @@
             "name": "Acer Swift",
             "axis1": -2.3614176539294798,
             "axis2": 2.6562798557986076,
-            "role": "competitor",
-            "color": "#3B9BD7",
+            "role": "top",
+            "color": "#AF52DE",
             "label": "Acer Swift",
             "labelx": -2.3614176539294798,
             "labely": 2.8843835478581417
@@ -548,13 +548,13 @@
             ],
             "range": [
               "#FF3B30",
-              "#52DEC7",
+              "#72CFFF",
               "#AB8CE0",
-              "#3B9BD7",
               "#AF52DE",
-              "#E49753",
               "#007AFF",
-              "#7D912E",
+              "#A1B656",
+              "#BC722B",
+              "#00AA95",
               "#F894B4",
               "#A52A2A"
             ]
@@ -605,8 +605,8 @@
             "name": "MacBook Pro",
             "axis1": 2.3614176539294798,
             "axis2": -1.3128590522998154,
-            "role": "innovative",
-            "color": "#AF52DE",
+            "role": "right",
+            "color": "#007AFF",
             "label": "MacBook Pro",
             "labelx": 2.3614176539294798,
             "labely": -1.084755360240281
@@ -615,8 +615,8 @@
             "name": "Dell XPS",
             "axis1": 0.8910170758152786,
             "axis2": -0.3986867858940918,
-            "role": "trustworthy",
-            "color": "#007AFF",
+            "role": "competitor",
+            "color": "#BC722B",
             "label": "Dell XPS",
             "labelx": 0.8910170758152786,
             "labely": -0.626790477953626
@@ -626,7 +626,7 @@
             "axis1": 1.464765139653159,
             "axis2": 0.9298179549757113,
             "role": "competitor",
-            "color": "#E49753",
+            "color": "#A1B656",
             "label": "ThinkPad X1",
             "labelx": 1.464765139653159,
             "labely": 1.1579216470352456
@@ -646,7 +646,7 @@
             "axis1": -0.879314930374814,
             "axis2": 1.3103174296997016,
             "role": "competitor",
-            "color": "#52DEC7",
+            "color": "#72CFFF",
             "label": "Asus Zenbook",
             "labelx": -0.879314930374814,
             "labely": 1.5384211217592358
@@ -656,7 +656,7 @@
             "axis1": 0.06947362733546453,
             "axis2": 0.926754525268963,
             "role": "competitor",
-            "color": "#7D912E",
+            "color": "#00AA95",
             "label": "HP Spectre",
             "labelx": 0.06947362733546453,
             "labely": 1.1548582173284971
@@ -675,8 +675,8 @@
             "name": "Acer Swift",
             "axis1": -2.3614176539294798,
             "axis2": 2.6562798557986076,
-            "role": "competitor",
-            "color": "#3B9BD7",
+            "role": "top",
+            "color": "#AF52DE",
             "label": "Acer Swift",
             "labelx": -2.3614176539294798,
             "labely": 2.8843835478581417
