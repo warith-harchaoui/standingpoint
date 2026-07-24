@@ -74,7 +74,7 @@ approaches:
     Reproducibility: 5.0
     Readable Axes: 5.0
     Ease of Setup: 3.0
-- name: pca (Python)
+- name: PCA (scikit-learn)
   coordinates:
     axis_1: -1.5323
     axis_2: 0.945

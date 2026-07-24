@@ -5,6 +5,7 @@
     "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
     "fontSize": 18
   },
+  "background": null,
   "width": 1000,
   "height": 720,
   "autosize": {

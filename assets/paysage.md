@@ -2,7 +2,7 @@
 
 ## Interpretation
 
-La carte montre que Standpoint est le plus précis et facilement compréhensible, dominant clairement en haut à droite du graphique. En descendant vers la gauche, on observe une diminution de précision mais une facilité d'utilisation croissante avec QuadrantMaker. En bas à gauche, Diapositives ou tableau blanc offre une simplicité maximale mais manque de précision et de compréhensibilité. Factoextra + FactoMineR se situe au milieu, offrant un équilibre entre facilité d'utilisation et compréhensibilité. Enfin, PCA (Python) est le moins précis et le moins facile à utiliser mais reste simple à comprendre. Les groupes qui se distinguent sont ceux qui allient précision et facilité d'utilisation comme Standpoint ou QuadrantMaker, tandis que ceux qui privilégient la simplicité comme Diapositives ou tableau blanc peuvent manquer de profondeur en termes de compréhension.
+La carte de positionnement montre que Standpoint domine nettement en termes de précision et de compréhensibilité, ce qui le place au sommet du classement. QuadrantMaker se démarque par une facilité d'utilisation élevée tout en conservant un niveau de simplicité acceptable. Diapositives ou tableau blanc offrent une bonne balance entre simplicité et facilité d'utilisation. Factoextra + FactoMineR, bien qu'ayant des scores élevés dans la compréhensibilité, se situent plus vers le centre du classement en termes de facilité d'utilisation. Enfin, PCA (Python) est le concurrent qui offre les meilleures performances en facilité d'utilisation mais à l'opposé, il est moins précis et moins facile à comprendre que les autres solutions proposées.
 
 ## Axes
 

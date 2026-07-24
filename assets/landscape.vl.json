@@ -5,6 +5,7 @@
     "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
     "fontSize": 18
   },
+  "background": null,
   "width": 1000,
   "height": 720,
   "autosize": {
@@ -406,12 +407,12 @@
             "labely": 1.4299285397613388
           },
           {
-            "name": "pca (Python)",
+            "name": "PCA (scikit-learn)",
             "axis1": -1.5322719152273834,
             "axis2": 0.9449857963494036,
             "role": "worst",
             "color": "#A52A2A",
-            "label": "pca (Python)",
+            "label": "PCA (scikit-learn)",
             "labelx": -1.5322719152273834,
             "labely": 1.108687977574407
           },
@@ -500,7 +501,7 @@
               "factoextra + FactoMineR",
               "QuadrantMaker",
               "Slides or whiteboard",
-              "pca (Python)"
+              "PCA (scikit-learn)"
             ],
             "range": [
               "#FF3B30",
@@ -564,12 +565,12 @@
             "labely": 1.4299285397613388
           },
           {
-            "name": "pca (Python)",
+            "name": "PCA (scikit-learn)",
             "axis1": -1.5322719152273834,
             "axis2": 0.9449857963494036,
             "role": "worst",
             "color": "#A52A2A",
-            "label": "pca (Python)",
+            "label": "PCA (scikit-learn)",
             "labelx": -1.5322719152273834,
             "labely": 1.108687977574407
           },
