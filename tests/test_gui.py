@@ -63,3 +63,42 @@ def test_position_rejects_empty_table() -> None:
     """An empty table body is rejected with 400."""
     r = client.post("/api/position", json={"table": "   ", "use_llm": False})
     assert r.status_code == 400
+
+
+def test_upload_csv_normalizes_to_grid() -> None:
+    """`POST /api/upload` accepts a CSV file and returns clean CSV for the grid."""
+    csv = b"Language,Speed,Safety\nPython,2,2\nRust,5,5\n"
+    r = client.post("/api/upload", files={"file": ("table.csv", csv, "text/csv")})
+    assert r.status_code == 200
+    assert r.text.splitlines()[0] == "Language,Speed,Safety"
+    assert "Python,2,2" in r.text  # ints stay ints (no "2.0")
+
+
+def test_upload_xlsx_roundtrips() -> None:
+    """An uploaded `.xlsx` is read (via pandas/openpyxl) back into CSV."""
+    pd = pytest.importorskip("pandas")
+    pytest.importorskip("openpyxl")
+    import io
+
+    buf = io.BytesIO()
+    df = pd.DataFrame({"Speed": [2, 5], "Safety": [2, 5]}, index=["Python", "Rust"])
+    df.index.name = "Language"
+    df.to_excel(buf)
+    r = client.post(
+        "/api/upload",
+        files={"file": ("table.xlsx", buf.getvalue(), "application/vnd.ms-excel")},
+    )
+    assert r.status_code == 200
+    assert r.text.splitlines()[0] == "Language,Speed,Safety"
+
+
+def test_download_xlsx_returns_workbook() -> None:
+    """`POST /api/download/xlsx` turns the CSV grid into a real .xlsx download."""
+    pytest.importorskip("openpyxl")
+    r = client.post(
+        "/api/download/xlsx",
+        json={"table": "Language,Speed,Safety\nPython,2,2\nRust,5,5"},
+    )
+    assert r.status_code == 200
+    assert r.content[:4] == b"PK\x03\x04"  # xlsx is a zip
+    assert "attachment" in r.headers.get("content-disposition", "")

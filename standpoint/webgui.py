@@ -50,6 +50,13 @@ GUI_HTML = r"""<!doctype html>
         <button id="addRow" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-sm">+ Option (row)</button>
         <button id="addCol" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-sm">+ Criterion (column)</button>
         <button id="loadExample" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-sm">Reset to example</button>
+        <span class="mx-1 text-slate-300">|</span>
+        <label class="px-3 py-1.5 rounded-md bg-blue-50 hover:bg-blue-100 text-sm text-blue-700 cursor-pointer">
+          Upload CSV / XLSX
+          <input id="upload" type="file" accept=".csv,.xlsx,.xls,.md,.txt" class="hidden" />
+        </label>
+        <button id="dlCsv" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-sm">Download CSV</button>
+        <button id="dlXlsx" class="px-3 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-sm">Download XLSX</button>
         <span class="text-xs text-slate-400 ml-2">Higher = better. Toggle <b>↓</b> on a column where lower is better.</span>
       </div>
       <div class="overflow-x-auto">
@@ -188,12 +195,44 @@ $("addRow").onclick = () => { rows.push({ name: "New", values: headers.map(() =>
 $("addCol").onclick = () => { headers.push("Criterion"); rows.forEach((r) => r.values.push("3")); renderGrid(); };
 $("loadExample").onclick = () => fetch("/api/example").then((r) => r.text()).then(loadCsv);
 
+// Upload a CSV or XLSX file: the server normalizes it to CSV (XLSX via pandas).
+$("upload").onchange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  $("error").classList.add("hidden");
+  const fd = new FormData(); fd.append("file", file);
+  try {
+    const res = await fetch("/api/upload", { method: "POST", body: fd });
+    if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+    loadCsv(await res.text());
+  } catch (err) {
+    $("error").textContent = "Upload failed: " + err.message;
+    $("error").classList.remove("hidden");
+  }
+  e.target.value = "";  // allow re-uploading the same file
+};
+
 // Serialize the grid back to CSV, tagging lower-is-better columns with "(↓)".
 function toCsv() {
   const head = [firstCol, ...headers.map((h, i) => (lowerCols.has(i) ? `${h} (↓)` : h))];
   const body = rows.map((r) => [r.name, ...r.values].join(","));
   return [head.join(","), ...body].join("\n");
 }
+
+// Download the current grid: CSV is built client-side; XLSX is built by the server.
+$("dlCsv").onclick = () => download("standpoint.csv", toCsv(), "text/csv");
+$("dlXlsx").onclick = async () => {
+  const res = await fetch("/api/download/xlsx", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ table: toCsv() }),
+  });
+  if (!res.ok) { $("error").textContent = "XLSX export failed."; $("error").classList.remove("hidden"); return; }
+  const blob = await res.blob();
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "standpoint.xlsx"; a.click();
+  URL.revokeObjectURL(a.href);
+};
 
 // --- generate: POST the table, render the spec + markdown --------------------
 let lastYaml = "", lastMd = "";

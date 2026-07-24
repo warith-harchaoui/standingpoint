@@ -26,6 +26,8 @@ Run it (`standpoint-gui`) and, entirely on `localhost`:
 1. **Edit a table** — an editable grid seeded with an example: add/remove options
    (rows) and criteria (columns), rename headers, edit cells, mark a column
    *lower-is-better* with the `↓` toggle, and pick the reference (top-right) option.
+   Or **upload a CSV / XLSX** file (Excel is read server-side via pandas + openpyxl)
+   and **download** the edited table as CSV or XLSX.
 2. **Generate** — the grid is serialized to CSV and POSTed to `/api/position`, which
    runs the real `positioning()` pipeline.
 3. **See the quadrant** — the returned Vega-Lite spec is rendered live, with a
@@ -41,16 +43,25 @@ deterministic.
 
 Deliberately thin — the library stays the single source of truth:
 
+Blue nodes run in the **browser** (one HTML page, no build step); green nodes run in
+the **FastAPI** server on top of the unchanged core library.
+
+```mermaid
+flowchart LR
+    grid["🖥️ Editable grid"] ==>|"POST /api/position · CSV"| pos["positioning(csv, …)"]
+    pos --> lib["core library — unchanged<br/>to_vega · to_markdown · to_yaml"]
+    lib -->|"vega spec · JSON"| embed["🖥️ vega-embed<br/>live quadrant"]
+    lib -->|"markdown · JSON"| md["🖥️ marked<br/>written analysis"]
+
+    %% "Good Colors" palette — https://harchaoui.org/warith/colors/
+    classDef browser fill:#CCE4FF,stroke:#007AFF,color:#000000,stroke-width:2px;
+    classDef server fill:#D4F5D9,stroke:#28CD41,color:#000000,stroke-width:2px;
+    class grid,embed,md browser;
+    class pos,lib server;
 ```
-browser (one HTML page)                        standpoint.api (FastAPI)
-┌───────────────────────────┐   POST /api/position   ┌──────────────────────────┐
-│ editable grid  ─► CSV      │ ─────────────────────► │ positioning(csv, …)       │
-│ vega-embed  ◄─ vega spec   │ ◄───────────────────── │  → to_vega / to_markdown  │
-│ marked      ◄─ markdown    │      JSON payload      │  → to_yaml                │
-└───────────────────────────┘                        └──────────────────────────┘
-        no build step                                   core library (unchanged)
-   Tailwind + vega-embed + marked (CDN)              GET /gui serves the page
-```
+
+(Tailwind + vega-embed + marked load from a CDN; the core library never imports the
+web layer.)
 
 - `standpoint/api.py` — FastAPI app: `GET /gui`, `GET /api/example`,
   `POST /api/position`, `GET /` → `/gui`. Launcher `main_gui()` (`standpoint-gui`).
@@ -73,11 +84,11 @@ machine (the LLM, when enabled, is the same local Ollama the CLI uses).
 ## Honest assessment / limitations
 
 - **PoC polish.** Column headers truncate at a fixed width; the two-panel layout
-  pushes the analysis below the map on narrow screens; there is no CSV import/paste
-  or drag-to-reorder yet. All are straightforward front-end work.
-- **No tests yet.** A `gui` test (200 on `/gui`, a `POST /api/position` round-trip,
-  a 400 on a degenerate table) should land before this is more than an experiment —
-  mirroring how the core is tested. It would run only when the `gui` extra is present.
+  pushes the analysis below the map on narrow screens; no drag-to-reorder yet. All
+  are straightforward front-end work.
+- **Tests.** `tests/test_gui.py` covers the endpoints (page served, example, position
+  round-trip, both 400 paths, CSV+XLSX upload, XLSX download); it runs only when the
+  `gui` extra is installed, so the default suite is unaffected.
 - **Synchronous requests.** With the model on, `/api/position` blocks for ~10–25 s.
   Fine for one user on localhost; a streaming or two-step (spec first, narrative
   after) response would feel better.
@@ -86,7 +97,7 @@ machine (the LLM, when enabled, is the same local Ollama the CLI uses).
 
 ## Roadmap (if we pursue it)
 
-1. CSV / Markdown **paste + file import**, and export of the edited table.
+1. CSV / XLSX upload + download **done**; next: Markdown paste and drag-to-reorder.
 2. Two-step response: render the map immediately, stream the narrative when ready.
 3. `--reference`, `--top`/`--right` overrides and `--model` surfaced in the UI.
 4. A `gui` smoke test + a CI job that at least imports the app.

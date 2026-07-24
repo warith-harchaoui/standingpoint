@@ -19,12 +19,18 @@ package, so the library and CLIs carry no web dependency.
 
 from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse
+import io
+
+import pandas as pd
+from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse, Response
 from pydantic import BaseModel
 
-from standpoint import DEFAULT_MODEL, analysis_markdown, positioning
+from standpoint import DEFAULT_MODEL, analysis_markdown, parse_table, positioning
 from standpoint.webgui import GUI_HTML
+
+# Excel MIME type for the .xlsx download response.
+_XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
 app = FastAPI(title="Standpoint GUI", version="0.1.0")
 
@@ -91,6 +97,84 @@ def gui() -> str:
 def example() -> str:
     """Return a starter table (CSV text) to populate an empty grid."""
     return _STARTER_TABLE
+
+
+def _df_to_csv(df: pd.DataFrame) -> str:
+    """Serialize a parsed table back to clean CSV for the grid (ints stay ints)."""
+    # `%g` drops the ".0" that read_excel / parse_table introduce, and blanks stay
+    # blank, so the grid shows "2" and "" rather than "2.0" and "nan".
+    return df.to_csv(float_format="%g")
+
+
+@app.post("/api/upload", response_class=PlainTextResponse)
+async def upload(file: UploadFile = File(...)) -> str:
+    """Load an uploaded **CSV or XLSX** table and return it as CSV for the grid.
+
+    Parameters
+    ----------
+    file : UploadFile
+        The uploaded file; ``.xlsx`` / ``.xls`` are read with pandas (openpyxl),
+        anything else is treated as CSV or Markdown via `parse_table`.
+
+    Returns
+    -------
+    str
+        The table as CSV text, ready to populate the editor grid.
+
+    Raises
+    ------
+    HTTPException
+        400 if the file can't be read as a table.
+    """
+    content = await file.read()
+    name = (file.filename or "").lower()
+    try:
+        if name.endswith((".xlsx", ".xls")):
+            df = pd.read_excel(io.BytesIO(content), index_col=0)
+        else:
+            df = parse_table(content.decode("utf-8", errors="replace"))
+    except Exception as exc:  # unreadable spreadsheet / not a table
+        raise HTTPException(status_code=400, detail=f"Could not read the file: {exc}") from exc
+    return _df_to_csv(df)
+
+
+class TableText(BaseModel):
+    """A table as CSV text — the body of the XLSX download request."""
+
+    table: str
+
+
+@app.post("/api/download/xlsx")
+def download_xlsx(req: TableText) -> Response:
+    """Convert the edited table (CSV text) to an ``.xlsx`` file for download.
+
+    Parameters
+    ----------
+    req : TableText
+        The current grid serialized to CSV.
+
+    Returns
+    -------
+    Response
+        The workbook bytes with an ``attachment`` disposition so the browser saves
+        ``standpoint.xlsx``.
+
+    Raises
+    ------
+    HTTPException
+        400 if the CSV can't be parsed into a table.
+    """
+    try:
+        df = parse_table(req.table)
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=f"Could not parse the table: {exc}") from exc
+    buf = io.BytesIO()
+    df.to_excel(buf)  # index = option names; openpyxl writes the .xlsx
+    return Response(
+        content=buf.getvalue(),
+        media_type=_XLSX_MIME,
+        headers={"Content-Disposition": "attachment; filename=standpoint.xlsx"},
+    )
 
 
 @app.post("/api/position", response_model=PositionResponse)
