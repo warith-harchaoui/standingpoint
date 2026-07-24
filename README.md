@@ -14,6 +14,8 @@ Standpoint reads a comparison table (options as rows, criteria as columns, numbe
 in the cells) and produces a 2D positioning map, a short written analysis, and a
 YAML file with all the coordinates and coefficients. One command does it.
 
+![Standpoint logo](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/logo.png)
+
 The method is ordinary PCA, which people have used for perceptual maps for a long
 time. What Standpoint adds is the work you would otherwise do by hand: it orients
 the map around a reference option, names the axes in plain words (in the language
