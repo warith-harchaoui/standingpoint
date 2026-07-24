@@ -204,7 +204,10 @@ def test_i18n_all_languages_present_and_formattable():
     for lang in p4m.SUPPORTED_LANGS:
         tpl = p4m.i18n(lang)
         assert {
-            "glossary_prefix", "axis_prompt", "narrative_prompt", "noun_prompt",
+            "glossary_prefix",
+            "axis_prompt",
+            "narrative_prompt",
+            "noun_prompt",
             "title_template",
         } <= set(tpl)
         tpl["axis_prompt"].format(glossary="", left="a", right="b", bottom="c", top="d")

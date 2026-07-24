@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Voitures in the Quadrant",
+    "text": "Voitures dans le quadrant",
     "font": "Roboto, -apple-system, Helvetica, Arial, sans-serif",
     "fontSize": 18
   },

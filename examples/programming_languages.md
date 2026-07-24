@@ -2,13 +2,11 @@
 
 ## Interpretation
 
-The positioning map illustrates how different programming languages compare on two key dimensions: scalability (horizontal axis) and accessibility (vertical axis). The top-right corner is reserved for Python, signifying it as the leader in both aspects due to its broad applicability across various domains. Conversely, Rust, positioned at the bottom-left, represents a language that excels more in scalability but falls short when it comes to accessibility.
+The positioning map illustrates how different programming languages rank across two key dimensions: scalability on the horizontal axis and versatility on the vertical axis. The top-right corner is reserved for Python, which leads in both flexibility and accessibility, indicating it excels at being adaptable to various applications while also offering easy access for developers. At the bottom-left, Rust stands out as the worst performer overall due to its low scores across all dimensions.
 
-Ruby, which reaches furthest toward 'Accessibility' on the vertical axis, demonstrates strong usability and ease of learning for beginners. On the other hand, Java, which extends farthest along the 'Versatility' dimension on the horizontal axis, shows its prowess in building complex applications across a wide range of industries without compromising on performance.
+Ruby, positioned towards 'Accessibility' on the vertical axis, shows strong appeal among developers who value ease of use and simplicity in their programming tasks. Java, situated near 'Versatility', is a clear challenger for languages that aim to be highly adaptable and capable of handling diverse projects with relative ease. The leaderboard compiled from these scores highlights Python as the undisputed leader, followed by JavaScript, Ruby, TypeScript, Java, Go, C#, and Kotlin.
 
-The leaderboard reflects these dimensions combined: Python leads with its balanced approach, followed by JavaScript and Ruby. TypeScript, despite not being at the top, stands out for its strong type safety while maintaining accessibility. Java's versatility makes it a notable choice for enterprise-level development. Go, C#, and Kotlin round off the top performers in their respective niches.
-
-In summary, this map provides a clear visual representation of how different languages cater to varying needs: Python shines as the most versatile and accessible language overall; Ruby excels in accessibility; Java demonstrates unparalleled versatility; while TypeScript offers a balance between usability and robustness.
+The map reveals clusters where certain languages perform exceptionally well in specific areas: Python at the top-right corner for its versatility and accessibility; Rust at the bottom-left for its scalability despite its low overall score. This analysis underscores how different programming environments cater to varying needs of developers, from those seeking simplicity and ease-of-use to those requiring high adaptability across a wide range of applications.
 
 ## Axes
 
