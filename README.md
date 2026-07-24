@@ -2,7 +2,7 @@
 
 [🇫🇷](https://github.com/warith-harchaoui/standingpoint/blob/main/LISEZMOI.md) · [🇬🇧](https://github.com/warith-harchaoui/standingpoint/blob/main/README.md)
 
-[![CI](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml) [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.13-blue.svg)](#) [![Local-first](https://img.shields.io/badge/local--first-Ollama%20%2B%20Vega--Lite-brightgreen.svg)](#the-promise)
+[![CI](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml) [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/warith-harchaoui/standingpoint/blob/main/LICENSE) [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.13-blue.svg)](#) [![Local-first](https://img.shields.io/badge/local--first-Ollama%20%2B%20Vega--Lite-brightgreen.svg)](#the-promise)
 
 `Standpoint` belongs to a collection of libraries called `AI Helpers` developed for building Artificial Intelligence.
 
@@ -38,8 +38,11 @@ Standpoint is **local-first** by design. Three honest cases:
 
 ## Documentation
 
+[💻 Documentation](https://harchaoui.org/warith/ai-helpers/docs/standingpoint-doc/)
+
+[🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
+
 [📋 Examples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
-· [🗺️ Landscape](https://github.com/warith-harchaoui/standingpoint/blob/main/LANDSCAPE.md)
 
 Input: a table of options and their ratings.
 
@@ -102,6 +105,12 @@ the default model once (optional — skip it and use `--no-llm`):
 
 We recommend a Python environment. If you're new to that, see [🥸 Tech tips](https://harchaoui.org/warith/4ml/#install).
 
+### From PyPI (recommended)
+
+```bash
+pip install standpoint
+```
+
 ### From source
 
 ```bash
@@ -113,7 +122,7 @@ pip install -e .          # or: pip install -r requirements.txt
 Or install straight from GitHub (the import name is `standpoint`):
 
 ```bash
-pip install "git+https://github.com/warith-harchaoui/standingpoint.git@v0.1.0"
+pip install "git+https://github.com/warith-harchaoui/standingpoint.git@v0.2.0"
 ```
 
 ## Usage

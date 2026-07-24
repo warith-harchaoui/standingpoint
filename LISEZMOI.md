@@ -2,7 +2,7 @@
 
 [🇫🇷](https://github.com/warith-harchaoui/standingpoint/blob/main/LISEZMOI.md) · [🇬🇧](https://github.com/warith-harchaoui/standingpoint/blob/main/README.md)
 
-[![CI](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml) [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.13-blue.svg)](#) [![Local-first](https://img.shields.io/badge/local--first-Ollama%20%2B%20Vega--Lite-brightgreen.svg)](#la-promesse)
+[![CI](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml/badge.svg)](https://github.com/warith-harchaoui/standingpoint/actions/workflows/ci.yml) [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/warith-harchaoui/standingpoint/blob/main/LICENSE) [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.13-blue.svg)](#) [![Local-first](https://img.shields.io/badge/local--first-Ollama%20%2B%20Vega--Lite-brightgreen.svg)](#la-promesse)
 
 `Standpoint` fait partie d'une collection de bibliothèques appelée `AI Helpers`, développée pour bâtir des applications d'intelligence artificielle.
 
@@ -41,8 +41,11 @@ Standpoint est **local-first** par conception. Trois cas, en toute honnêteté :
 
 ## Documentation
 
+[💻 Documentation](https://harchaoui.org/warith/ai-helpers/docs/standingpoint-doc/)
+
+[🗺️ Paysage](https://github.com/warith-harchaoui/standingpoint/blob/main/PAYSAGE.md)
+
 [📋 Exemples](https://github.com/warith-harchaoui/standingpoint/blob/main/EXAMPLES.md)
-· [🗺️ Paysage](https://github.com/warith-harchaoui/standingpoint/blob/main/PAYSAGE.md)
 
 
 Entrée : un tableau d'options et de leurs notes.
@@ -110,6 +113,12 @@ téléchargez le modèle par défaut une fois (optionnel — sinon, utilisez `--
 
 Nous recommandons un environnement Python. Si vous ne savez pas comment faire : [🥸 Conseils techniques](https://harchaoui.org/warith/4ml/#install).
 
+### Depuis PyPI (recommandé)
+
+```bash
+pip install standpoint
+```
+
 ### Depuis les sources
 
 ```bash
@@ -121,7 +130,7 @@ pip install -e .          # ou : pip install -r requirements.txt
 Ou directement depuis GitHub (le nom d'import est `standpoint`) :
 
 ```bash
-pip install "git+https://github.com/warith-harchaoui/standingpoint.git@v0.1.0"
+pip install "git+https://github.com/warith-harchaoui/standingpoint.git@v0.2.0"
 ```
 
 ## Utilisation

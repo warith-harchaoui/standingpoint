@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-24
+
+### Added
+
+- **Joined the [AI Helpers](https://harchaoui.org/warith/ai-helpers) suite** (Misc
+  group): suite framing + logo in the README/LISEZMOI, a canonical Documentation
+  section, and a self-referential positioning map wired into `LANDSCAPE.md` /
+  `PAYSAGE.md` from the committed `assets/landscape.csv` / `paysage.csv` source.
+- **First PyPI release** (`pip install standpoint`); README/LISEZMOI use absolute
+  URLs so they render on the PyPI project page.
+
 ### Changed
 
 - **Highlighted roles are now domain-agnostic.** The two extra highlights used to be

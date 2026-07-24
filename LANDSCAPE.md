@@ -8,16 +8,26 @@ a comparison table run through the tool, exactly like any other example.
 
 The comparison (higher is better, on a 1–5 scale):
 
-| Tool | Automated Axis Naming | Multilingual Output | Local Execution | One Command | Threefold Deliverable | Reproducibility | Readable Axes | Ease of Setup |
-|---|---|---|---|---|---|---|---|---|
-| Standpoint | 5 | 5 | 5 | 5 | 5 | 5 | 4 | 4 |
-| prince | 1 | 1 | 5 | 2 | 1 | 5 | 5 | 3 |
-| PCA (scikit-learn) | 1 | 1 | 5 | 2 | 1 | 5 | 4 | 3 |
-| factoextra + FactoMineR | 1 | 1 | 5 | 2 | 2 | 5 | 5 | 2 |
-| QuadrantMaker | 1 | 2 | 2 | 4 | 1 | 1 | 2 | 5 |
-| Slides or whiteboard | 1 | 3 | 5 | 2 | 1 | 1 | 2 | 4 |
+<!-- TABLE:START -->
+| Positioning Maps | Automated Axis Naming | Multilingual Output | Local Execution | One Command | Threefold Deliverable | Reproducibility | Readable Axes | Ease of Setup |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Standpoint** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| prince | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| PCA (scikit-learn) | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| factoextra + FactoMineR | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+| QuadrantMaker | ⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Slides or whiteboard | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+<!-- TABLE:END -->
 
-![Standpoint compared to other positioning-map tools](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/landscape.png)
+## Positioning map
+
+<!-- FIGURE:START -->
+2D representation of the table above.
+
+![Positioning map](https://raw.githubusercontent.com/warith-harchaoui/standingpoint/main/assets/landscape.png)
+
+The map is a 2-D summary of the eight criteria, so read it as a shape, not a scoreboard. `Standpoint` is at the top-right corner. The axes read **Horizontal — Readable ↔ Versatile** and **Vertical — Simple Setup ↔ Consistent**.
+<!-- FIGURE:END -->
 
 ## How to read it
 
